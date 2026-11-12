@@ -46,7 +46,7 @@ pnpm exec lingui compile --strict --workers 1
 
 All must pass. The standard build commands are in `README.md`.
 
-## Build notes for this machine (macOS 27, Xcode 27.2, Rust 1.94.0)
+## Build notes (macOS 27, Xcode 27.2, Rust 1.94.0)
 
 - Dependency proc-macros fail to load unless dependency debug info is on. Put this in `.cargo/config.toml` (not committed):
 
@@ -72,10 +72,13 @@ The Chinese interface touches many existing files (translation markers around st
 - Auri and Anarlog share `~/Library/Application Support/anarlog`. Never run both at once.
 - Features that need Anarlog's hosted accounts do not work here. Dictation and Dictionary were unlocked once and put back by choice; the lock is a front-end check only.
 - Not yet measured: transcription accuracy per provider, long meetings, non-macOS platforms.
+- Settings-sidebar entries that need Anarlog's hosted services are hidden, not removed: see `HIDDEN_SETTINGS_NAV_IDS` in `apps/desktop/src/sidebar/settings-nav-groups.ts`. The sign-in and Pro prompts are switched off with `SHOW_SIGN_IN_PROMOTION` in `apps/desktop/src/sidebar/toast/registry.tsx`. The Account page is kept on purpose, for when accounts and billing come back with a commercial release.
+- Entries hidden today: Billing, Invite friends, Teams, Sync, Automations, Dictation, Dictionary, Imports, CRM. Imports and CRM target overseas services; China-market equivalents (Feishu, Tencent Meeting) are the planned replacements.
+- Running `lingui extract` rewrites every language catalog. Revert the catalogs of languages that are not maintained (everything except `zh`) before committing.
 
 ## Do not do
 
-- Running the Rust tests of `plugins/deeplink2` and `plugins/hooks` writes into `apps/web/content/`, which no longer exists, and recreates it. Delete the new `apps/web/` before committing.
-
-- Do not run `cargo`, `rustfmt`, or `rustup` on the MacBook: the project pins Rust 1.94, and any call there downloads a toolchain. Build on the Mac mini.
+- Do not run `cargo`, `rustfmt`, or `rustup` on a machine that is not set up to build. The project pins Rust 1.94 in `rust-toolchain.toml`, and any `cargo` call inside the repo downloads that toolchain. Build only where Xcode (with the Metal toolchain) and Rust are installed.
 - Do not re-enable the upstream workflows in `docs/upstream/github/`: they target upstream's servers and secrets.
+- Do not add `enterprise/` or `apps/web` back. The Rust tests of `plugins/deeplink2` and `plugins/hooks` write into `apps/web/content/` and will recreate it; delete the new `apps/web/` before committing.
+- Do not run `pnpm install` just to run the tests if the checkout was copied without a full `node_modules`: a partial install makes about a dozen unrelated tests fail (menu and dialog tests), and reinstalling rewrites `pnpm-lock.yaml`. Run the full suite in a checkout with a complete install, and copy the changed files across.
