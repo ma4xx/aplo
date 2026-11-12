@@ -1,0 +1,11 @@
+Third-party binaries in this directory
+
+cloudsync (macOS .dylib, Linux/Android .so, Windows .dll, Apple xcframework)
+  Project:   sqlite-sync by SQLiteAI  https://github.com/sqliteai/sqlite-sync
+  Version:   1.2.0 (built from commit 285a1390c92fce3a1dc6f98daef213f882a5b23b,
+             as recorded in ../scripts/rebuild-*.sh)
+  License:   Apache License 2.0  https://www.apache.org/licenses/LICENSE-2.0
+
+These are unmodified builds produced by the rebuild scripts in ../scripts. The
+desktop bundle references the macOS aarch64 file (apps/desktop/src-tauri/tauri.conf.json).
+Auri does not connect to SQLite Cloud, so the network sync functions are unused.

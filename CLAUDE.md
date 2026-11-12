@@ -1,0 +1,79 @@
+# Auri
+
+A fork of Anarlog (MIT) for Max's meetings in Chinese. See `README.md` for what differs from upstream. `docs/upstream/` holds the upstream README, AGENTS.md, and the original CI workflows, kept for reference only.
+
+This file is the working agreement. `AGENTS.md` and `.agents/` are upstream's and describe upstream's own workflow (GitButler, PR skills, release tooling). Ignore them where they conflict with this file.
+
+## Who and how
+
+Max is a product manager and indie developer who does not read code. Explain choices in plain language with a recommendation, lead with the conclusion, answer in Chinese, keep code, commands, and identifiers in English. Do not flatter. Flag problems directly.
+
+## Rules
+
+- Large changes: propose first, then build. Small, reversible edits can go ahead.
+- Ask before: deleting files or git history, pushing, rebasing, changing CI or secrets, database schema changes, installing global dependencies, publishing anything, and calling paid external APIs (LLM, translation, email, SMS). A past agent ran a translation API unasked and cost over $600.
+- Never put keys, tokens, or personal paths in code, commits, or logs. Test fixtures that look like keys (`TEST_PRIVATE_KEY`, test JWTs) are known and fine.
+- Do not comment out errors or add bypass flags to make something run. Find the cause.
+- Keep the MIT `LICENSE` and every `LICENSE*` file as is. Never add `enterprise/` back: it is commercially licensed.
+- Verify after every change with the commands below and report real results, including failures.
+
+## Layout that matters
+
+- `apps/desktop/` is the product: Tauri 2 + React + TypeScript. Rust side is in `apps/desktop/src-tauri/`, `plugins/`, and `crates/`.
+- Everything user-visible is translated with Lingui. Catalogs: `apps/desktop/src/i18n/locales/<lang>/messages.po`. Chinese is `zh`.
+- Meeting advisor: `apps/desktop/src/chat/advisor-prompt.ts` (default text), `settings/advisor/` (page), `chat/transport/use-transport.ts` (where it is appended).
+- Folder context in chat: `chat/context/folder-context.ts` and `use-chat-context-pipeline.ts`.
+- Built-in template translations: `templates/locales/`. The database stays English; translation is display-only.
+- Date patterns by language: `i18n/date.ts`.
+
+## Translating new strings
+
+1. Wrap UI text: `<Trans>` in JSX, `` t`...` `` in code (`useLingui` inside components, `@lingui/core/macro` elsewhere). Top-level constants cannot call `t` at import time: use a getter, a function, or `msg`.
+2. `cd apps/desktop && pnpm exec lingui extract --workers 1` adds new entries to every language file.
+3. Fill the empty `msgstr` in `zh/messages.po`. Keep `{placeholders}` and `<0>` tags identical to the source.
+4. `pnpm exec lingui compile --strict --workers 1`.
+
+Do not translate: product, model, and provider names; text sent to the AI as instructions or tool descriptions (translating changes model behavior); strings the code compares with `===` or uses as keys or stored titles.
+
+## Verify
+
+```bash
+cd apps/desktop
+pnpm exec tsc --noEmit
+pnpm exec vitest run
+pnpm exec lingui compile --strict --workers 1
+```
+
+All must pass. The standard build commands are in `README.md`.
+
+## Build notes for this machine (macOS 27, Xcode 27.2, Rust 1.94.0)
+
+- Dependency proc-macros fail to load unless dependency debug info is on. Put this in `.cargo/config.toml` (not committed):
+
+  ```toml
+  [profile.dev.package."*"]
+  debug = 1
+  [profile.release.package."*"]
+  debug = 1
+  ```
+
+- Xcode 27's SwiftPM writes libraries to a different folder than `swift-rs` expects. Run `swift build` with `--build-system native`; a wrapper script named `swift` earlier in `PATH` does it.
+- `check-permissions.swift` needs `import ApplicationServices` under the new SDK (already applied).
+- Release builds used to require upstream's PostHog key and API URL. They are optional now (`plugins/analytics`, `plugins/calendar`, `plugins/todo`).
+- The app is ad-hoc signed. macOS ties permissions to the signature, so after a rebuild the microphone and system-audio grants may need to be given again. A fixed self-signed certificate would stop that.
+
+## Merging upstream changes
+
+The Chinese interface touches many existing files (translation markers around strings), so a newer Anarlog release will conflict in many places and there is no shared git history. Diff upstream by hand and port what is wanted. Source snapshot: Anarlog 1.4.34 line, 2026-11-05.
+
+## Known facts, not assumptions
+
+- A meeting open in chat sends its live transcript each turn (verified in a real meeting on 2026-11-11).
+- Auri and Anarlog share `~/Library/Application Support/anarlog`. Never run both at once.
+- Features that need Anarlog's hosted accounts do not work here. Dictation and Dictionary were unlocked once and put back by choice; the lock is a front-end check only.
+- Not yet measured: transcription accuracy per provider, long meetings, non-macOS platforms.
+
+## Do not do
+
+- Do not run `cargo`, `rustfmt`, or `rustup` on the MacBook: the project pins Rust 1.94, and any call there downloads a toolchain. Build on the Mac mini.
+- Do not re-enable the upstream workflows in `docs/upstream/github/`: they target upstream's servers and secrets.
