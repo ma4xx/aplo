@@ -49,12 +49,43 @@ type SettingsNavItem =
 
 export type SettingsNavGroup = { label: string; items: SettingsNavItem[] };
 
+// Entries kept in the code but not shown in the sidebar. Each one needs a
+// hosted Anarlog account or backend that Auri does not have, or is a feature
+// Auri does not use yet. The pages and their code are unchanged, so showing an
+// entry again is a one-line removal here (for example when accounts and billing
+// come back with a commercial release).
+// Other code can still open these pages by name; this only hides the menu entry.
+export const HIDDEN_SETTINGS_NAV_IDS: ReadonlySet<string> = new Set([
+  "billing",
+  "referrals",
+  "team",
+  "sync",
+  "automations",
+  "dictation",
+  "dictionary",
+  "imports",
+  "crm",
+]);
+
+export function withoutHiddenNavItems(
+  groups: SettingsNavGroup[],
+): SettingsNavGroup[] {
+  return groups
+    .map((group) => ({
+      ...group,
+      items: group.items.filter(
+        (item) => !HIDDEN_SETTINGS_NAV_IDS.has(item.id),
+      ),
+    }))
+    .filter((group) => group.items.length > 0);
+}
+
 export function useSettingsNavGroups(): SettingsNavGroup[] {
   const { i18n, t } = useLingui();
   const workspaces = useMyWorkspacesWithMirror();
   const hasExistingWorkspace = (workspaces.data?.length ?? 0) > 0;
 
-  return [
+  return withoutHiddenNavItems([
     {
       label: t`App`,
       items: [
@@ -155,5 +186,5 @@ export function useSettingsNavGroups(): SettingsNavGroup[] {
         { id: "developers", label: t`Developers`, icon: Code },
       ],
     },
-  ];
+  ]);
 }

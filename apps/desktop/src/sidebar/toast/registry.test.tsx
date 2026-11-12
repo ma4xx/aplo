@@ -65,44 +65,53 @@ describe("sidebar toast registry", () => {
     },
   );
 
-  it("suggests signing in before provider setup", () => {
-    const onSignIn = vi.fn();
+  it("does not suggest signing in, because Auri has no hosted accounts", () => {
     const toast = showToast({
       isAuthenticated: false,
       hasLLMConfigured: false,
       hasSttConfigured: false,
-      onSignIn,
     });
 
-    expect(toast?.id).toBe("sign-in-benefits");
-    toast?.primaryAction?.onClick();
-    expect(onSignIn).toHaveBeenCalledOnce();
+    // Provider setup is still asked for; the account promotion is not.
+    expect(toast?.id).toBe("missing-stt");
+    const ids = createToastRegistry({
+      ...baseParams,
+      isAuthenticated: false,
+      hasLLMConfigured: false,
+      hasSttConfigured: false,
+    })
+      .filter((entry) => entry.condition())
+      .map((entry) => entry.toast.id);
+    expect(ids).not.toContain("sign-in-benefits");
   });
 
-  it("asks for a usable transcription provider after sign-in is dismissed", () => {
-    const toast = showToast(
-      { isAuthenticated: false, hasProSttConfigured: true },
-      (toast) => toast.id === "sign-in-benefits",
-    );
+  it("asks for a usable transcription provider when none is configured", () => {
+    const toast = showToast({
+      isAuthenticated: false,
+      hasSttConfigured: false,
+    });
 
     expect(toast?.id).toBe("missing-stt");
   });
 
-  it("promotes Pro after sign-in is dismissed, sharing one permanent dismissal", () => {
-    expect(
-      showToast(
-        { isAuthenticated: false },
-        (toast) => toast.id === "sign-in-benefits",
-      )?.id,
-    ).toBe("upgrade-to-pro");
-    expect(
-      showToast(
-        { isAuthenticated: false },
-        (toast) =>
-          toast.lifecycle.type === "persistent" &&
-          toast.lifecycle.dismissalId === "auth-promotion",
-      ),
-    ).toBeNull();
+  it("never promotes Pro, signed in or not, with any provider setup", () => {
+    for (const isAuthenticated of [false, true]) {
+      for (const hasLLMConfigured of [false, true]) {
+        for (const hasSttConfigured of [false, true]) {
+          const ids = createToastRegistry({
+            ...baseParams,
+            isAuthenticated,
+            hasLLMConfigured,
+            hasSttConfigured,
+          })
+            .filter((entry) => entry.condition())
+            .map((entry) => entry.toast.id);
+
+          expect(ids).not.toContain("upgrade-to-pro");
+          expect(ids).not.toContain("sign-in-benefits");
+        }
+      }
+    }
   });
 
   it.each([

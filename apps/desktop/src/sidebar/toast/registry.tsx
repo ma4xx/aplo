@@ -7,6 +7,11 @@ import type { DownloadProgress, ToastCondition, ToastType } from "./types";
 import type { DesktopUpdateControl } from "~/main/update-banner";
 import type { DevtoolsToastPreview } from "~/store/zustand/devtools-toast-preview";
 
+// Auri has no hosted accounts. This switches off both account promotions
+// (the sign-in suggestion and the "Pro features available" upgrade prompt).
+// Turn it on again when an account system exists.
+const SHOW_SIGN_IN_PROMOTION = false;
+
 const ANARLOG_ICON_SRC = "/assets/anarlog-icon.png";
 const DESKTOP_UPDATE_TOAST_PREFIX = "desktop-update:";
 
@@ -158,7 +163,10 @@ export function createToastRegistry({
           dismissalId: "auth-promotion",
         },
       },
-      condition: () => !isAuthLoading && !isAuthenticated,
+      // Auri has no hosted accounts, so this promotion is switched off. Turn
+      // SHOW_SIGN_IN_PROMOTION on when an account system exists again.
+      condition: () =>
+        SHOW_SIGN_IN_PROMOTION && !isAuthLoading && !isAuthenticated,
     },
     {
       toast: {
@@ -203,6 +211,7 @@ export function createToastRegistry({
       },
       // suppress until auth resolves to avoid flash on startup
       condition: () =>
+        SHOW_SIGN_IN_PROMOTION &&
         !isAuthLoading &&
         !isAuthenticated &&
         hasLLMConfigured &&

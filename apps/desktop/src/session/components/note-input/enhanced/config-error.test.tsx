@@ -16,27 +16,31 @@ describe("ConfigError", () => {
     openNew.mockReset();
   });
 
-  it("offers Pro and API key setup from the empty summary state", () => {
+  it("sends the user to AI provider setup from the empty summary state", () => {
     render(<ConfigError />);
 
     expect(screen.getByRole("alert")).not.toBeNull();
     expect(screen.getByText("Set up AI summaries")).not.toBeNull();
     expect(
       screen.getByText(
-        "Start a Pro trial or add your own LLM API key to generate a summary from this transcript.",
+        "Connect an AI provider, such as your ChatGPT subscription or an API key, to generate a summary from this transcript.",
       ),
     ).not.toBeNull();
 
-    fireEvent.click(screen.getByRole("button", { name: "Get Pro" }));
-    expect(openNew).toHaveBeenNthCalledWith(1, {
-      type: "settings",
-      state: { tab: "billing" },
-    });
-
-    fireEvent.click(screen.getByRole("button", { name: "Add API key" }));
-    expect(openNew).toHaveBeenNthCalledWith(2, {
+    fireEvent.click(
+      screen.getByRole("button", { name: "Connect an AI provider" }),
+    );
+    expect(openNew).toHaveBeenCalledTimes(1);
+    expect(openNew).toHaveBeenCalledWith({
       type: "settings",
       state: { tab: "intelligence" },
     });
+  });
+
+  it("no longer points at billing or a Pro trial", () => {
+    render(<ConfigError />);
+
+    expect(screen.queryByRole("button", { name: "Get Pro" })).toBeNull();
+    expect(screen.queryByText(/Pro trial/)).toBeNull();
   });
 });

@@ -2,6 +2,7 @@ import { act, cleanup, render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
+  sttConfigured: true,
   signIn: vi.fn(),
   dismissToast: vi.fn(),
   openNew: vi.fn(),
@@ -116,7 +117,7 @@ vi.mock("~/store/zustand/tabs", () => ({
 }));
 
 vi.mock("~/stt/capabilities", () => ({
-  isConfiguredSttModel: () => true,
+  isConfiguredSttModel: () => mocks.sttConfigured,
   isAnarlogCloudSttModel: () => false,
 }));
 
@@ -150,6 +151,7 @@ const localStorageMock = {
 
 describe("ToastNotifications", () => {
   beforeEach(() => {
+    mocks.sttConfigured = true;
     vi.useFakeTimers();
     vi.stubGlobal("localStorage", localStorageMock);
     mocks.signIn.mockClear();
@@ -190,37 +192,42 @@ describe("ToastNotifications", () => {
     vi.useRealTimers();
   });
 
-  it("routes the sign-in suggestion through the shared toaster", () => {
+  it("does not promote signing in, since Auri has no hosted accounts", () => {
     render(<ToastNotifications />);
 
     act(() => vi.advanceTimersByTime(500));
 
-    expect(mocks.message).toHaveBeenCalledWith(
-      "Sign in to get the most out of Anarlog",
-      expect.objectContaining({
-        id: "sign-in-benefits",
-        duration: Infinity,
-        closeButton: true,
-        action: expect.objectContaining({ label: "Sign in" }),
-      }),
-    );
-
-    const options = mocks.message.mock.calls[0][1];
-    options.action.onClick();
-    expect(mocks.signIn).toHaveBeenCalledOnce();
-
-    options.onDismiss();
-    expect(mocks.dismissToast).not.toHaveBeenCalled();
+    const shownIds = mocks.message.mock.calls.map((call) => call[1]?.id);
+    expect(shownIds).not.toContain("sign-in-benefits");
+    expect(mocks.signIn).not.toHaveBeenCalled();
   });
 
-  it("persists explicit toast dismissals", () => {
+  it("does not show the Pro upgrade prompt, even when AI and transcription are set up with your own providers", () => {
+    // The exact situation that would show it upstream: signed out, a language
+    // model and a transcription model configured, neither of them Anarlog's.
+    mocks.config.current_llm_provider = "openai";
+    mocks.config.current_llm_model = "gpt";
+    mocks.config.current_stt_provider = "deepgram";
+    mocks.config.current_stt_model = "nova";
     render(<ToastNotifications />);
 
     act(() => vi.advanceTimersByTime(500));
 
-    const options = mocks.message.mock.calls[0][1];
-    options.onDismiss();
-    expect(mocks.dismissToast).toHaveBeenCalledWith("auth-promotion");
+    const shownIds = mocks.message.mock.calls.map((call) => call[1]?.id);
+    expect(shownIds).not.toContain("upgrade-to-pro");
+    expect(shownIds).not.toContain("sign-in-benefits");
+  });
+
+  it("shows the transcription-needed toast when none is configured", () => {
+    mocks.sttConfigured = false;
+    render(<ToastNotifications />);
+
+    act(() => vi.advanceTimersByTime(500));
+
+    const call = mocks.message.mock.calls.find(
+      (entry) => entry[0] === "Transcription provider needed",
+    );
+    expect(call).toBeDefined();
   });
 
   it("lets users dismiss a model download toast until the next download", () => {

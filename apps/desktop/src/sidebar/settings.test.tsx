@@ -138,17 +138,11 @@ describe("SettingsNav", () => {
     mocks.updateSettingsTabState.mock.lastCall?.[1] as
       | { tab: string }
       | undefined;
-  const hasProLock = (name: string | RegExp) =>
-    Boolean(
-      screen
-        .getByRole("button", { name })
-        .querySelector("[aria-label='Requires Anarlog Pro']"),
-    );
 
   it.each([
     ["Permissions", "permissions"],
     ["Account", "account"],
-    ["Billing", "billing"],
+    ["Meeting advisor", "advisor"],
   ])("opens %s inside settings", (label, tab) => {
     render(<SettingsNav />);
 
@@ -162,7 +156,7 @@ describe("SettingsNav", () => {
 
   it.each([
     ["Calendar", "calendar"],
-    ["Automations", "automations"],
+    ["Templates", "templates"],
   ])("opens the %s workspace in a new tab", (label, type) => {
     render(<SettingsNav />);
 
@@ -185,43 +179,61 @@ describe("SettingsNav", () => {
     expect(screen.queryByRole("button", { name: "Stats" })).toBeNull();
   });
 
-  it("keeps locked Pro features visible and navigable without forcing an upgrade", () => {
+  it("hides entries that need Anarlog's hosted services", () => {
     mocks.isPro = false;
     render(<SettingsNav />);
 
-    expect(hasProLock(/Sync/)).toBe(true);
-
-    for (const [label, tab] of [
-      ["Sync", "sync"],
-      ["Dictionary", "dictionary"],
-      ["Teams", "team"],
+    for (const label of [
+      "Billing",
+      "Invite friends",
+      "Teams",
+      "Sync",
+      "Automations",
+      "Dictation",
+      "Dictionary",
+      "Imports",
+      "CRM",
     ]) {
-      fireEvent.click(screen.getByRole("button", { name: new RegExp(label) }));
-      expect(openedSettingsTab()).toEqual({ tab });
+      expect(
+        screen.queryByRole("button", { name: new RegExp(`^${label}`) }),
+      ).toBeNull();
     }
-    fireEvent.click(screen.getByRole("button", { name: /Automations/ }));
-
-    expect(mocks.openNew).toHaveBeenCalledWith({ type: "automations" });
-    expect(mocks.upgradeToPro).not.toHaveBeenCalled();
   });
 
-  it.each([
-    ["without a workspace", [], false, true],
-    [
-      "for members of an existing workspace",
-      [{ workspaceId: "ws-1" }],
-      false,
-      false,
-    ],
-    ["while workspaces are loading", undefined, true, false],
-  ])("locks Teams for free users only %s", (_, workspaces, loading, locked) => {
-    mocks.isPro = false;
-    mocks.workspaces = workspaces;
-    mocks.workspacesLoading = loading;
-
+  it("keeps the entries Auri uses", () => {
     render(<SettingsNav />);
 
-    expect(hasProLock(/Teams/)).toBe(locked);
+    for (const label of [
+      "General",
+      "Account",
+      "Insights",
+      "Transcription",
+      "Intelligence",
+      "Meeting advisor",
+      "Calendar",
+      "Templates",
+      "Permissions",
+    ]) {
+      expect(
+        screen.getByRole("button", { name: new RegExp(label) }),
+      ).toBeTruthy();
+    }
+  });
+
+  it("does not bring hidden entries back through search", () => {
+    render(<SettingsNav />);
+
+    fireEvent.change(screen.getByPlaceholderText("Search settings..."), {
+      target: { value: "sync" },
+    });
+
+    expect(screen.queryByRole("button", { name: /Sync/ })).toBeNull();
+  });
+
+  it("drops a group whose entries are all hidden", () => {
+    render(<SettingsNav />);
+
+    expect(screen.queryByText("Data")).toBeNull();
   });
 
   it("filters nav items by item or group label", () => {

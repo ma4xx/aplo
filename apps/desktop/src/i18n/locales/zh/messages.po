@@ -465,8 +465,8 @@ msgid "Add another device"
 msgstr "添加其他设备"
 
 #: src/session/components/note-input/enhanced/config-error.tsx
-msgid "Add API key"
-msgstr "添加 API 密钥"
+#~ msgid "Add API key"
+#~ msgstr "添加 API 密钥"
 
 #: src/settings/automations/workflow-builder.tsx
 msgid "Add at least one configured action before enabling."
@@ -1906,6 +1906,14 @@ msgstr "在「设置 › CRM」中连接 CRM，以丰富联系人信息。"
 #: src/settings/crm/index.tsx
 msgid "Connect a CRM to look up your contacts from Anarlog. Connections are managed through your Anarlog account."
 msgstr "连接 CRM，即可在 Anarlog 中查找你的联系人。连接通过你的 Anarlog 账户管理。"
+
+#: src/session/components/note-input/enhanced/config-error.tsx
+msgid "Connect an AI provider"
+msgstr "连接 AI 服务商"
+
+#: src/session/components/note-input/enhanced/config-error.tsx
+msgid "Connect an AI provider, such as your ChatGPT subscription or an API key, to generate a summary from this transcript."
+msgstr "请连接一个 AI 服务商（例如你的 ChatGPT 订阅或 API 密钥），才能根据这份逐字稿生成纪要。"
 
 #: src/onboarding/calendar.tsx
 #: src/onboarding/index.tsx
@@ -3412,7 +3420,6 @@ msgstr "获取更多名额"
 msgid "Get one free month when a friend signs up through your link and starts their free trial. Invite up to 3 friends. Each friend gets 30 days of Pro free."
 msgstr "好友通过你的链接注册并开始免费试用后，你可获得 1 个月免费。最多可邀请 3 位好友，每位好友可免费使用 30 天 Pro。"
 
-#: src/session/components/note-input/enhanced/config-error.tsx
 #: src/settings/general/billing.tsx
 msgid "Get Pro"
 msgstr "获取 Pro"
@@ -6901,8 +6908,8 @@ msgid "Stack another destination. Steps run top to bottom."
 msgstr "叠加另一个目标。步骤按从上到下的顺序执行。"
 
 #: src/session/components/note-input/enhanced/config-error.tsx
-msgid "Start a Pro trial or add your own LLM API key to generate a summary from this transcript."
-msgstr "开始 Pro 试用，或添加你自己的 LLM API 密钥，即可根据此逐字稿生成纪要。"
+#~ msgid "Start a Pro trial or add your own LLM API key to generate a summary from this transcript."
+#~ msgstr "开始 Pro 试用，或添加你自己的 LLM API 密钥，即可根据此逐字稿生成纪要。"
 
 #: src/settings/general/app-settings.tsx
 msgid "Start Anarlog at login"
