@@ -75,5 +75,7 @@ The Chinese interface touches many existing files (translation markers around st
 
 ## Do not do
 
+- Running the Rust tests of `plugins/deeplink2` and `plugins/hooks` writes into `apps/web/content/`, which no longer exists, and recreates it. Delete the new `apps/web/` before committing.
+
 - Do not run `cargo`, `rustfmt`, or `rustup` on the MacBook: the project pins Rust 1.94, and any call there downloads a toolchain. Build on the Mac mini.
 - Do not re-enable the upstream workflows in `docs/upstream/github/`: they target upstream's servers and secrets.
