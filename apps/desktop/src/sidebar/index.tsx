@@ -16,6 +16,7 @@ import { hasOwnSidebarHeaderTab } from "./use-custom-sidebar";
 
 import { usesTitleBarSidebarActions } from "~/shared/hooks/useWindowControlsGutter";
 import { useTabs } from "~/store/zustand/tabs";
+import { SHARING_ENABLED } from "~/shared/features";
 
 export function LeftSidebar({
   folderFilter = null,
@@ -76,7 +77,7 @@ export function LeftSidebar({
             <FoldersNav />
           ) : (
             <div className="flex h-full min-h-0 flex-col">
-              {noteFilter === "mine" ? (
+              {noteFilter === "mine" || !SHARING_ENABLED ? (
                 <>
                   {folderFilter ? (
                     <FolderMaterialsPanel folderPath={folderFilter} />

@@ -25,6 +25,7 @@ import {
   WELCOME_NOTE_TRACKING_ID,
 } from "~/onboarding/welcome-note.constants";
 import { SessionShareButton } from "~/session-sharing";
+import { SHARING_ENABLED } from "~/shared/features";
 import { useEventCountdown } from "~/session/hooks/useEventCountdown";
 import { useMeetingMicInUse } from "~/session/hooks/useMeetingMicInUse";
 import {
@@ -156,6 +157,10 @@ function HeaderMeetingControl({
   }
 
   if (meetingOver) {
+    if (!SHARING_ENABLED) {
+      return null;
+    }
+
     return (
       <div className="relative mr-1 ml-1 flex min-w-0 shrink-0 items-center">
         <SessionShareButton

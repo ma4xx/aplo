@@ -42,6 +42,7 @@ import { sharedResourcesQueryKey, useSharedResources } from "./hooks";
 
 import { useOptionalAuth } from "~/auth";
 import { useBillingAccess } from "~/auth/billing-context";
+import { SHARING_ENABLED } from "~/shared/features";
 import { useAvailableShareWorkspaces } from "~/session-sharing/source";
 import {
   GlassDialogCancelButton,
@@ -58,7 +59,7 @@ export function ResourceShareButton(props: {
     | Promise<Record<string, unknown>>;
 }) {
   const auth = useOptionalAuth();
-  if (!auth) return null;
+  if (!SHARING_ENABLED || !auth) return null;
   return <AuthenticatedResourceShareButton {...props} />;
 }
 

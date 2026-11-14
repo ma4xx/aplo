@@ -4,6 +4,13 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
   currentTab: { type: "empty" } as { type: string } | null,
   platform: "macos",
+  sharing: false,
+}));
+
+vi.mock("~/shared/features", () => ({
+  get SHARING_ENABLED() {
+    return mocks.sharing;
+  },
 }));
 
 vi.mock("@tauri-apps/plugin-os", () => ({
@@ -62,17 +69,26 @@ describe("LeftSidebar", () => {
   beforeEach(() => {
     mocks.currentTab = { type: "empty" };
     mocks.platform = "macos";
+    mocks.sharing = false;
   });
 
   afterEach(() => {
     cleanup();
   });
 
-  it("shows received notes without the personal timeline", () => {
+  it("shows received notes without the personal timeline when sharing is on", () => {
+    mocks.sharing = true;
     render(<LeftSidebar noteFilter="shared" />);
 
     expect(screen.queryByTestId("timeline-view")).toBeNull();
     expect(screen.getByTestId("shared-notes-nav")).toBeTruthy();
+  });
+
+  it("keeps the personal timeline even for a shared filter while sharing is off", () => {
+    render(<LeftSidebar noteFilter="shared" />);
+
+    expect(screen.getByTestId("timeline-view")).toBeTruthy();
+    expect(screen.queryByTestId("shared-notes-nav")).toBeNull();
   });
 
   it("keeps the personal timeline when filtering to a folder", () => {

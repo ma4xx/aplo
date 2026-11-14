@@ -23,6 +23,7 @@ import type { SharedResource, SharedResourceType } from "./client";
 import { useSharedResources } from "./hooks";
 
 import { useOptionalAuth } from "~/auth";
+import { SHARING_ENABLED } from "~/shared/features";
 import {
   GlassDialogCancelButton,
   GlassDialogContent,
@@ -34,7 +35,7 @@ export function SharedResourceLibrarySection(props: {
   onImport: (resource: SharedResource) => Promise<void>;
 }) {
   const auth = useOptionalAuth();
-  if (!auth) return null;
+  if (!SHARING_ENABLED || !auth) return null;
   return <AuthenticatedSharedResourceLibrarySection {...props} />;
 }
 

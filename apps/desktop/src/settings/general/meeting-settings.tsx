@@ -5,6 +5,7 @@ import { DefaultMeetingShareAccessSelector } from "./default-share-access";
 import { PrimaryRecordingDeviceSelector } from "./primary-recording-device";
 
 import { SettingSwitchRow } from "~/settings/setting-row";
+import { SHARING_ENABLED } from "~/shared/features";
 
 interface SettingItem {
   value: boolean;
@@ -37,7 +38,7 @@ export function MeetingSettingsView({
 
   return (
     <div className="flex flex-col gap-4">
-      <DefaultMeetingShareAccessSelector />
+      {SHARING_ENABLED ? <DefaultMeetingShareAccessSelector /> : null}
       <PrimaryRecordingDeviceSelector />
       <SettingSwitchRow
         title={<Trans>Start when meeting begins</Trans>}

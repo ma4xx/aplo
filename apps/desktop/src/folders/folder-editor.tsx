@@ -71,6 +71,7 @@ import { useFolderIcons } from "~/session/queries";
 import { useFolderMaterialUpload } from "~/shared/hooks/useFileUpload";
 import { DestructiveConfirmationDialog } from "~/shared/ui/destructive-confirmation-dialog";
 import { TemplateIconPicker } from "~/templates/template-icon-picker";
+import { SHARING_ENABLED } from "~/shared/features";
 
 const ONLY_ME_VALUE = "me";
 const PARTICIPANTS_VALUE = "participants";
@@ -307,7 +308,7 @@ export function FolderEditor({ folderPath }: { folderPath: string }) {
 
       <div className="scrollbar-hide flex-1 overflow-y-auto px-3 pt-3 pb-6">
         <div className="flex max-w-2xl flex-col gap-6">
-          {auth?.session?.user.id ? (
+          {SHARING_ENABLED && auth?.session?.user.id ? (
             <div className="flex items-start justify-between gap-4">
               <div className="flex flex-col gap-1.5">
                 <h4 className="text-sm font-medium">

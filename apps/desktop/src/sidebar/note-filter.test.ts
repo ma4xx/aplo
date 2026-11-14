@@ -1,4 +1,12 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
+
+const features = vi.hoisted(() => ({ sharing: true }));
+
+vi.mock("~/shared/features", () => ({
+  get SHARING_ENABLED() {
+    return features.sharing;
+  },
+}));
 
 import {
   decodeNotesView,
@@ -11,6 +19,16 @@ import {
 describe("sidebar note filter", () => {
   afterEach(() => {
     resetSidebarNotes();
+    features.sharing = true;
+  });
+
+  it("falls back to my notes for a stored shared view while sharing is off", () => {
+    features.sharing = false;
+
+    expect(decodeNotesView("shared")).toEqual({
+      noteFilter: "mine",
+      folderFilter: null,
+    });
   });
 
   it("encodes and decodes mine, shared, unfiled, and named folders", () => {

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { SHARING_ENABLED } from "~/shared/features";
 
 export type SidebarNoteFilter = "mine" | "shared";
 export type SidebarNotesGroupBy = "date" | "folder";
@@ -69,7 +70,7 @@ export function decodeNotesView(value: string): {
   noteFilter: SidebarNoteFilter;
   folderFilter: string | null;
 } {
-  if (value === "shared") {
+  if (value === "shared" && SHARING_ENABLED) {
     return { noteFilter: "shared", folderFilter: null };
   }
 

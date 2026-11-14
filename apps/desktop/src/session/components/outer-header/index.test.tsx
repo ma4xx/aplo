@@ -237,9 +237,9 @@ describe("OuterHeader", () => {
     ],
     ["post-meeting transcription", { mode: "running_batch", now: AFTER }, null],
     ["finalizing", { mode: "finalizing", event: scheduled(MEET_LINK) }, null],
-    ["inactive with transcript", { transcript: true }, "Share note"],
-    ["inactive with audio", { audio: true }, "Share note"],
-    ["meeting over", { event: scheduled(MEET_LINK), now: AFTER }, "Share note"],
+    ["inactive with transcript", { transcript: true }, null],
+    ["inactive with audio", { audio: true }, null],
+    ["meeting over", { event: scheduled(MEET_LINK), now: AFTER }, null],
     [
       "recorded event without ended_at",
       {
@@ -247,7 +247,7 @@ describe("OuterHeader", () => {
         now: AFTER,
         transcript: true,
       },
-      "Share note",
+      null,
     ],
     ["meeting without a link", { event: scheduled() }, "Record"],
     [
@@ -290,6 +290,19 @@ describe("OuterHeader", () => {
 
     expect(visibleAction()).toBe(expected);
     expect(screen.getByRole("button", { name: "More" })).not.toBeNull();
+  });
+
+  it("never shows a share button, since Auri has no hosted sharing", () => {
+    for (const scenario of [
+      { transcript: true },
+      { audio: true },
+      { event: scheduled(MEET_LINK), now: AFTER },
+    ]) {
+      arrange(scenario);
+      renderHeader();
+      expect(screen.queryByRole("button", { name: "Share note" })).toBeNull();
+      cleanup();
+    }
   });
 
   it("starts listening from record without opening a meeting", () => {

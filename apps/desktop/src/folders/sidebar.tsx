@@ -35,6 +35,7 @@ import {
 import { CustomSidebarHeader } from "~/sidebar/custom-sidebar-header";
 import { FolderNameDialog } from "~/sidebar/folder-name-dialog";
 import { TemplateIconGlyph } from "~/templates/template-icon";
+import { SHARING_ENABLED } from "~/shared/features";
 
 export function FoldersSidebar() {
   const { t } = useLingui();
@@ -172,7 +173,7 @@ export function FoldersSidebar() {
                         className="size-4 text-sm"
                       />
                       <span className="min-w-0 truncate">{folder}</span>
-                      {folderShareLabel(folder) !== null ? (
+                      {SHARING_ENABLED && folderShareLabel(folder) !== null ? (
                         <span
                           className="text-muted-foreground shrink-0"
                           title={folderShareLabel(folder) || undefined}
