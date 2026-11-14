@@ -60,6 +60,8 @@ All must pass. The standard build commands are in `README.md`.
 - Xcode 27's SwiftPM writes libraries to a different folder than `swift-rs` expects. Run `swift build` with `--build-system native`; a wrapper script named `swift` earlier in `PATH` does it.
 - `check-permissions.swift` needs `import ApplicationServices` under the new SDK (already applied).
 - Release builds used to require upstream's PostHog key and API URL. They are optional now (`plugins/analytics`, `plugins/calendar`, `plugins/todo`).
+- `apps/desktop/src-tauri/resources/mlx.metallib` (about 100 MB) is generated during the build and is git-ignored. If you sync the source onto a build machine with `rsync --delete`, exclude it, or `tauri build` ends with `failed to bundle project` and a bundle that is missing `Resources/mlx-swift_Cmlx.bundle`. The Rust build also leaves a copy at `<target>/release/mlx.metallib`; copy it back to restore.
+- Judge a build by its output, not by grepping the log for "error": that bundle failure does not print a line starting with `error`. A good bundle has `Resources/mlx-swift_Cmlx.bundle` and the app is roughly 430 MB.
 - The app is ad-hoc signed. macOS ties permissions to the signature, so after a rebuild the microphone and system-audio grants may need to be given again. A fixed self-signed certificate would stop that.
 
 ## Merging upstream changes
