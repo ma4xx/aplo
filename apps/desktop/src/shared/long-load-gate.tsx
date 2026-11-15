@@ -130,19 +130,19 @@ function StartupErrorView({ error }: { error: Error }) {
       <div className="flex max-w-sm flex-col items-center gap-4 text-center">
         <h1 className="text-foreground text-base font-semibold">
           {needsUpdate ? (
-            <Trans>Anarlog needs an update</Trans>
+            <Trans>Aplo needs an update</Trans>
           ) : (
-            <Trans>Anarlog could not start</Trans>
+            <Trans>Aplo could not start</Trans>
           )}
         </h1>
         <p className="text-muted-foreground text-sm leading-relaxed">
           {needsUpdate
             ? (
                 <Trans>
-                  Your data was updated by a newer version of Anarlog, such as
+                  Your data was updated by a newer version of Aplo, such as
                   Anarlog Nightly, and this version cannot open it yet. Your
                   existing data was left unchanged. Install the latest version
-                  of Anarlog, or keep using the newer app until this version
+                  of Aplo, or keep using the newer app until this version
                   catches up.
                 </Trans>
               )

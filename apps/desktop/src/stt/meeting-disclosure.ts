@@ -142,7 +142,7 @@ function meetingDisclosureFailure(reason: unknown): MeetingDisclosureOutcome {
   const detail = reason instanceof Error ? reason.message : String(reason);
   console.warn("[listener] meeting disclosure was not sent", reason);
   toast.warning(
-    t`Recording started, but Anarlog could not post the meeting chat disclosure.`,
+    t`Recording started, but Aplo could not post the meeting chat disclosure.`,
     { id: "meeting-disclosure-send-failed", duration: Infinity },
   );
   return { status: "notSent", reason: detail };

@@ -69,9 +69,9 @@ function TranscriptContent({
               : <Trans>This transcript is incomplete.</Trans>}
           </span>{" "}
           {incompleteCapture.audioDeletionFailed
-            ? <Trans>Anarlog could not remove the temporary audio. Cleanup will be retried automatically.</Trans>
+            ? <Trans>Aplo could not remove the temporary audio. Cleanup will be retried automatically.</Trans>
             : incompleteCapture.audioKeptForTranscription
-              ? <Trans>Some audio has not been transcribed yet, so Anarlog kept it temporarily. It will be deleted automatically once transcription succeeds.</Trans>
+              ? <Trans>Some audio has not been transcribed yet, so Aplo kept it temporarily. It will be deleted automatically once transcription succeeds.</Trans>
               : incompleteCapture.audioDeleted
                 ? <Trans>Recovery did not finish before the meeting ended. Audio was deleted according to your retention setting.</Trans>
                 : <Trans>Some audio could not be transcribed. Available recordings were kept according to your retention setting.</Trans>}

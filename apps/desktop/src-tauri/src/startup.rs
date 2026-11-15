@@ -167,22 +167,41 @@ fn channel_product_name(identifier: &str) -> &'static str {
     if identifier == crate::db::NIGHTLY_BUNDLE_ID {
         "Anarlog Nightly"
     } else {
-        "Anarlog"
+        "Aplo"
     }
 }
 
 pub fn exit_for_already_running_instance() -> ! {
-    eprintln!("another Anarlog process holds the launch lock; exiting");
+    eprintln!("another Aplo process holds the launch lock; exiting");
 
     #[cfg(target_os = "macos")]
     {
-        let alert = "display alert \"Anarlog is already starting\" message \"Another Anarlog process is preparing your data, possibly finishing an update. The app will open automatically when it is ready.\" buttons {\"OK\"} default button \"OK\"";
+        let alert = "display alert \"Aplo is already starting\" message \"Another Aplo process is preparing your data, possibly finishing an update. The app will open automatically when it is ready.\" buttons {\"OK\"} default button \"OK\"";
         let _ = std::process::Command::new("/usr/bin/osascript")
             .args(["-e", alert])
             .spawn();
     }
 
     std::process::exit(0);
+}
+
+// Stops startup with a message instead of opening Aplo with an empty library.
+// If Aplo went on, it would create its own database, and the one-time copy of
+// the previous app's data would never run again.
+pub fn exit_for_blocked_data_import(reason: &str, details: &str) -> ! {
+    eprintln!("{reason}: {details}");
+
+    #[cfg(target_os = "macos")]
+    {
+        let message = format!(
+            "display alert \"Aplo 暂时不能启动\" message \"{reason}\\n\\n你的数据没有被改动。\" as critical buttons {{\"好\"}} default button \"好\""
+        );
+        let _ = std::process::Command::new("/usr/bin/osascript")
+            .args(["-e", &message])
+            .status();
+    }
+
+    std::process::exit(1);
 }
 
 // Older versions let users point notes and recordings at a custom folder,
@@ -256,7 +275,7 @@ impl SlowStartupIndicator {
 
 #[cfg(target_os = "macos")]
 fn spawn_indicator_alert() -> Option<std::process::Child> {
-    let alert = "display alert \"Updating your data\" message \"Anarlog is updating your data. This can take several minutes for a large library.\\n\\nPlease keep Anarlog running; it will open automatically when the update finishes.\" buttons {\"OK\"} default button \"OK\"";
+    let alert = "display alert \"Updating your data\" message \"Aplo is updating your data. This can take several minutes for a large library.\\n\\nPlease keep Aplo running; it will open automatically when the update finishes.\" buttons {\"OK\"} default button \"OK\"";
     std::process::Command::new("/usr/bin/osascript")
         .args(["-e", alert])
         .spawn()

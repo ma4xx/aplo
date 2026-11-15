@@ -165,7 +165,7 @@ function ActiveDictation({
         const capture = unwrap(await transcription.getCaptureState());
         if (capture !== "inactive")
           throw new Error(
-            t`Dictation is unavailable while Anarlog is recording a meeting.`,
+            t`Dictation is unavailable while Aplo is recording a meeting.`,
           );
         abort.signal.throwIfAborted();
         target = unwrap(await dictation.captureTarget());

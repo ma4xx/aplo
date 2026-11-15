@@ -232,7 +232,7 @@ impl AppWindow {
 impl WindowImpl for AppWindow {
     fn title(&self) -> String {
         match self {
-            Self::Main => "Anarlog".into(),
+            Self::Main => "Aplo".into(),
             Self::Composer => "输入框".into(),
             Self::Note(_) => "笔记".into(),
         }

@@ -86,7 +86,7 @@ export function SavedCaptureAudioPrompt({ sessionId }: { sessionId: string }) {
         console.error("[listener] failed to resume listening", error);
       });
     };
-    toast.warning(t`Anarlog saved this meeting's audio`, {
+    toast.warning(t`Aplo saved this meeting's audio`, {
       id,
       duration: Infinity,
       description: (

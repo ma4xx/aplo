@@ -211,7 +211,7 @@ function StopControl({
       }
       title={
         state.status === "error"
-          ? t`${notice}. Open Anarlog to retry or change devices.`
+          ? t`${notice}. Open Aplo to retry or change devices.`
           : undefined
       }
       disabled={state.dictation?.phase === "transcribing"}

@@ -13,7 +13,8 @@ export type DesktopScheme =
   | "anarlog"
   | "anarlog-staging"
   | "anarlog-nightly"
-  | "anarlog-dev";
+  | "anarlog-dev"
+  | "aplo";
 
 export const getScheme = async (): Promise<DesktopScheme> => {
   const id = await getIdentifier();
@@ -23,12 +24,13 @@ export const getScheme = async (): Promise<DesktopScheme> => {
     "com.hyprnote.staging": "anarlog-staging",
     "com.hyprnote.nightly": "anarlog-nightly",
     "com.hyprnote.dev": "anarlog-dev",
+    "com.ma4xx.aplo": "aplo",
     "so.anarlog.Anarlog": "anarlog",
     "com.anarlog.stable": "anarlog",
     "com.anarlog.staging": "anarlog-staging",
     "com.anarlog.dev": "anarlog-dev",
   };
-  return schemes[id] ?? "anarlog";
+  return schemes[id] ?? "aplo";
 };
 
 type DesktopFlowPath =

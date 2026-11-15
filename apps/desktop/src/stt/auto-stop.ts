@@ -190,7 +190,7 @@ export async function showMeetingEndedPrompt({
     await notificationCommands.showNotification({
       key,
       title: t`Did your meeting end?`,
-      message: t`Anarlog will stop listening in ${AUTO_STOP_CONFIRM_TIMEOUT_SECONDS} seconds.`,
+      message: t`Aplo will stop listening in ${AUTO_STOP_CONFIRM_TIMEOUT_SECONDS} seconds.`,
       timeout: { secs: AUTO_STOP_CONFIRM_TIMEOUT_SECONDS, nanos: 0 },
       source: null,
       start_time: null,

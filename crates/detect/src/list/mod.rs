@@ -22,6 +22,7 @@ pub fn list_installed_apps() -> Vec<InstalledApp> {
 }
 
 const SELF_BUNDLE_IDS: &[&str] = &[
+    "com.ma4xx.aplo",
     "com.anarlog.dev",
     "com.anarlog.stable",
     "com.anarlog.staging",
@@ -33,6 +34,7 @@ const SELF_BUNDLE_IDS: &[&str] = &[
 ];
 
 const SELF_APP_NAMES: &[&str] = &[
+    "aplo",
     "anarlog",
     "anarlog staging",
     "anarlog nightly",
@@ -45,6 +47,7 @@ const SELF_APP_NAMES: &[&str] = &[
 ];
 
 const SELF_APP_PATH_SEGMENTS: &[&str] = &[
+    "/aplo.app/",
     "/anarlog.app/",
     "/anarlog staging.app/",
     "/anarlog nightly.app/",

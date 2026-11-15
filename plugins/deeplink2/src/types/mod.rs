@@ -14,7 +14,8 @@ use serde::{Deserialize, Serialize};
 use specta::Type;
 use std::str::FromStr;
 
-const SHARE_OPEN_PREFIXES: [&str; 8] = [
+const SHARE_OPEN_PREFIXES: [&str; 9] = [
+    "aplo://share/open",
     "anarlog://share/open",
     "anarlog-staging://share/open",
     "anarlog-nightly://share/open",

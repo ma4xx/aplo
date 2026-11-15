@@ -60,21 +60,21 @@ export function describeStartFailure(kind: StartFailureKind): {
       };
     case "storage":
       return {
-        title: t`Anarlog couldn't prepare storage for this recording`,
+        title: t`Aplo couldn't prepare storage for this recording`,
         description:
           t`Check that your vault folder is available and your disk has free space, then try again.`,
       };
     case "microphone_permission":
       return {
-        title: t`Anarlog doesn't have microphone access`,
-        description: t`Allow microphone access for Anarlog, then try again.`,
+        title: t`Aplo doesn't have microphone access`,
+        description: t`Allow microphone access for Aplo, then try again.`,
         action: { label: t`Open permissions`, tab: "permissions" },
       };
     case "recorder":
       return {
         title: t`Recording couldn't start`,
         description:
-          t`Anarlog couldn't open your audio input. Check your microphone selection, then try again.`,
+          t`Aplo couldn't open your audio input. Check your microphone selection, then try again.`,
         action: { label: t`Audio settings`, tab: "meetings" },
       };
   }

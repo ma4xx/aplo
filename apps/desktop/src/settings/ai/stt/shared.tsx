@@ -389,7 +389,7 @@ const _PROVIDERS = [
   {
     disabled: false,
     id: "anarlog",
-    displayName: "Anarlog",
+    displayName: "Aplo",
     badge: "Recommended",
     builtIn: true,
     icon: <AnarlogProviderIcon />,

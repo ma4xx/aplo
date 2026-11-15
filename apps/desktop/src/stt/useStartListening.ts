@@ -307,7 +307,7 @@ export function useStartListeningState(
       excludedTexts: [MEETING_DISCLOSURE_MESSAGE],
       onParticipantDeclined: () => {
         toast.warning(
-          t`A participant declined recording. Anarlog stopped listening.`,
+          t`A participant declined recording. Aplo stopped listening.`,
           { id: "meeting-consent-declined", duration: Infinity },
         );
         stop();

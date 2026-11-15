@@ -123,7 +123,11 @@ function withDesktopScheme(
   url: URL,
   desktopScheme: ShareDesktopScheme | undefined,
 ) {
-  if (!desktopScheme || desktopScheme === "anarlog") {
+  if (
+    !desktopScheme ||
+    desktopScheme === "anarlog" ||
+    desktopScheme === "aplo"
+  ) {
     return url;
   }
   if (

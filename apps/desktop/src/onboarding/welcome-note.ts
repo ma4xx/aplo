@@ -14,10 +14,10 @@ import { listenerStore } from "~/store/zustand/listener/instance";
 const PENDING_WELCOME_SESSION_KEY = "anarlog.pending-welcome-session";
 
 function getWelcomeNote() {
-  const title = t`Welcome to Anarlog 👋`;
-  const intro = t`This note is a quick way to see how Anarlog works.`;
-  const steps = t`Click **Join & record** in the top-right corner. It will open a private, prerecorded demo meeting, so you don't have to worry about your camera or microphone. Anarlog will save the audio. To create a transcript and notes, choose a provider in **Settings → Transcription**; if one is not ready, Anarlog will show you a setup shortcut.`;
-  const outro = t`When the video ends, Anarlog will stop listening. If transcription and intelligence are configured, it will start creating your summary automatically.`;
+  const title = t`Welcome to Aplo 👋`;
+  const intro = t`This note is a quick way to see how Aplo works.`;
+  const steps = t`Click **Join & record** in the top-right corner. It will open a private, prerecorded demo meeting, so you don't have to worry about your camera or microphone. Aplo will save the audio. To create a transcript and notes, choose a provider in **Settings → Transcription**; if one is not ready, Aplo will show you a setup shortcut.`;
+  const outro = t`When the video ends, Aplo will stop listening. If transcription and intelligence are configured, it will start creating your summary automatically.`;
 
   return `${title}\n\n\n${intro}\n\n\n${steps}\n\n\n${outro}`;
 }
@@ -104,16 +104,16 @@ async function findOrCreateWelcomeSession(): Promise<string> {
   const event: SessionEvent = {
     tracking_id: WELCOME_NOTE_TRACKING_ID,
     calendar_id: "",
-    title: t`Welcome to Anarlog`,
+    title: t`Welcome to Aplo`,
     started_at: now,
     ended_at: "",
     is_all_day: false,
     has_recurrence_rules: false,
     meeting_link: WELCOME_NOTE_DEMO_URL,
-    description: t`A private, prerecorded introduction to Anarlog.`,
+    description: t`A private, prerecorded introduction to Aplo.`,
   };
 
-  return createSession(t`Welcome to Anarlog`, DEFAULT_USER_ID, {
+  return createSession(t`Welcome to Aplo`, DEFAULT_USER_ID, {
     event_json: JSON.stringify(event),
     raw_md: JSON.stringify(md2json(getWelcomeNote())),
   });

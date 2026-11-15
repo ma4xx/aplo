@@ -464,7 +464,7 @@ export function useCaptureLifecycle(sessionId: string) {
           toast.error(t`Your transcript could not be saved`, {
             id: `transcript-storage-${sessionId}`,
             description:
-              t`Free up disk space. Anarlog will try to recover the missing text while this meeting is still recording.`,
+              t`Free up disk space. Aplo will try to recover the missing text while this meeting is still recording.`,
           });
           console.error("[listener] failed to persist transcript", error);
         },
@@ -1052,7 +1052,7 @@ export function useCaptureLifecycle(sessionId: string) {
             });
             if (transcriptWriteError || !details.liveTranscriptionActive) {
               await notifyFailure(
-                t`Anarlog could not finish saving the transcript. The recording was kept so you can try again.`,
+                t`Aplo could not finish saving the transcript. The recording was kept so you can try again.`,
                 "post-capture-transcript-incomplete",
               );
             } else {
@@ -1086,8 +1086,8 @@ export function useCaptureLifecycle(sessionId: string) {
         ) {
           await notifyFailure(
             details.audioPath
-              ? t`Anarlog could not finish saving the transcript. The recording was kept so you can try again.`
-              : t`Anarlog could not save part of the live transcript.`,
+              ? t`Aplo could not finish saving the transcript. The recording was kept so you can try again.`
+              : t`Aplo could not save part of the live transcript.`,
             details.audioPath
               ? "post-capture-transcript-incomplete"
               : "live-transcript-persist-failed",
@@ -1194,7 +1194,7 @@ export function useCaptureLifecycle(sessionId: string) {
                 error,
               );
               await notifyFailure(
-                t`The transcript was saved, but Anarlog could not start the summary. Try generating it again.`,
+                t`The transcript was saved, but Aplo could not start the summary. Try generating it again.`,
                 "post-capture-summary-failed",
               );
               await requestRecovery();
@@ -1212,7 +1212,7 @@ export function useCaptureLifecycle(sessionId: string) {
             summaryScheduled = false;
             console.error("[listener] failed to schedule summary", error);
             await notifyFailure(
-              t`The transcript was saved, but Anarlog could not start the summary. Try generating it again.`,
+              t`The transcript was saved, but Aplo could not start the summary. Try generating it again.`,
               "post-capture-summary-failed",
             );
           }
@@ -1358,14 +1358,14 @@ export function useCaptureLifecycle(sessionId: string) {
               id: `audio-deletion-${sessionId}`,
               duration: Infinity,
               description:
-                t`Anarlog could not remove the temporary audio. Cleanup will be retried automatically.`,
+                t`Aplo could not remove the temporary audio. Cleanup will be retried automatically.`,
             });
           } else if (audioKeptForTranscription) {
             toast.warning(t`Audio kept to finish your transcript`, {
               id: `capture-incomplete-${sessionId}`,
               duration: Infinity,
               description:
-                t`Part of this meeting could not be transcribed yet, so Anarlog kept its temporary audio on purpose. It will be deleted automatically once transcription succeeds.`,
+                t`Part of this meeting could not be transcribed yet, so Aplo kept its temporary audio on purpose. It will be deleted automatically once transcription succeeds.`,
             });
           }
         } else {

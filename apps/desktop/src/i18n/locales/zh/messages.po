@@ -138,8 +138,8 @@ msgid "{notice}; stop listening"
 msgstr "{notice}；已停止录音"
 
 #: src/meeting-float/overlay/bar.tsx
-msgid "{notice}. Open Anarlog to retry or change devices."
-msgstr "{notice}。请打开 Anarlog 重试或更换设备。"
+msgid "{notice}. Open Aplo to retry or change devices."
+msgstr "{notice}。请打开 Aplo 重试或更换设备。"
 
 #: src/settings/stats/insights.tsx
 msgid "{peakCount} of {total} conversations ({share}) started on this weekday in the selected period."
@@ -300,12 +300,12 @@ msgid "a month ago"
 msgstr "1 个月前"
 
 #: src/stt/useStartListening.ts
-msgid "A participant declined recording. Anarlog stopped listening."
-msgstr "有参会人拒绝了录音，Anarlog 已停止录音。"
+msgid "A participant declined recording. Aplo stopped listening."
+msgstr "有参会人拒绝了录音，Aplo 已停止录音。"
 
 #: src/onboarding/welcome-note.ts
-msgid "A private, prerecorded introduction to Anarlog."
-msgstr "一段私密的 Anarlog 预录介绍。"
+msgid "A private, prerecorded introduction to Aplo."
+msgstr "一段私密的 Aplo 预录介绍。"
 
 #: src/automations/starters.tsx
 msgid "A Slack message with the meeting title and recap."
@@ -648,8 +648,8 @@ msgid "Allow anyone-with-the-link sharing"
 msgstr "允许通过链接分享给任何人"
 
 #: src/stt/start-failure.ts
-msgid "Allow microphone access for Anarlog, then try again."
-msgstr "请允许 Anarlog 使用麦克风，然后重试。"
+msgid "Allow microphone access for Aplo, then try again."
+msgstr "请允许 Aplo 使用麦克风，然后重试。"
 
 #: src/settings/team/index.tsx
 msgid "Allow public indexing"
@@ -665,7 +665,7 @@ msgstr "窗口置顶"
 
 #: src/session-sharing/invitation-management.ts
 msgid "An Anarlog user"
-msgstr "一位 Anarlog 用户"
+msgstr "一位 Aplo 用户"
 
 #: src/chat/components/input/hooks.ts
 msgid "An older unsent chat draft was removed to keep your current draft."
@@ -683,162 +683,31 @@ msgstr "Anagram"
 msgid "Analyzing structure..."
 msgstr "正在分析结构..."
 
-#. placeholder {0}: update.version
-#: src/sidebar/toast/registry.tsx
-msgid "Anarlog {0} is available"
-msgstr "Anarlog {0} 可用"
-
-#. placeholder {0}: update.version
-#: src/sidebar/toast/registry.tsx
-msgid "Anarlog {0} is ready to install"
-msgstr "Anarlog {0} 已可安装"
-
-#: src/onboarding/permissions.tsx
-msgid "Anarlog can hear others"
-msgstr "Anarlog 可以听到其他人"
-
-#: src/onboarding/permissions.tsx
-msgid "Anarlog can hear your voice"
-msgstr "Anarlog 可以听到你的声音"
-
-#: src/onboarding/permissions.tsx
-msgid "Anarlog can read meeting details"
-msgstr "Anarlog 可以读取会议详情"
-
 #: src/settings/developers/cli.tsx
 msgid "Anarlog CLI"
 msgstr "Anarlog CLI"
 
-#: src/services/audio-cleanup.ts
-msgid "Anarlog could not finish audio cleanup or recovery and will retry automatically."
-msgstr "Anarlog 未能完成音频清理或恢复，将自动重试。"
-
-#: src/stt/capture-lifecycle.ts
-msgid "Anarlog could not finish saving the transcript. The recording was kept so you can try again."
-msgstr "Anarlog 未能完成逐字稿的保存。录音已保留，你可以重试。"
-
-#: src/session/components/note-input/enhanced/enhance-error.tsx
-msgid "Anarlog could not generate this summary because you were not signed in. Sign in, then try again."
-msgstr "由于你尚未登录，Anarlog 无法生成此纪要。请登录后重试。"
-
-#: src/shared-notes/index.tsx
-msgid "Anarlog could not read the local shared-note cache."
-msgstr "Anarlog 无法读取本地共享笔记缓存。"
-
-#: src/services/audio-cleanup.ts
-msgid "Anarlog could not remove temporary audio and will retry cleanup automatically."
-msgstr "Anarlog 未能删除临时音频，将自动重试清理。"
-
-#: src/session/components/note-input/transcript/index.tsx
-#: src/stt/capture-lifecycle.ts
-msgid "Anarlog could not remove the temporary audio. Cleanup will be retried automatically."
-msgstr "Anarlog 未能删除临时音频，将自动重试清理。"
-
-#: src/services/audio-cleanup.ts
-msgid "Anarlog could not restore interrupted audio and will retry recovery automatically."
-msgstr "Anarlog 未能恢复被中断的音频，将自动重试恢复。"
-
-#: src/stt/capture-lifecycle.ts
-msgid "Anarlog could not save part of the live transcript."
-msgstr "Anarlog 未能保存部分实时逐字稿。"
-
-#: src/shared/long-load-gate.tsx
-msgid "Anarlog could not start"
-msgstr "Anarlog 无法启动"
-
-#: src/settings/sync/index.tsx
-msgid "Anarlog could not start cloud sync on this device."
-msgstr "Anarlog 无法在此设备上启动云同步。"
-
-#: src/settings/sync/index.tsx
-msgid "Anarlog could not start cloud sync on this device. It will keep retrying."
-msgstr "Anarlog 无法在此设备上启动云同步，将持续重试。"
-
-#: src/stt/start-failure.ts
-msgid "Anarlog couldn't open your audio input. Check your microphone selection, then try again."
-msgstr "Anarlog 无法打开你的音频输入。请检查所选麦克风，然后重试。"
-
-#: src/stt/start-failure.ts
-msgid "Anarlog couldn't prepare storage for this recording"
-msgstr "Anarlog 无法为本次录音准备存储空间"
-
-#: src/settings/general/account.tsx
-msgid "Anarlog couldn't sign you out. Try again."
-msgstr "Anarlog 无法让你退出登录，请重试。"
-
-#: src/stt/live-transcript-interrupted.ts
-msgid "Anarlog couldn't verify your account"
-msgstr "Anarlog 无法验证你的账号"
-
-#: src/stt/start-failure.ts
-msgid "Anarlog doesn't have microphone access"
-msgstr "Anarlog 没有麦克风权限"
-
-#: src/lock/gate.tsx
-msgid "Anarlog is Locked"
-msgstr "Anarlog 已锁定"
-
-#: src/store/zustand/listener/general-live.ts
-msgid "Anarlog keeps recording while live transcription reconnects. Missing text will be recovered from temporary audio while the meeting continues."
-msgstr "实时转写重新连接期间，Anarlog 会继续录音。缺失的文字会在会议进行时从临时音频中补回。"
-
 #: src/session-sharing/access-management.tsx
 msgid "Anarlog member"
-msgstr "Anarlog 成员"
-
-#: src/onboarding/index.tsx
-msgid "Anarlog needs access to your microphone and system audio to record and transcribe your meetings"
-msgstr "Anarlog 需要访问你的麦克风和系统音频，以录制并转写会议"
-
-#: src/shared/long-load-gate.tsx
-msgid "Anarlog needs an update"
-msgstr "Anarlog 需要更新"
-
-#: src/onboarding/index.tsx
-msgid "Anarlog needs microphone and system audio to transcribe your meetings, plus Accessibility to read meeting controls, visible chat."
-msgstr "Anarlog 需要麦克风和系统音频来转写会议，还需要辅助功能权限来读取会议控件和可见的聊天内容。"
+msgstr "Aplo 成员"
 
 #: src/settings/general/primary-recording-device.tsx
 msgid "Anarlog Pro coordinates recording across your devices."
 msgstr "Anarlog Pro 可在你的多台设备间协调录音。"
 
-#: src/stt/saved-capture-audio.tsx
-msgid "Anarlog saved this meeting's audio"
-msgstr "Anarlog 已保存这场会议的音频"
-
 #. placeholder {0}: statuses[0].displayName
 #: src/settings/developers/skills.tsx
 msgid "Anarlog skill added to {0}"
-msgstr "已将 Anarlog 技能添加到 {0}"
+msgstr "已将 Aplo 技能添加到 {0}"
 
 #. placeholder {0}: statuses.length
 #: src/settings/developers/skills.tsx
 msgid "Anarlog skill added to {0} agents"
-msgstr "已将 Anarlog 技能添加到 {0} 个智能体"
+msgstr "已将 Aplo 技能添加到 {0} 个智能体"
 
 #: src/session-sharing/access-management.tsx
 msgid "Anarlog user"
-msgstr "Anarlog 用户"
-
-#: src/settings/sync/index.tsx
-msgid "Anarlog will keep retrying."
-msgstr "Anarlog 将持续重试。"
-
-#: src/settings/sync/index.tsx
-msgid "Anarlog will retry automatically."
-msgstr "Anarlog 将自动重试。"
-
-#: src/settings/general/storage/legacy-cleanup.tsx
-msgid "Anarlog will retry automatically. This does not affect your notes."
-msgstr "Anarlog 将自动重试。这不会影响你的笔记。"
-
-#: src/stt/auto-stop.ts
-msgid "Anarlog will stop listening in {AUTO_STOP_CONFIRM_TIMEOUT_SECONDS} seconds."
-msgstr "Anarlog 将在 {AUTO_STOP_CONFIRM_TIMEOUT_SECONDS} 秒后停止录音。"
-
-#: src/onboarding/index.tsx
-msgid "Anarlog will sync your calendar to get meeting reminders"
-msgstr "Anarlog 将同步你的日历以提供会议提醒"
+msgstr "Aplo 用户"
 
 #: src/templates/template-icon-picker.tsx
 msgid "Animals & Nature"
@@ -881,6 +750,137 @@ msgstr "API 密钥"
 #: src/settings/ai/stt/shared.tsx
 msgid "API setup"
 msgstr "API 设置"
+
+#. placeholder {0}: update.version
+#: src/sidebar/toast/registry.tsx
+msgid "Aplo {0} is available"
+msgstr "Aplo {0} 可用"
+
+#. placeholder {0}: update.version
+#: src/sidebar/toast/registry.tsx
+msgid "Aplo {0} is ready to install"
+msgstr "Aplo {0} 已可安装"
+
+#: src/onboarding/permissions.tsx
+msgid "Aplo can hear others"
+msgstr "Aplo 可以听到其他人"
+
+#: src/onboarding/permissions.tsx
+msgid "Aplo can hear your voice"
+msgstr "Aplo 可以听到你的声音"
+
+#: src/onboarding/permissions.tsx
+msgid "Aplo can read meeting details"
+msgstr "Aplo 可以读取会议详情"
+
+#: src/services/audio-cleanup.ts
+msgid "Aplo could not finish audio cleanup or recovery and will retry automatically."
+msgstr "Aplo 未能完成音频清理或恢复，将自动重试。"
+
+#: src/stt/capture-lifecycle.ts
+msgid "Aplo could not finish saving the transcript. The recording was kept so you can try again."
+msgstr "Aplo 未能完成逐字稿的保存。录音已保留，你可以重试。"
+
+#: src/session/components/note-input/enhanced/enhance-error.tsx
+msgid "Aplo could not generate this summary because you were not signed in. Sign in, then try again."
+msgstr "由于你尚未登录，Aplo 无法生成此纪要。请登录后重试。"
+
+#: src/shared-notes/index.tsx
+msgid "Aplo could not read the local shared-note cache."
+msgstr "Aplo 无法读取本地共享笔记缓存。"
+
+#: src/services/audio-cleanup.ts
+msgid "Aplo could not remove temporary audio and will retry cleanup automatically."
+msgstr "Aplo 未能删除临时音频，将自动重试清理。"
+
+#: src/session/components/note-input/transcript/index.tsx
+#: src/stt/capture-lifecycle.ts
+msgid "Aplo could not remove the temporary audio. Cleanup will be retried automatically."
+msgstr "Aplo 未能删除临时音频，将自动重试清理。"
+
+#: src/services/audio-cleanup.ts
+msgid "Aplo could not restore interrupted audio and will retry recovery automatically."
+msgstr "Aplo 未能恢复被中断的音频，将自动重试恢复。"
+
+#: src/stt/capture-lifecycle.ts
+msgid "Aplo could not save part of the live transcript."
+msgstr "Aplo 未能保存部分实时逐字稿。"
+
+#: src/shared/long-load-gate.tsx
+msgid "Aplo could not start"
+msgstr "Aplo 无法启动"
+
+#: src/settings/sync/index.tsx
+msgid "Aplo could not start cloud sync on this device."
+msgstr "Aplo 无法在此设备上启动云同步。"
+
+#: src/settings/sync/index.tsx
+msgid "Aplo could not start cloud sync on this device. It will keep retrying."
+msgstr "Aplo 无法在此设备上启动云同步，将持续重试。"
+
+#: src/stt/start-failure.ts
+msgid "Aplo couldn't open your audio input. Check your microphone selection, then try again."
+msgstr "Aplo 无法打开你的音频输入。请检查所选麦克风，然后重试。"
+
+#: src/stt/start-failure.ts
+msgid "Aplo couldn't prepare storage for this recording"
+msgstr "Aplo 无法为本次录音准备存储空间"
+
+#: src/settings/general/account.tsx
+msgid "Aplo couldn't sign you out. Try again."
+msgstr "Aplo 无法让你退出登录，请重试。"
+
+#: src/stt/live-transcript-interrupted.ts
+msgid "Aplo couldn't verify your account"
+msgstr "Aplo 无法验证你的账号"
+
+#: src/stt/start-failure.ts
+msgid "Aplo doesn't have microphone access"
+msgstr "Aplo 没有麦克风权限"
+
+#: src/lock/gate.tsx
+msgid "Aplo is Locked"
+msgstr "Aplo 已锁定"
+
+#: src/store/zustand/listener/general-live.ts
+msgid "Aplo keeps recording while live transcription reconnects. Missing text will be recovered from temporary audio while the meeting continues."
+msgstr "实时转写重新连接期间，Aplo 会继续录音。缺失的文字会在会议进行时从临时音频中补回。"
+
+#: src/onboarding/index.tsx
+msgid "Aplo needs access to your microphone and system audio to record and transcribe your meetings"
+msgstr "Aplo 需要访问你的麦克风和系统音频，以录制并转写会议"
+
+#: src/shared/long-load-gate.tsx
+msgid "Aplo needs an update"
+msgstr "Aplo 需要更新"
+
+#: src/onboarding/index.tsx
+msgid "Aplo needs microphone and system audio to transcribe your meetings, plus Accessibility to read meeting controls, visible chat."
+msgstr "Aplo 需要麦克风和系统音频来转写会议，还需要辅助功能权限来读取会议控件和可见的聊天内容。"
+
+#: src/stt/saved-capture-audio.tsx
+msgid "Aplo saved this meeting's audio"
+msgstr "Aplo 已保存这场会议的音频"
+
+#: src/settings/sync/index.tsx
+msgid "Aplo will keep retrying."
+msgstr "Aplo 将持续重试。"
+
+#: src/settings/sync/index.tsx
+msgid "Aplo will retry automatically."
+msgstr "Aplo 将自动重试。"
+
+#: src/settings/general/storage/legacy-cleanup.tsx
+msgid "Aplo will retry automatically. This does not affect your notes."
+msgstr "Aplo 将自动重试。这不会影响你的笔记。"
+
+#: src/stt/auto-stop.ts
+msgid "Aplo will stop listening in {AUTO_STOP_CONFIRM_TIMEOUT_SECONDS} seconds."
+msgstr "Aplo 将在 {AUTO_STOP_CONFIRM_TIMEOUT_SECONDS} 秒后停止录音。"
+
+#: src/onboarding/index.tsx
+msgid "Aplo will sync your calendar to get meeting reminders"
+msgstr "Aplo 将同步你的日历以提供会议提醒"
 
 #: src/sidebar/settings-nav-groups.ts
 msgid "App"
@@ -935,22 +935,22 @@ msgstr "批准"
 msgid "Are you in a meeting?"
 msgstr "你正在开会吗？"
 
-#: src/composer/index.tsx
-msgid "Ask Anarlog AI anything"
-msgstr "向 Anarlog AI 提问"
-
-#: src/shared/chat-cta.tsx
-msgid "Ask Anarlog anything"
-msgstr "向 Anarlog 提问"
-
 #: src/chat/components/input/index.tsx
 #: src/shared/chat-cta.tsx
 msgid "Ask anything"
 msgstr "随便问"
 
+#: src/composer/index.tsx
+msgid "Ask Aplo AI anything"
+msgstr "向 Aplo AI 提问"
+
+#: src/shared/chat-cta.tsx
+msgid "Ask Aplo anything"
+msgstr "向 Aplo 提问"
+
 #: src/settings/general/notification.tsx
-msgid "Ask before stopping when a meeting may have ended. When alerts are off, Anarlog keeps listening."
-msgstr "会议可能已结束时，先询问再停止。关闭提醒后，Anarlog 会持续监听。"
+msgid "Ask before stopping when a meeting may have ended. When alerts are off, Aplo keeps listening."
+msgstr "会议可能已结束时，先询问再停止。关闭提醒后，Aplo 会持续监听。"
 
 #: src/settings/general/primary-recording-device.tsx
 msgid "Ask each meeting"
@@ -969,8 +969,8 @@ msgid "Attach Markdown or text"
 msgstr "附加 Markdown 或文本"
 
 #: src/templates/auto-format-examples-dialog.tsx
-msgid "Attach up to three past summaries you like. Anarlog will learn how you prefer meeting notes to be structured and written."
-msgstr "最多附加三份你喜欢的过往纪要。Anarlog 会学习你偏好的会议笔记结构和写法。"
+msgid "Attach up to three past summaries you like. Aplo will learn how you prefer meeting notes to be structured and written."
+msgstr "最多附加三份你喜欢的过往纪要。Aplo 会学习你偏好的会议笔记结构和写法。"
 
 #: src/session-sharing/attachment-management.ts
 msgid "Attachment settings updated."
@@ -1063,8 +1063,8 @@ msgid "Authenticating…"
 msgstr "正在验证…"
 
 #: src/instruction/index.tsx
-msgid "Authorize access in your browser, then return to Anarlog."
-msgstr "请在浏览器中授权访问，然后返回 Anarlog。"
+msgid "Authorize access in your browser, then return to Aplo."
+msgstr "请在浏览器中授权访问，然后返回 Aplo。"
 
 #: src/session/components/note-input/template-picker.tsx
 #: src/templates/auto-form.tsx
@@ -1167,8 +1167,8 @@ msgid "Based on the conversation so far, suggest a few questions I could ask nex
 msgstr "根据目前的对话，推荐几个我接下来可以问的问题。"
 
 #: src/stt/batch-response-processing-error.ts
-msgid "Batch transcription completed, but Anarlog could not process the response."
-msgstr "批量转写已完成，但 Anarlog 无法处理返回结果。"
+msgid "Batch transcription completed, but Aplo could not process the response."
+msgstr "批量转写已完成，但 Aplo 无法处理返回结果。"
 
 #: src/session/components/note-input/transcript/screens/batch.tsx
 msgid "Batch transcription mode"
@@ -1576,12 +1576,12 @@ msgid "Choose Google Drive folder"
 msgstr "选择 Google Drive 文件夹"
 
 #: src/settings/appearance/app-icon.tsx
-msgid "Choose how Anarlog appears in the Dock."
-msgstr "选择 Anarlog 在程序坞中的显示方式。"
+msgid "Choose how Aplo appears in the Dock."
+msgstr "选择 Aplo 在程序坞中的显示方式。"
 
 #: src/settings/appearance/theme.tsx
-msgid "Choose how Anarlog looks on this device."
-msgstr "选择 Anarlog 在此设备上的外观。"
+msgid "Choose how Aplo looks on this device."
+msgstr "选择 Aplo 在此设备上的外观。"
 
 #: src/templates/auto-form.tsx
 msgid "Choose how Auto structures and styles your summaries."
@@ -1652,8 +1652,8 @@ msgid "CLI & MCP"
 msgstr "CLI 与 MCP"
 
 #: src/onboarding/welcome-note.ts
-msgid "Click **Join & record** in the top-right corner. It will open a private, prerecorded demo meeting, so you don't have to worry about your camera or microphone. Anarlog will save the audio. To create a transcript and notes, choose a provider in **Settings → Transcription**; if one is not ready, Anarlog will show you a setup shortcut."
-msgstr "点击右上角的 **加入并录制**。它会打开一场私密的预录演示会议，不会用到你的摄像头和麦克风。Anarlog 会保存音频。若要生成逐字稿和笔记，请在 **设置 → 转写** 中选择一个服务商；如果还没有配置好，Anarlog 会给你一个设置入口。"
+msgid "Click **Join & record** in the top-right corner. It will open a private, prerecorded demo meeting, so you don't have to worry about your camera or microphone. Aplo will save the audio. To create a transcript and notes, choose a provider in **Settings → Transcription**; if one is not ready, Aplo will show you a setup shortcut."
+msgstr "点击右上角的 **加入并录制**。它会打开一场私密的预录演示会议，不会用到你的摄像头和麦克风。Aplo 会保存音频。若要生成逐字稿和笔记，请在 **设置 → 转写** 中选择一个服务商；如果还没有配置好，Aplo 会给你一个设置入口。"
 
 #: src/settings/dictation.tsx
 msgid "Click here, then use your dictation shortcut."
@@ -1708,8 +1708,8 @@ msgid "Cloud API enabled — 1 meeting uploaded"
 msgstr "云端 API 已启用，已上传 1 场会议"
 
 #: src/settings/developers/cloud-api.tsx
-msgid "Cloud API enabled, but existing meetings could not be uploaded. Anarlog will retry."
-msgstr "云端 API 已启用，但现有会议无法上传。Anarlog 将重试。"
+msgid "Cloud API enabled, but existing meetings could not be uploaded. Aplo will retry."
+msgstr "云端 API 已启用，但现有会议无法上传。Aplo 将重试。"
 
 #: src/cloud-api/client.ts
 msgid "Cloud API is unavailable in this build."
@@ -1840,8 +1840,8 @@ msgid "Complete onboarding. You're ready for your next conversation."
 msgstr "完成新手引导。你已准备好迎接下一场对话。"
 
 #: src/instruction/index.tsx
-msgid "Complete sign-in in your browser, then return to Anarlog."
-msgstr "请在浏览器中完成登录，然后返回 Anarlog。"
+msgid "Complete sign-in in your browser, then return to Aplo."
+msgstr "请在浏览器中完成登录，然后返回 Aplo。"
 
 #: src/settings/general/notification.tsx
 msgid "Completion sound"
@@ -1904,8 +1904,8 @@ msgid "Connect a CRM in Settings › CRM to enrich contacts."
 msgstr "在「设置 › CRM」中连接 CRM，以丰富联系人信息。"
 
 #: src/settings/crm/index.tsx
-msgid "Connect a CRM to look up your contacts from Anarlog. Connections are managed through your Anarlog account."
-msgstr "连接 CRM，即可在 Anarlog 中查找你的联系人。连接通过你的 Anarlog 账户管理。"
+msgid "Connect a CRM to look up your contacts from Aplo. Connections are managed through your Anarlog account."
+msgstr "连接 CRM，即可在 Aplo 中查找你的联系人。连接通过你的 Aplo 账户管理。"
 
 #: src/session/components/note-input/enhanced/config-error.tsx
 msgid "Connect an AI provider"
@@ -2051,8 +2051,8 @@ msgid "Continuing without trial"
 msgstr "不试用，继续"
 
 #: src/settings/general/meeting-settings.tsx
-msgid "Control listening without reopening Anarlog."
-msgstr "无需重新打开 Anarlog 即可控制监听。"
+msgid "Control listening without reopening Aplo."
+msgstr "无需重新打开 Aplo 即可控制监听。"
 
 #: src/settings/stats/index.tsx
 msgid "Conversations"
@@ -2492,7 +2492,7 @@ msgstr "创建你的账号"
 
 #: src/settings/stats/badge-collection.tsx
 msgid "Create your Anarlog account. A place for your conversations to call home."
-msgstr "创建你的 Anarlog 账号，给你的对话一个安身之处。"
+msgstr "创建你的 Aplo 账号，给你的对话一个安身之处。"
 
 #: src/session/components/outer-header/overflow/export-modal.tsx
 msgid "Created"
@@ -2748,16 +2748,16 @@ msgid "Dictation cancelled"
 msgstr "听写已取消"
 
 #: src/dictation/lifecycle.tsx
-msgid "Dictation is unavailable while Anarlog is recording a meeting."
-msgstr "Anarlog 正在录制会议时无法使用听写。"
+msgid "Dictation is unavailable while Aplo is recording a meeting."
+msgstr "Aplo 正在录制会议时无法使用听写。"
 
 #: src/settings/dictation-shortcut.tsx
 msgid "Dictation shortcut"
 msgstr "听写快捷键"
 
 #: src/settings/dictation.tsx
-msgid "Dictation uses your microphone, transcription provider, languages, and dictionary. Temporary audio is deleted after transcription. Your last transcript stays in memory until dictation is disabled or Anarlog closes."
-msgstr "听写会使用你的麦克风、转写服务商、语言和词典。临时音频在转写后即被删除。你最近一次的逐字稿会保留在内存中，直到关闭听写或退出 Anarlog。"
+msgid "Dictation uses your microphone, transcription provider, languages, and dictionary. Temporary audio is deleted after transcription. Your last transcript stays in memory until dictation is disabled or Aplo closes."
+msgstr "听写会使用你的麦克风、转写服务商、语言和词典。临时音频在转写后即被删除。你最近一次的逐字稿会保留在内存中，直到关闭听写或退出 Aplo。"
 
 #: src/settings/dictation.tsx
 #: src/settings/dictionary/index.tsx
@@ -2841,8 +2841,8 @@ msgstr "正在下载 {downloadingModel}"
 
 #. placeholder {0}: update.version
 #: src/sidebar/toast/registry.tsx
-msgid "Downloading Anarlog {0}{progress}"
-msgstr "正在下载 Anarlog {0}{progress}"
+msgid "Downloading Aplo {0}{progress}"
+msgstr "正在下载 Aplo {0}{progress}"
 
 #: src/sidebar/toast/registry.tsx
 msgid "Downloading model"
@@ -3079,8 +3079,8 @@ msgid "Every conversation adds to your story."
 msgstr "每一次对话，都是你故事的一部分。"
 
 #: src/settings/automations/google-drive-config.tsx
-msgid "Every note summarized after enabling this automation is saved here as one file with its summary and transcript in the selected format. Anarlog must be open."
-msgstr "启用此自动化后，每篇生成纪要的笔记都会按所选格式保存为一个文件，包含其纪要和逐字稿。需要保持 Anarlog 处于打开状态。"
+msgid "Every note summarized after enabling this automation is saved here as one file with its summary and transcript in the selected format. Aplo must be open."
+msgstr "启用此自动化后，每篇生成纪要的笔记都会按所选格式保存为一个文件，包含其纪要和逐字稿。需要保持 Aplo 处于打开状态。"
 
 #. placeholder {0}: owned.workspaceName
 #. placeholder {0}: workspace.name
@@ -3267,8 +3267,8 @@ msgid "Finding Your Rhythm"
 msgstr "找到节奏"
 
 #: src/instruction/index.tsx
-msgid "Finish checkout in your browser to unlock more, then return to Anarlog."
-msgstr "请在浏览器中完成结账以解锁更多功能，然后返回 Anarlog。"
+msgid "Finish checkout in your browser to unlock more, then return to Aplo."
+msgstr "请在浏览器中完成结账以解锁更多功能，然后返回 Aplo。"
 
 #: src/meeting-float/overlay/bar.tsx
 msgid "Finish dictation"
@@ -3276,8 +3276,8 @@ msgstr "结束听写"
 
 #: src/settings/general/account.tsx
 #: src/settings/referrals.tsx
-msgid "Finish in your browser, then return to Anarlog."
-msgstr "请在浏览器中完成操作，然后返回 Anarlog。"
+msgid "Finish in your browser, then return to Aplo."
+msgstr "请在浏览器中完成操作，然后返回 Aplo。"
 
 #: src/settings/general/account.tsx
 msgid "Finish sign-in"
@@ -3362,8 +3362,8 @@ msgid "Free Pro with a work email"
 msgstr "使用工作邮箱免费获得 Pro"
 
 #: src/stt/capture-lifecycle.ts
-msgid "Free up disk space. Anarlog will try to recover the missing text while this meeting is still recording."
-msgstr "请释放磁盘空间。会议仍在录制时，Anarlog 会尝试补回缺失的文字。"
+msgid "Free up disk space. Aplo will try to recover the missing text while this meeting is still recording."
+msgstr "请释放磁盘空间。会议仍在录制时，Aplo 会尝试补回缺失的文字。"
 
 #: src/store/zustand/listener/general-live.ts
 msgid "Free up disk space. Audio is kept in memory and saved once storage is available. Live transcription continues."
@@ -3521,8 +3521,8 @@ msgid "Hands-free dictation"
 msgstr "免手动听写"
 
 #: src/settings/general/app-settings.tsx
-msgid "Have Anarlog ready when you sign in."
-msgstr "登录系统时自动准备好 Anarlog。"
+msgid "Have Aplo ready when you sign in."
+msgstr "登录系统时自动准备好 Aplo。"
 
 #: src/calendar/components/apple/permission.tsx
 msgid "Having trouble?"
@@ -3537,32 +3537,32 @@ msgid "Hawaii"
 msgstr "夏威夷"
 
 #: src/settings/stats/badge-collection.tsx
-msgid "Hello, Anarlog"
-msgstr "你好，Anarlog"
+msgid "Hello, Aplo"
+msgstr "你好，Aplo"
 
 #: src/main/windows-title-bar.tsx
 msgid "Help"
 msgstr "帮助"
 
 #: src/onboarding/permissions.tsx
-msgid "Help Anarlog listen to others"
-msgstr "让 Anarlog 听到其他人"
+msgid "Help Aplo listen to others"
+msgstr "让 Aplo 听到其他人"
 
 #: src/onboarding/permissions.tsx
-msgid "Help Anarlog listen to you"
-msgstr "让 Anarlog 听到你"
+msgid "Help Aplo listen to you"
+msgstr "让 Aplo 听到你"
 
 #: src/onboarding/permissions.tsx
-msgid "Help Anarlog read meeting activity"
-msgstr "让 Anarlog 读取会议活动"
+msgid "Help Aplo read meeting activity"
+msgstr "让 Aplo 读取会议活动"
 
 #: src/settings/general/app-settings.tsx
-msgid "Help improve Anarlog with anonymous usage data."
-msgstr "通过匿名使用数据帮助改进 Anarlog。"
+msgid "Help improve Aplo with anonymous usage data."
+msgstr "通过匿名使用数据帮助改进 Aplo。"
 
 #: src/chat/components/body/empty.tsx
-msgid "Hi, I'm Anarlog AI. Set up a language model and I'll be ready to help."
-msgstr "你好，我是 Anarlog AI。设置好语言模型后，我就可以帮你了。"
+msgid "Hi, I'm Aplo AI. Set up a language model and I'll be ready to help."
+msgstr "你好，我是 Aplo AI。设置好语言模型后，我就可以帮你了。"
 
 #: src/meeting-float/overlay/live-caption.tsx
 msgid "Hide"
@@ -3640,8 +3640,8 @@ msgid "Icons"
 msgstr "图标"
 
 #: src/settings/general/account.tsx
-msgid "If Anarlog stays closed, paste the link in the sign-in window."
-msgstr "如果 Anarlog 一直没有打开，请将链接粘贴到登录窗口中。"
+msgid "If Aplo stays closed, paste the link in the sign-in window."
+msgstr "如果 Aplo 一直没有打开，请将链接粘贴到登录窗口中。"
 
 #: src/settings/referrals.tsx
 msgid "If your friend signed up through your link and started their free trial, but your free month hasn't appeared, email us and we'll help."
@@ -3758,8 +3758,8 @@ msgid "Install"
 msgstr "安装"
 
 #: src/settings/sync/index.tsx
-msgid "Install Anarlog and sign in with this account on the new device. Keep this device online and the new device will connect automatically."
-msgstr "在新设备上安装 Anarlog 并使用此账号登录。请保持此设备在线，新设备会自动连接。"
+msgid "Install Aplo and sign in with this account on the new device. Keep this device online and the new device will connect automatically."
+msgstr "在新设备上安装 Aplo 并使用此账号登录。请保持此设备在线，新设备会自动连接。"
 
 #: src/settings/developers/skills.tsx
 msgid "Install to all agents"
@@ -3901,8 +3901,8 @@ msgid "Keep {PRO_TRIAL_DAYS} days"
 msgstr "保留 {PRO_TRIAL_DAYS} 天"
 
 #: src/settings/dictation.tsx
-msgid "Keep Anarlog running to use your shortcut in other apps."
-msgstr "保持 Anarlog 运行，才能在其他应用中使用你的快捷键。"
+msgid "Keep Aplo running to use your shortcut in other apps."
+msgstr "保持 Aplo 运行，才能在其他应用中使用你的快捷键。"
 
 #: src/session-sharing/management-panel.tsx
 msgid "Keep desktop edits"
@@ -4208,8 +4208,8 @@ msgid "Low-light canvas"
 msgstr "低光画布"
 
 #: src/settings/ai/shared/index.tsx
-msgid "macOS cannot access your login Keychain. Repairing briefly locks it and asks for your Mac password before Anarlog retries this API key."
-msgstr "macOS 无法访问你的登录钥匙串。修复时会短暂锁定钥匙串，并要求输入你的 Mac 密码，之后 Anarlog 会重试此 API 密钥。"
+msgid "macOS cannot access your login Keychain. Repairing briefly locks it and asks for your Mac password before Aplo retries this API key."
+msgstr "macOS 无法访问你的登录钥匙串。修复时会短暂锁定钥匙串，并要求输入你的 Mac 密码，之后 Aplo 会重试此 API 密钥。"
 
 #: src/auth/cloudsync-keychain-repair.tsx
 #: src/settings/sync/index.tsx
@@ -4254,7 +4254,7 @@ msgstr "管理工作区账单"
 
 #: src/settings/general/account.tsx
 msgid "Manage your sign-in methods on the Anarlog website."
-msgstr "在 Anarlog 网站上管理你的登录方式。"
+msgstr "在 Aplo 网站上管理你的登录方式。"
 
 #: src/settings/automations/google-drive-config.tsx
 msgid "Markdown (.md)"
@@ -4445,8 +4445,8 @@ msgid "Merged"
 msgstr "已合并"
 
 #: src/composer/index.tsx
-msgid "Message Anarlog AI"
-msgstr "给 Anarlog AI 发消息"
+msgid "Message Aplo AI"
+msgstr "给 Aplo AI 发消息"
 
 #: src/session/components/outer-header/overflow/export-modal.tsx
 msgid "Metadata"
@@ -4595,8 +4595,8 @@ msgid "New folder"
 msgstr "新建文件夹"
 
 #: src/imports/screen.tsx
-msgid "New meetings are imported automatically while Anarlog is running."
-msgstr "Anarlog 运行期间，新会议会自动导入。"
+msgid "New meetings are imported automatically while Aplo is running."
+msgstr "Aplo 运行期间，新会议会自动导入。"
 
 #: src/main/empty.tsx
 #: src/main/windows-title-bar.tsx
@@ -4805,7 +4805,7 @@ msgstr "尚未选择页面。"
 
 #: src/settings/automations/starter-config.tsx
 msgid "No pages found. Share the page with the Anarlog integration in Notion first."
-msgstr "未找到页面。请先在 Notion 中把页面共享给 Anarlog 集成。"
+msgstr "未找到页面。请先在 Notion 中把页面共享给 Aplo 集成。"
 
 #: src/session/components/note-input/transcript/renderer/speaker-assign.tsx
 msgid "No people"
@@ -5047,16 +5047,16 @@ msgstr "打开 AI 设置"
 #: src/composer/index.tsx
 #: src/onboarding/final.tsx
 #: src/services/enhancer/summary-notification.ts
-msgid "Open Anarlog"
-msgstr "打开 Anarlog"
+msgid "Open Aplo"
+msgstr "打开 Aplo"
 
 #: src/settings/general/app-settings.tsx
-msgid "Open Anarlog from the menu bar."
-msgstr "从菜单栏打开 Anarlog。"
+msgid "Open Aplo from the menu bar."
+msgstr "从菜单栏打开 Aplo。"
 
 #: src/settings/sync/index.tsx
-msgid "Open Anarlog on an existing synced device signed in to the same account. This device will connect automatically."
-msgstr "在已同步且登录同一账号的设备上打开 Anarlog，本设备会自动连接。"
+msgid "Open Aplo on an existing synced device signed in to the same account. This device will connect automatically."
+msgstr "在已同步且登录同一账号的设备上打开 Aplo，本设备会自动连接。"
 
 #: src/sidebar/timeline/index.tsx
 msgid "Open calendar"
@@ -5139,13 +5139,13 @@ msgstr "正在打开…"
 
 #. placeholder {0}: accessibilityGuidance.paneTitle ?? "Privacy"
 #: src/onboarding/permissions.tsx
-msgid "Opens System Settings and guides you to add Anarlog to the {0} list"
-msgstr "打开“系统设置”，并引导你将 Anarlog 添加到{0}列表"
+msgid "Opens System Settings and guides you to add Aplo to the {0} list"
+msgstr "打开“系统设置”，并引导你将 Aplo 添加到{0}列表"
 
 #. placeholder {0}: accessibilityGuidance.paneTitle ?? "Privacy"
 #: src/settings/general/permissions.tsx
-msgid "Opens System Settings and guides you to add Anarlog to the {0} list."
-msgstr "打开“系统设置”，并引导你将 Anarlog 添加到{0}列表。"
+msgid "Opens System Settings and guides you to add Aplo to the {0} list."
+msgstr "打开“系统设置”，并引导你将 Aplo 添加到{0}列表。"
 
 #: src/calendar/components/apple/permission.tsx
 #: src/calendar/components/oauth/provider-content.tsx
@@ -5207,8 +5207,8 @@ msgid "Paris"
 msgstr "巴黎"
 
 #: src/stt/capture-lifecycle.ts
-msgid "Part of this meeting could not be transcribed yet, so Anarlog kept its temporary audio on purpose. It will be deleted automatically once transcription succeeds."
-msgstr "这场会议有一部分尚未转写成功，因此 Anarlog 有意保留了临时音频。转写成功后会自动删除。"
+msgid "Part of this meeting could not be transcribed yet, so Aplo kept its temporary audio on purpose. It will be deleted automatically once transcription succeeds."
+msgstr "这场会议有一部分尚未转写成功，因此 Aplo 有意保留了临时音频。转写成功后会自动删除。"
 
 #: src/session/components/note-input/transcript/renderer/speaker-assign.tsx
 #: src/session/components/outer-header/overflow/export-modal.tsx
@@ -5236,8 +5236,8 @@ msgid "Paste the authorization code to continue."
 msgstr "请粘贴授权码以继续。"
 
 #: src/instruction/index.tsx
-msgid "Paste the browser URL here if the browser button did not reopen Anarlog."
-msgstr "如果浏览器按钮没有重新打开 Anarlog，请在此粘贴浏览器中的网址。"
+msgid "Paste the browser URL here if the browser button did not reopen Aplo."
+msgstr "如果浏览器按钮没有重新打开 Aplo，请在此粘贴浏览器中的网址。"
 
 #: src/settings/ai/llm/subscriptions/connect.tsx
 msgid "Paste the localhost redirect URL"
@@ -5414,8 +5414,8 @@ msgid "Preparing…"
 msgstr "正在准备…"
 
 #: src/settings/dictation.tsx
-msgid "Press Escape to cancel. Dictation stops after five minutes and pauses while Anarlog records a meeting."
-msgstr "按 Escape 取消。听写会在五分钟后停止，Anarlog 录制会议期间会暂停。"
+msgid "Press Escape to cancel. Dictation stops after five minutes and pauses while Aplo records a meeting."
+msgstr "按 Escape 取消。听写会在五分钟后停止，Aplo 录制会议期间会暂停。"
 
 #: src/settings/dictation-shortcut.tsx
 msgid "Press shortcut…"
@@ -5659,8 +5659,8 @@ msgid "Recording not found. It may have been deleted."
 msgstr "未找到录音，可能已被删除。"
 
 #: src/stt/meeting-disclosure.ts
-msgid "Recording started, but Anarlog could not post the meeting chat disclosure."
-msgstr "录音已开始，但 Anarlog 未能在会议聊天中发布录音告知。"
+msgid "Recording started, but Aplo could not post the meeting chat disclosure."
+msgstr "录音已开始，但 Aplo 未能在会议聊天中发布录音告知。"
 
 #: src/settings/general/notification.tsx
 msgid "Recording status prompts"
@@ -5894,12 +5894,12 @@ msgid "Require SSO"
 msgstr "要求 SSO"
 
 #: src/settings/privacy/index.tsx
-msgid "Require Touch ID or your password when opening Anarlog."
-msgstr "打开 Anarlog 时需要触控 ID 或密码。"
+msgid "Require Touch ID or your password when opening Aplo."
+msgstr "打开 Aplo 时需要触控 ID 或密码。"
 
 #: src/settings/privacy/index.tsx
-msgid "Require Windows Hello face, PIN, or password when opening Anarlog."
-msgstr "打开 Anarlog 时需要 Windows Hello 面部识别、PIN 或密码。"
+msgid "Require Windows Hello face, PIN, or password when opening Aplo."
+msgstr "打开 Aplo 时需要 Windows Hello 面部识别、PIN 或密码。"
 
 #: src/shared/open-note-dialog.tsx
 #: src/sidebar/settings.tsx
@@ -6195,8 +6195,8 @@ msgid "Search or type owner/repo"
 msgstr "搜索或输入 owner/repo"
 
 #: src/settings/automations/starter-config.tsx
-msgid "Search pages shared with Anarlog…"
-msgstr "搜索已共享给 Anarlog 的页面…"
+msgid "Search pages shared with Aplo…"
+msgstr "搜索已共享给 Aplo 的页面…"
 
 #: src/settings/ai/shared/provider-search.tsx
 msgid "Search providers"
@@ -6328,8 +6328,8 @@ msgid "Send message"
 msgstr "发送消息"
 
 #: src/settings/privacy/index.tsx
-msgid "Send sanitized crash and error reports to help improve Anarlog."
-msgstr "发送已脱敏的崩溃和错误报告，帮助改进 Anarlog。"
+msgid "Send sanitized crash and error reports to help improve Aplo."
+msgstr "发送已脱敏的崩溃和错误报告，帮助改进 Aplo。"
 
 #: src/automations/starters.tsx
 msgid "Send the recap to the selected Slack channel."
@@ -6543,16 +6543,16 @@ msgid "Show All Recurring Events"
 msgstr "显示所有重复事件"
 
 #: src/settings/general/app-settings.tsx
-msgid "Show Anarlog in the Dock and app switcher."
-msgstr "在程序坞和应用切换器中显示 Anarlog。"
+msgid "Show Aplo in the Dock and app switcher."
+msgstr "在程序坞和应用切换器中显示 Aplo。"
 
 #: src/settings/general/app-settings.tsx
 msgid "Show app in Dock"
 msgstr "在程序坞中显示应用"
 
 #: src/settings/general/permissions.tsx
-msgid "Show Apple Calendar events in Anarlog."
-msgstr "在 Anarlog 中显示 Apple 日历事件。"
+msgid "Show Apple Calendar events in Aplo."
+msgstr "在 Aplo 中显示 Apple 日历事件。"
 
 #: src/session/components/outer-header/overflow/index.tsx
 msgid "Show Audio in Explorer"
@@ -6670,8 +6670,8 @@ msgstr "登录以添加此文件夹"
 
 #: src/settings/general/account.tsx
 #: src/settings/general/billing.tsx
-msgid "Sign in to Anarlog"
-msgstr "登录 Anarlog"
+msgid "Sign in to Aplo"
+msgstr "登录 Aplo"
 
 #: src/settings/general/primary-recording-device.tsx
 msgid "Sign in to choose a primary recording device."
@@ -6708,8 +6708,8 @@ msgid "Sign in to generate this summary"
 msgstr "登录以生成此纪要"
 
 #: src/sidebar/toast/registry.tsx
-msgid "Sign in to get the most out of Anarlog"
-msgstr "登录以充分使用 Anarlog"
+msgid "Sign in to get the most out of Aplo"
+msgstr "登录以充分使用 Aplo"
 
 #: src/cloud-api/client.ts
 msgid "Sign in to manage Cloud API & Connectors."
@@ -6748,8 +6748,8 @@ msgid "Sign in with ChatGPT Plus or Pro, then paste the redirect URL from your b
 msgstr "使用 ChatGPT Plus 或 Pro 登录，然后粘贴浏览器中的重定向 URL。"
 
 #: src/settings/ai/llm/subscriptions/connect.tsx
-msgid "Sign in with ChatGPT Plus or Pro. We'll open Anarlog and finish connecting."
-msgstr "使用 ChatGPT Plus 或 Pro 登录。我们会打开 Anarlog 并完成连接。"
+msgid "Sign in with ChatGPT Plus or Pro. We'll open Aplo and finish connecting."
+msgstr "使用 ChatGPT Plus 或 Pro 登录。我们会打开 Aplo 并完成连接。"
 
 #: src/settings/ai/llm/subscriptions/connect.tsx
 msgid "Sign in with GitHub Copilot and enter the code below."
@@ -6772,8 +6772,8 @@ msgid "Sign out and sign in again to resume cloud sync."
 msgstr "退出登录后重新登录，以恢复云同步。"
 
 #: src/settings/general/account.tsx
-msgid "Sign out of Anarlog?"
-msgstr "退出 Anarlog 登录？"
+msgid "Sign out of Aplo?"
+msgstr "退出 Aplo 登录？"
 
 #: src/onboarding/account/after-login.tsx
 #: src/onboarding/index.tsx
@@ -6838,8 +6838,8 @@ msgid "Some audio could not be transcribed. Available recordings were kept accor
 msgstr "部分音频未能转写。可用的录音已按你的保留设置保留。"
 
 #: src/session/components/note-input/transcript/index.tsx
-msgid "Some audio has not been transcribed yet, so Anarlog kept it temporarily. It will be deleted automatically once transcription succeeds."
-msgstr "部分音频尚未转写，因此 Anarlog 暂时保留了它。转写成功后会自动删除。"
+msgid "Some audio has not been transcribed yet, so Aplo kept it temporarily. It will be deleted automatically once transcription succeeds."
+msgstr "部分音频尚未转写，因此 Aplo 暂时保留了它。转写成功后会自动删除。"
 
 #: src/onboarding/calendar.tsx
 msgid "Some Google Calendar accounts need attention. Open the account menu to reconnect or disconnect them."
@@ -6880,8 +6880,8 @@ msgid "Source: AI model provider"
 msgstr "来源：AI 模型服务商"
 
 #: src/session/components/note-input/enhanced/enhance-error.tsx
-msgid "Source: Anarlog"
-msgstr "来源：Anarlog"
+msgid "Source: Aplo"
+msgstr "来源：Aplo"
 
 #: src/session/components/note-input/enhanced/enhance-error.tsx
 msgid "Source: OpenRouter (AI routing service)"
@@ -6912,8 +6912,8 @@ msgstr "叠加另一个目标。步骤按从上到下的顺序执行。"
 #~ msgstr "开始 Pro 试用，或添加你自己的 LLM API 密钥，即可根据此逐字稿生成纪要。"
 
 #: src/settings/general/app-settings.tsx
-msgid "Start Anarlog at login"
-msgstr "登录时启动 Anarlog"
+msgid "Start Aplo at login"
+msgstr "登录时启动 Aplo"
 
 #: src/settings/general/billing.tsx
 msgid "Start free trial"
@@ -6993,8 +6993,8 @@ msgid "Starting…"
 msgstr "正在启动…"
 
 #: src/settings/general/app-settings.tsx
-msgid "Stay current with updates installed the next time Anarlog opens."
-msgstr "保持最新，更新会在下次打开 Anarlog 时安装。"
+msgid "Stay current with updates installed the next time Aplo opens."
+msgstr "保持最新，更新会在下次打开 Aplo 时安装。"
 
 #: src/settings/automations/index.tsx
 msgid "Steps run from top to bottom."
@@ -7377,8 +7377,8 @@ msgid "The target session could not be loaded."
 msgstr "无法加载目标会议。"
 
 #: src/stt/capture-lifecycle.ts
-msgid "The transcript was saved, but Anarlog could not start the summary. Try generating it again."
-msgstr "逐字稿已保存，但 Anarlog 未能开始生成纪要。请重新生成。"
+msgid "The transcript was saved, but Aplo could not start the summary. Try generating it again."
+msgstr "逐字稿已保存，但 Aplo 未能开始生成纪要。请重新生成。"
 
 #: src/store/zustand/listener/general-live.ts
 msgid "The unreadable audio was preserved in this note's folder as an audio.recovery-*.wav file. New audio will be recorded separately. Your transcript is unchanged."
@@ -7442,8 +7442,8 @@ msgid "This guest needs Team access"
 msgstr "此访客需要团队访问权限"
 
 #: src/session/components/outer-header/index.tsx
-msgid "This is a prerecorded demo, so your camera stays off. Click Join & record to see Anarlog in action."
-msgstr "这是预先录制的演示，因此你的摄像头保持关闭。点击「加入并录制」即可体验 Anarlog。"
+msgid "This is a prerecorded demo, so your camera stays off. Click Join & record to see Aplo in action."
+msgstr "这是预先录制的演示，因此你的摄像头保持关闭。点击「加入并录制」即可体验 Aplo。"
 
 #: src/resource-sharing/share-dialog.tsx
 msgid "This item is not shared"
@@ -7466,8 +7466,8 @@ msgid "This note"
 msgstr "此笔记"
 
 #: src/onboarding/welcome-note.ts
-msgid "This note is a quick way to see how Anarlog works."
-msgstr "这条笔记能帮你快速了解 Anarlog 的用法。"
+msgid "This note is a quick way to see how Aplo works."
+msgstr "这条笔记能帮你快速了解 Aplo 的用法。"
 
 #: src/session/components/note-conflict-banner.tsx
 msgid "This note was edited on another device at the same time. The later edit was kept."
@@ -7487,7 +7487,7 @@ msgstr "此录音使用批量转写，因此聊天暂时无法使用逐字稿。
 
 #: src/settings/plan-gate.tsx
 msgid "This requires Anarlog Enterprise"
-msgstr "此功能需要 Anarlog 企业版"
+msgstr "此功能需要 Aplo 企业版"
 
 #: src/settings/plan-gate.tsx
 msgid "This requires Anarlog Pro"
@@ -7542,7 +7542,7 @@ msgstr "提示：添加同事姓名、缩写、公司行话和产品术语。"
 
 #: src/session/components/note-input/enhanced/streaming.tsx
 msgid "Tip: The Anarlog team loves our users!"
-msgstr "提示：Anarlog 团队爱我们的用户！"
+msgstr "提示：Aplo 团队爱我们的用户！"
 
 #: src/calendar/components/calendar-view.tsx
 #: src/sidebar/timeline/utils/index.ts
@@ -7659,8 +7659,8 @@ msgid "Turn assigned follow-ups into Linear issue drafts."
 msgstr "将已分配的后续事项转为 Linear 工单草稿。"
 
 #: src/calendar/components/apple/permission.tsx
-msgid "Turn on Anarlog in System Settings → Privacy & Security → Calendars, then return here."
-msgstr "在「系统设置 → 隐私与安全性 → 日历」中开启 Anarlog，然后回到这里。"
+msgid "Turn on Aplo in System Settings → Privacy & Security → Calendars, then return here."
+msgstr "在「系统设置 → 隐私与安全性 → 日历」中开启 Aplo，然后回到这里。"
 
 #: src/settings/appearance/app-icon.tsx
 msgid "Typewriter Key"
@@ -7721,8 +7721,8 @@ msgid "Unlock the Team library"
 msgstr "解锁团队资料库"
 
 #: src/settings/ai/shared/index.tsx
-msgid "Unlock your login Keychain in the macOS prompt. Anarlog will retry saving this API key automatically."
-msgstr "在 macOS 弹窗中解锁你的登录钥匙串。Anarlog 将自动重试保存此 API 密钥。"
+msgid "Unlock your login Keychain in the macOS prompt. Aplo will retry saving this API key automatically."
+msgstr "在 macOS 弹窗中解锁你的登录钥匙串。Aplo 将自动重试保存此 API 密钥。"
 
 #: src/contacts/details.tsx
 #: src/contacts/organization-details.tsx
@@ -7899,8 +7899,8 @@ msgid "Upload Transcript"
 msgstr "上传逐字稿"
 
 #: src/settings/developers/cloud-api.tsx
-msgid "Uploads meeting content for remote access while Anarlog is closed."
-msgstr "上传会议内容，以便在 Anarlog 关闭时远程访问。"
+msgid "Uploads meeting content for remote access while Aplo is closed."
+msgstr "上传会议内容，以便在 Aplo 关闭时远程访问。"
 
 #: src/settings/team/index.tsx
 msgid "Usage"
@@ -8013,8 +8013,8 @@ msgid "View"
 msgstr "查看"
 
 #: src/lock/gate.tsx
-msgid "View Anarlog"
-msgstr "查看 Anarlog"
+msgid "View Aplo"
+msgstr "查看 Aplo"
 
 #: src/settings/referrals.tsx
 msgid "View billing"
@@ -8033,8 +8033,8 @@ msgid "View sync log"
 msgstr "查看同步日志"
 
 #: src/chat/components/input/use-dictation.ts
-msgid "Voice input is unavailable while Anarlog is recording a meeting."
-msgstr "Anarlog 录制会议期间无法使用语音输入。"
+msgid "Voice input is unavailable while Aplo is recording a meeting."
+msgstr "Aplo 录制会议期间无法使用语音输入。"
 
 #: src/settings/general/notification.tsx
 msgid "Wait before treating microphone activity as a meeting."
@@ -8087,12 +8087,12 @@ msgstr "连续周数：{0}"
 
 #: src/onboarding/index.tsx
 #: src/onboarding/welcome-note.ts
-msgid "Welcome to Anarlog"
-msgstr "欢迎使用 Anarlog"
+msgid "Welcome to Aplo"
+msgstr "欢迎使用 Aplo"
 
 #: src/onboarding/welcome-note.ts
-msgid "Welcome to Anarlog 👋"
-msgstr "欢迎使用 Anarlog 👋"
+msgid "Welcome to Aplo 👋"
+msgstr "欢迎使用 Aplo 👋"
 
 #: src/chat/components/body/empty.tsx
 msgid "What action items have come up so far in this meeting?"
@@ -8127,8 +8127,8 @@ msgid "When off, summaries follow the detected meeting language."
 msgstr "关闭时，纪要将跟随检测到的会议语言。"
 
 #: src/onboarding/welcome-note.ts
-msgid "When the video ends, Anarlog will stop listening. If transcription and intelligence are configured, it will start creating your summary automatically."
-msgstr "视频结束后，Anarlog 会停止录音。如果已配置转写和智能功能，它会自动开始生成纪要。"
+msgid "When the video ends, Aplo will stop listening. If transcription and intelligence are configured, it will start creating your summary automatically."
+msgstr "视频结束后，Aplo 会停止录音。如果已配置转写和智能功能，它会自动开始生成纪要。"
 
 #: src/billing/trial-payment-reminder-dialog.tsx
 msgid "When they start their free trial, yours gets one more month. Up to 3 friends."
@@ -8246,8 +8246,8 @@ msgid "Your Account"
 msgstr "你的账号"
 
 #: src/auth/cloudsync-progress.ts
-msgid "Your Anarlog data is ready on this device."
-msgstr "你的 Anarlog 数据已在本设备上就绪。"
+msgid "Your Aplo data is ready on this device."
+msgstr "你的 Aplo 数据已在本设备上就绪。"
 
 #: src/stt/live-transcript-interrupted.ts
 msgid "Your audio is still being saved, and the missing part will be filled in from the recording."
@@ -8270,8 +8270,8 @@ msgid "Your conversation patterns"
 msgstr "你的对话规律"
 
 #: src/shared/long-load-gate.tsx
-msgid "Your data was updated by a newer version of Anarlog, such as Anarlog Nightly, and this version cannot open it yet. Your existing data was left unchanged. Install the latest version of Anarlog, or keep using the newer app until this version catches up."
-msgstr "你的数据已被更新版本的 Anarlog（例如 Anarlog Nightly）更新，当前版本暂时无法打开。你的现有数据没有被改动。请安装最新版 Anarlog，或在当前版本跟上之前继续使用较新的版本。"
+msgid "Your data was updated by a newer version of Aplo, such as Anarlog Nightly, and this version cannot open it yet. Your existing data was left unchanged. Install the latest version of Aplo, or keep using the newer app until this version catches up."
+msgstr "你的数据已被更新版本的 Aplo（例如 Anarlog Nightly）更新，当前版本暂时无法打开。你的现有数据没有被改动。请安装最新版 Aplo，或在当前版本跟上之前继续使用较新的版本。"
 
 #: src/settings/dictionary/index.tsx
 msgid "Your dictionary is empty"
@@ -8310,8 +8310,8 @@ msgid "Your notes remain available locally."
 msgstr "你的笔记仍可在本地使用。"
 
 #: src/settings/sync/index.tsx
-msgid "Your notes remain available locally. Anarlog will keep retrying."
-msgstr "你的笔记仍可在本地使用。Anarlog 将持续重试。"
+msgid "Your notes remain available locally. Aplo will keep retrying."
+msgstr "你的笔记仍可在本地使用。Aplo 将持续重试。"
 
 #: src/settings/sync/index.tsx
 msgid "Your notes remain available locally. Try again in a moment."
@@ -8351,8 +8351,8 @@ msgid "Your Pro trial just started"
 msgstr "你的 Pro 试用刚刚开始"
 
 #: src/settings/general/e2ee-setup.tsx
-msgid "Your recovery key encrypts synced notes before they leave this device. Anarlog cannot read or recover it."
-msgstr "恢复密钥会在已同步笔记离开此设备前对其加密。Anarlog 无法读取或找回该密钥。"
+msgid "Your recovery key encrypts synced notes before they leave this device. Aplo cannot read or recover it."
+msgstr "恢复密钥会在已同步笔记离开此设备前对其加密。Aplo 无法读取或找回该密钥。"
 
 #: src/settings/referrals.tsx
 msgid "Your referrals"

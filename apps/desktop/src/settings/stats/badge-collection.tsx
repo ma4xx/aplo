@@ -144,7 +144,7 @@ export function BadgeGallery({
   const [selectedId, setSelectedId] = useState<BadgeId | null>(null);
   const details = {
     hello: {
-      name: t`Hello, Anarlog`,
+      name: t`Hello, Aplo`,
       description: t`Create your Anarlog account. A place for your conversations to call home.`,
     },
     "all-set": {

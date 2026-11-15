@@ -161,7 +161,7 @@ mod desktop {
             .initialization_script(format!(
                 "window.addEventListener('DOMContentLoaded', () => {{ document.body.dataset.phase = '{phase}'; }});",
             ))
-            .title("Anarlog 听写")
+            .title("Aplo 听写")
             .inner_size(240.0, 52.0)
             .decorations(false)
             .focused(false)

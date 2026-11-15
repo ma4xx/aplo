@@ -15,7 +15,8 @@ impl ShareOpenRequest {
     pub(crate) fn parse(parsed: &url::Url) -> Result<Self, crate::Error> {
         if !matches!(
             parsed.scheme(),
-            "anarlog"
+            "aplo"
+                | "anarlog"
                 | "anarlog-staging"
                 | "anarlog-nightly"
                 | "anarlog-dev"
@@ -115,6 +116,7 @@ mod tests {
     #[test]
     fn parses_only_account_and_handoff_routes() {
         for scheme in [
+            "aplo",
             "anarlog",
             "anarlog-staging",
             "anarlog-nightly",

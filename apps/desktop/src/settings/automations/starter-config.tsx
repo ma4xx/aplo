@@ -519,7 +519,7 @@ function NotionPageSearch({
               setSubmittedQuery(query.trim());
             }
           }}
-          placeholder={t`Search pages shared with Anarlog…`}
+          placeholder={t`Search pages shared with Aplo…`}
           className={cn([
             "border-border bg-accent/50 h-8 min-w-0 flex-1 rounded-lg border px-3 text-xs",
             "placeholder:text-muted-foreground focus:outline-hidden",

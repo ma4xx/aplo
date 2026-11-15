@@ -7,10 +7,11 @@ use std::path::PathBuf;
 use serde::Serialize;
 
 const DEV_BUNDLE_ID: &str = "com.hyprnote.dev";
+const APLO_BUNDLE_ID: &str = "com.ma4xx.aplo";
 const FLATPAK_BUNDLE_ID: &str = "so.anarlog.Anarlog";
 const LEGACY_STABLE_BUNDLE_ID: &str = "com.hyprnote.Hyprnote";
 #[cfg(any(target_os = "macos", target_os = "linux"))]
-const MANAGED_CLI_DIR: &str = ".anarlog-cli";
+const MANAGED_CLI_DIR: &str = ".aplo-cli";
 const STABLE_BUNDLE_ID: &str = "com.hyprnote.stable";
 const STAGING_BUNDLE_ID: &str = "com.hyprnote.staging";
 const NIGHTLY_BUNDLE_ID: &str = "com.hyprnote.nightly";
@@ -50,9 +51,9 @@ pub fn check<R: tauri::Runtime, T: tauri::Manager<R>>(manager: &T) -> EmbeddedCl
         // Windows resolves the install path from local app data, not the home
         // directory, so the two platforms cannot share one message.
         #[cfg(target_os = "windows")]
-        let missing_dir = "Anarlog could not find your local application data directory.";
+        let missing_dir = "Aplo could not find your local application data directory.";
         #[cfg(not(target_os = "windows"))]
-        let missing_dir = "Anarlog could not find your home directory.";
+        let missing_dir = "Aplo could not find your home directory.";
 
         return unavailable_status(command_name, missing_dir);
     };
@@ -79,7 +80,7 @@ pub fn check<R: tauri::Runtime, T: tauri::Manager<R>>(manager: &T) -> EmbeddedCl
                 command_name: command_name.to_string(),
                 install_path: install_path.display().to_string(),
                 state: EmbeddedCliState::ResourceMissing,
-                details: Some("The CLI is not included in this build of Anarlog.".to_string()),
+                details: Some("The CLI is not included in this build of Aplo.".to_string()),
             };
         };
 
@@ -94,7 +95,7 @@ pub fn check<R: tauri::Runtime, T: tauri::Manager<R>>(manager: &T) -> EmbeddedCl
                 command_name: command_name.to_string(),
                 install_path: install_path.display().to_string(),
                 state: EmbeddedCliState::ResourceMissing,
-                details: Some("The CLI is not included in this build of Anarlog.".to_string()),
+                details: Some("The CLI is not included in this build of Aplo.".to_string()),
             };
         };
         let app_version = manager.package_info().version.to_string();
@@ -228,6 +229,7 @@ fn command_name_from_identifier(identifier: &str) -> &'static str {
         STAGING_BUNDLE_ID => "anarlog-staging",
         NIGHTLY_BUNDLE_ID => "anarlog-nightly",
         DEV_BUNDLE_ID => "anarlog-dev",
+        APLO_BUNDLE_ID => "aplo",
         _ => "anarlog",
     }
 }

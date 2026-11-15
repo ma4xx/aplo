@@ -27,7 +27,8 @@ describe("getScheme", () => {
     ["com.hyprnote.nightly", "anarlog-nightly"],
     ["com.hyprnote.dev", "anarlog-dev"],
     ["so.anarlog.Anarlog", "anarlog"],
-    ["unknown", "anarlog"],
+    ["com.ma4xx.aplo", "aplo"],
+    ["unknown", "aplo"],
   ])("maps %s to %s", async (identifier, scheme) => {
     mocks.getIdentifier.mockResolvedValue(identifier);
 

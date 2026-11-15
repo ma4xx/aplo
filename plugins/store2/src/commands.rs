@@ -151,6 +151,32 @@ fn legacy_secret_entries<R: tauri::Runtime>(
         .collect()
 }
 
+// Aplo started as a fork that shared Anarlog Dev's keychain items. These
+// locations are only ever read: a secret found here is copied into Aplo's own
+// item and the original is left alone, so going back to the older app keeps
+// working.
+const IMPORTED_SECRET_SERVICES: &[(&str, bool)] = &[
+    ("com.anarlog.dev.secure-store", true),
+    ("com.anarlog.stable.secure-store", false),
+];
+
+fn imported_secret_locations(identifier: &str, scope: &str, key: &str) -> Vec<SecretLocation> {
+    if identifier != "com.ma4xx.aplo" {
+        return Vec::new();
+    }
+    IMPORTED_SECRET_SERVICES
+        .iter()
+        .map(|(service, versioned)| SecretLocation {
+            service: (*service).to_string(),
+            account: if *versioned {
+                format!("v2:{scope}:{key}")
+            } else {
+                format!("{scope}:{key}")
+            },
+        })
+        .collect()
+}
+
 struct SecretLocation {
     service: String,
     account: String,
@@ -376,6 +402,21 @@ fn read_secret_blocking_for<R: tauri::Runtime>(
                     Err(error) => return Err(secure_store_error(error)),
                 }
             }
+            for imported in imported_secret_locations(&app.config().identifier, scope, key) {
+                match imported.read() {
+                    Ok(secret) => {
+                        let _ = location.write(&secret);
+                        return Ok(Some(secret));
+                    }
+                    Err(
+                        ChunkedError::Keyring(
+                            keyring::Error::NoEntry | keyring::Error::PlatformFailure(_),
+                        )
+                        | ChunkedError::Incomplete,
+                    ) => {}
+                    Err(error) => return Err(chunked_error(error)),
+                }
+            }
             Ok(None)
         }
         Err(error) => Err(chunked_error(error)),
@@ -508,6 +549,32 @@ mod tests {
                 "unexpected service for {identifier}"
             );
         }
+    }
+
+    #[test]
+    fn aplo_imports_keychain_items_from_the_forked_app_without_touching_them() {
+        let locations = imported_secret_locations("com.ma4xx.aplo", "provider", "deepgram");
+        let pairs: Vec<_> = locations
+            .iter()
+            .map(|l| (l.service.as_str(), l.account.as_str()))
+            .collect();
+        assert_eq!(
+            pairs,
+            vec![
+                ("com.anarlog.dev.secure-store", "v2:provider:deepgram"),
+                ("com.anarlog.stable.secure-store", "provider:deepgram"),
+            ]
+        );
+        assert_eq!(
+            secure_store_service("com.ma4xx.aplo"),
+            "com.ma4xx.aplo.secure-store"
+        );
+        assert_eq!(
+            secure_store_account("com.ma4xx.aplo", "provider", "deepgram"),
+            "provider:deepgram"
+        );
+        assert!(imported_secret_locations("com.example.app", "p", "k").is_empty());
+        assert!(legacy_secret_locations("com.ma4xx.aplo", "provider", "deepgram").is_empty());
     }
 
     #[test]

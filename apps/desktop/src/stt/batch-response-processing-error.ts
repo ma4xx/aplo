@@ -4,7 +4,7 @@ export class BatchResponseProcessingError extends Error {
 
   constructor(cause: unknown) {
     super(
-      t`Batch transcription completed, but Anarlog could not process the response.`,
+      t`Batch transcription completed, but Aplo could not process the response.`,
     );
     this.name = "BatchResponseProcessingError";
     this.cause = cause;

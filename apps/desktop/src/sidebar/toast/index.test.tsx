@@ -204,7 +204,7 @@ describe("ToastNotifications", () => {
 
   it("does not show the Pro upgrade prompt, even when AI and transcription are set up with your own providers", () => {
     // The exact situation that would show it upstream: signed out, a language
-    // model and a transcription model configured, neither of them Anarlog's.
+    // model and a transcription model configured, neither of them Aplo's.
     mocks.config.current_llm_provider = "openai";
     mocks.config.current_llm_model = "gpt";
     mocks.config.current_stt_provider = "deepgram";
@@ -327,7 +327,7 @@ describe("ToastNotifications", () => {
     view.rerender(<ToastNotifications />);
 
     expect(mocks.message).toHaveBeenCalledWith(
-      "Anarlog 1.0.34 is ready to install",
+      "Aplo 1.0.34 is ready to install",
       expect.objectContaining({
         id: "desktop-update:1.0.34:ready",
         action: expect.objectContaining({ label: "Restart" }),
@@ -349,7 +349,7 @@ describe("ToastNotifications", () => {
     act(() => vi.advanceTimersByTime(500));
 
     expect(mocks.loading).toHaveBeenCalledWith(
-      "Downloading Anarlog 1.0.34 (10%)",
+      "Downloading Aplo 1.0.34 (10%)",
       expect.objectContaining({
         id: "desktop-update:1.0.34:downloading",
         duration: Infinity,
@@ -363,7 +363,7 @@ describe("ToastNotifications", () => {
 
     expect(mocks.dismiss).not.toHaveBeenCalled();
     expect(mocks.loading).toHaveBeenCalledWith(
-      "Downloading Anarlog 1.0.34 (58%)",
+      "Downloading Aplo 1.0.34 (58%)",
       expect.objectContaining({
         id: "desktop-update:1.0.34:downloading",
       }),
@@ -440,7 +440,7 @@ describe("ToastNotifications", () => {
     act(() => vi.advanceTimersByTime(500));
 
     expect(mocks.message).toHaveBeenCalledWith(
-      "Anarlog 1.0.34 is ready to install",
+      "Aplo 1.0.34 is ready to install",
       expect.objectContaining({ id: "desktop-update:1.0.34:ready" }),
     );
   });
@@ -476,7 +476,7 @@ describe("ToastNotifications", () => {
     act(() => vi.advanceTimersByTime(500));
 
     expect(mocks.message).toHaveBeenCalledWith(
-      "Anarlog 1.0.34 is available",
+      "Aplo 1.0.34 is available",
       expect.objectContaining({ id: "desktop-update:1.0.34:available" }),
     );
 
@@ -491,7 +491,7 @@ describe("ToastNotifications", () => {
     view.rerender(<ToastNotifications />);
 
     expect(mocks.message).toHaveBeenCalledWith(
-      "Anarlog 1.0.34 is available",
+      "Aplo 1.0.34 is available",
       expect.objectContaining({ id: "desktop-update:1.0.34:available" }),
     );
   });
@@ -510,7 +510,7 @@ describe("ToastNotifications", () => {
     mocks.live = { status: "active", sessionId: "meeting-1" };
     view.rerender(<ToastNotifications />);
     expect(mocks.message).not.toHaveBeenCalledWith(
-      "Anarlog 1.0.34 is available",
+      "Aplo 1.0.34 is available",
       expect.anything(),
     );
 
@@ -518,7 +518,7 @@ describe("ToastNotifications", () => {
     view.rerender(<ToastNotifications />);
 
     expect(mocks.message).not.toHaveBeenCalledWith(
-      "Anarlog 1.0.34 is available",
+      "Aplo 1.0.34 is available",
       expect.anything(),
     );
   });

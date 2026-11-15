@@ -24,8 +24,8 @@ export async function handleCaptureCleanupStatus(payload: CaptureStatusEvent) {
           : "audio-cleanup",
         duration: Infinity,
         description: payload.session_id
-          ? t`Anarlog could not remove temporary audio and will retry cleanup automatically.`
-          : t`Anarlog could not finish audio cleanup or recovery and will retry automatically.`,
+          ? t`Aplo could not remove temporary audio and will retry cleanup automatically.`
+          : t`Aplo could not finish audio cleanup or recovery and will retry automatically.`,
       },
     );
     if (payload.session_id) {
@@ -41,7 +41,7 @@ export async function handleCaptureCleanupStatus(payload: CaptureStatusEvent) {
       id: `audio-recovery-${payload.session_id}`,
       duration: Infinity,
       description:
-        t`Anarlog could not restore interrupted audio and will retry recovery automatically.`,
+        t`Aplo could not restore interrupted audio and will retry recovery automatically.`,
     });
     if (payload.session_id) {
       await saveIncompleteCapture(payload.session_id, "audio-recovery", false);
