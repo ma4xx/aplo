@@ -46,6 +46,7 @@ import {
   checkUnslothAvailability,
 } from "~/settings/ai/shared/local-provider-availability";
 import { sortProviders } from "~/settings/ai/shared/sort-providers";
+import { HOSTED_MODELS_ENABLED } from "~/shared/features";
 
 export type Provider = {
   id: string;
@@ -192,12 +193,6 @@ const _PROVIDERS = [
         },
         url: "https://lmstudio.ai/models",
       },
-      setup: {
-        get label() {
-          return t`Setup guide`;
-        },
-        url: "https://docs.anarlog.so/ai-setup#lm-studio",
-      },
     },
   },
   {
@@ -220,12 +215,6 @@ const _PROVIDERS = [
           return t`Available models`;
         },
         url: "https://ollama.com/library",
-      },
-      setup: {
-        get label() {
-          return t`Setup guide`;
-        },
-        url: "https://docs.anarlog.so/ai-setup#ollama",
       },
     },
   },
@@ -255,12 +244,6 @@ const _PROVIDERS = [
           return t`Available models`;
         },
         url: "https://huggingface.co/unsloth",
-      },
-      setup: {
-        get label() {
-          return t`Setup guide`;
-        },
-        url: "https://docs.anarlog.so/ai-setup#unsloth",
       },
     },
   },
@@ -836,5 +819,12 @@ const PROVIDER_ORDER = [
   "apple_foundation",
 ] as const;
 
-export const PROVIDERS: Provider[] = sortProviders(_PROVIDERS, PROVIDER_ORDER);
+// The "anarlog" entry is the upstream product's own hosted models. It needs an
+// account and a paid plan, so it is not offered unless hosted models are on.
+export const PROVIDERS: Provider[] = sortProviders(
+  _PROVIDERS.filter(
+    (provider) => HOSTED_MODELS_ENABLED || provider.id !== "anarlog",
+  ),
+  PROVIDER_ORDER,
+);
 export type ProviderId = (typeof _PROVIDERS)[number]["id"];

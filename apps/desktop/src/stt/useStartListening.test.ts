@@ -4219,12 +4219,12 @@ describe("useStartListening", () => {
     expect(listMicUsingApplicationsMock).toHaveBeenCalledTimes(2);
     expect(sendMeetingChatMessageMock).toHaveBeenNthCalledWith(
       1,
-      expect.stringContaining("https://anarlog.so"),
+      expect.stringContaining("Aplo"),
       ["com.anarlog.dev"],
     );
     expect(sendMeetingChatMessageMock).toHaveBeenNthCalledWith(
       2,
-      expect.stringContaining("https://anarlog.so"),
+      expect.stringContaining("Aplo"),
       ["us.zoom.xos"],
     );
     expect(toastWarningMock).not.toHaveBeenCalled();
@@ -4376,7 +4376,7 @@ describe("useStartListening", () => {
       expect(startMeetingChatCaptureMock).toHaveBeenCalledWith({
         sessionId: "session-1",
         excludedTexts: [
-          "I'm using Anarlog to record and transcribe this meeting. https://anarlog.so",
+          "我正在使用 Aplo 记录并转写本次会议。",
         ],
         onParticipantDeclined: expect.any(Function),
       });
@@ -4415,7 +4415,7 @@ describe("useStartListening", () => {
       expect(startMeetingChatCaptureMock).toHaveBeenCalledWith({
         sessionId: "session-1",
         excludedTexts: [
-          "I'm using Anarlog to record and transcribe this meeting. https://anarlog.so",
+          "我正在使用 Aplo 记录并转写本次会议。",
         ],
         onParticipantDeclined: expect.any(Function),
       });

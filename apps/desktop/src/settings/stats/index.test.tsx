@@ -15,6 +15,13 @@ const mocks = vi.hoisted(() => ({
     isLoading: false,
     error: null as Error | null,
   },
+  badges: true,
+}));
+
+vi.mock("~/shared/features", () => ({
+  get INSIGHT_BADGES_ENABLED() {
+    return mocks.badges;
+  },
 }));
 
 vi.mock("./queries", () => ({ useActivity: () => mocks.activity }));
@@ -37,6 +44,15 @@ describe("merged insights page", () => {
   afterEach(cleanup);
   beforeEach(() => {
     mocks.activity = { data: [], isLoading: false, error: null };
+    mocks.badges = true;
+  });
+
+  it("shows no badge collection, and no endless loading text, while badges are off", () => {
+    mocks.badges = false;
+    render(<SettingsInsights />);
+
+    expect(screen.queryByRole("region", { name: "Your badges" })).toBeNull();
+    expect(screen.queryByText(/badges/i)).toBeNull();
   });
 
   it("waits for activity before showing the badge collection", () => {

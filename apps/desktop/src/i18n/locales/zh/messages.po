@@ -1076,6 +1076,10 @@ msgid "Auto format is unavailable."
 msgstr "自动格式暂不可用。"
 
 #: src/templates/auto-form.tsx
+msgid "Auto picks a structure that fits each meeting. Choose a template if you want a specific one."
+msgstr "「自动」会根据每场会议选择合适的结构。如果想用指定的结构，请选择一个模板。"
+
+#: src/templates/auto-form.tsx
 msgid "Auto summary format"
 msgstr "自动纪要格式"
 
@@ -4896,6 +4900,11 @@ msgstr "没有即将加入的机器人。"
 msgid "Not available"
 msgstr "不可用"
 
+#: src/shared/open-note-dialog.tsx
+#: src/sidebar/settings.tsx
+msgid "Not available in this version"
+msgstr "当前版本暂不可用"
+
 #: src/settings/ai/shared/index.tsx
 #: src/settings/crm/index.tsx
 msgid "Not connected"
@@ -5362,8 +5371,12 @@ msgid "Play"
 msgstr "播放"
 
 #: src/settings/general/notification.tsx
-msgid "Play a sound when transcription, summaries, or cloud sync finish."
-msgstr "转写、纪要或云同步完成时播放提示音。"
+msgid "Play a sound when transcription or summaries finish."
+msgstr "转写或纪要完成时播放提示音。"
+
+#: src/settings/general/notification.tsx
+#~ msgid "Play a sound when transcription, summaries, or cloud sync finish."
+#~ msgstr "转写、纪要或云同步完成时播放提示音。"
 
 #: src/session/components/note-input/transcript/renderer/selection-menu.tsx
 msgid "Play from here"
@@ -5903,8 +5916,8 @@ msgstr "打开 Aplo 时需要 Windows Hello 面部识别、PIN 或密码。"
 
 #: src/shared/open-note-dialog.tsx
 #: src/sidebar/settings.tsx
-msgid "Requires Anarlog Pro"
-msgstr "需要 Anarlog Pro"
+#~ msgid "Requires Anarlog Pro"
+#~ msgstr "需要 Anarlog Pro"
 
 #: src/settings/team/index.tsx
 msgid "Resend invitation"
@@ -6414,8 +6427,8 @@ msgid "Settings"
 msgstr "设置"
 
 #: src/settings/ai/llm/shared.tsx
-msgid "Setup guide"
-msgstr "设置指南"
+#~ msgid "Setup guide"
+#~ msgstr "设置指南"
 
 #: src/resource-sharing/share-dialog.tsx
 #: src/session-sharing/draft-panel.tsx
@@ -7437,6 +7450,10 @@ msgstr "此设备的时钟不正确。请修正日期和时间，同步将自动
 msgid "This edit is no longer pending."
 msgstr "此编辑已不再待处理。"
 
+#: src/settings/plan-gate.tsx
+msgid "This feature is not available in this version"
+msgstr "该功能在当前版本暂不可用"
+
 #: src/resource-sharing/share-dialog.tsx
 msgid "This guest needs Team access"
 msgstr "此访客需要团队访问权限"
@@ -7486,12 +7503,12 @@ msgid "This recording is using batch transcription, so the transcript isn't avai
 msgstr "此录音使用批量转写，因此聊天暂时无法使用逐字稿。请在转写完成后再提问，或切换到 Pro 模型进行实时转写。"
 
 #: src/settings/plan-gate.tsx
-msgid "This requires Anarlog Enterprise"
-msgstr "此功能需要 Aplo 企业版"
+#~ msgid "This requires Anarlog Enterprise"
+#~ msgstr "此功能需要 Aplo 企业版"
 
 #: src/settings/plan-gate.tsx
-msgid "This requires Anarlog Pro"
-msgstr "此功能需要 Anarlog Pro"
+#~ msgid "This requires Anarlog Pro"
+#~ msgstr "此功能需要 Anarlog Pro"
 
 #: src/resource-sharing/payloads.ts
 msgid "This shared automation is invalid"
@@ -7541,8 +7558,8 @@ msgid "Tip: Add teammate names, acronyms, company jargon, and product terms."
 msgstr "提示：添加同事姓名、缩写、公司行话和产品术语。"
 
 #: src/session/components/note-input/enhanced/streaming.tsx
-msgid "Tip: The Anarlog team loves our users!"
-msgstr "提示：Aplo 团队爱我们的用户！"
+#~ msgid "Tip: The Anarlog team loves our users!"
+#~ msgstr "提示：Aplo 团队爱我们的用户！"
 
 #: src/calendar/components/calendar-view.tsx
 #: src/sidebar/timeline/utils/index.ts
@@ -7843,7 +7860,6 @@ msgstr "正在更新音频共享"
 msgid "Updating prompt draft"
 msgstr "正在更新提示词草稿"
 
-#: src/settings/plan-gate.tsx
 #: src/sidebar/toast/registry.tsx
 msgid "Upgrade"
 msgstr "升级"
@@ -8270,8 +8286,12 @@ msgid "Your conversation patterns"
 msgstr "你的对话规律"
 
 #: src/shared/long-load-gate.tsx
-msgid "Your data was updated by a newer version of Aplo, such as Anarlog Nightly, and this version cannot open it yet. Your existing data was left unchanged. Install the latest version of Aplo, or keep using the newer app until this version catches up."
-msgstr "你的数据已被更新版本的 Aplo（例如 Anarlog Nightly）更新，当前版本暂时无法打开。你的现有数据没有被改动。请安装最新版 Aplo，或在当前版本跟上之前继续使用较新的版本。"
+msgid "Your data was updated by a newer version of Aplo, and this version cannot open it yet. Your existing data was left unchanged. Install the latest version of Aplo."
+msgstr "你的数据已被更新版本的 Aplo 修改，当前版本暂时无法打开。你已有的数据没有被改动。请安装最新版本的 Aplo。"
+
+#: src/shared/long-load-gate.tsx
+#~ msgid "Your data was updated by a newer version of Aplo, such as Anarlog Nightly, and this version cannot open it yet. Your existing data was left unchanged. Install the latest version of Aplo, or keep using the newer app until this version catches up."
+#~ msgstr "你的数据已被更新版本的 Aplo（例如 Anarlog Nightly）更新，当前版本暂时无法打开。你的现有数据没有被改动。请安装最新版 Aplo，或在当前版本跟上之前继续使用较新的版本。"
 
 #: src/settings/dictionary/index.tsx
 msgid "Your dictionary is empty"
@@ -8365,6 +8385,10 @@ msgstr "你的登录已过期。请重新登录以重新连接。"
 #: src/services/enhancer/summary-notification.ts
 msgid "Your summary is ready."
 msgstr "你的纪要已生成。"
+
+#: src/session/components/note-input/enhanced/streaming.tsx
+msgid "Your summary will appear here as it is written."
+msgstr "纪要生成后会显示在这里。"
 
 #: src/stt/capture-lifecycle.ts
 msgid "Your transcript could not be saved"

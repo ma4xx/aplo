@@ -141,7 +141,6 @@ describe("SettingsNav", () => {
 
   it.each([
     ["Permissions", "permissions"],
-    ["Account", "account"],
     ["Meeting advisor", "advisor"],
   ])("opens %s inside settings", (label, tab) => {
     render(<SettingsNav />);
@@ -193,6 +192,8 @@ describe("SettingsNav", () => {
       "Dictionary",
       "Imports",
       "CRM",
+      "Account",
+      "Developers",
     ]) {
       expect(
         screen.queryByRole("button", { name: new RegExp(`^${label}`) }),
@@ -200,12 +201,11 @@ describe("SettingsNav", () => {
     }
   });
 
-  it("keeps the entries Auri uses", () => {
+  it("keeps the entries Aplo uses", () => {
     render(<SettingsNav />);
 
     for (const label of [
       "General",
-      "Account",
       "Insights",
       "Transcription",
       "Intelligence",

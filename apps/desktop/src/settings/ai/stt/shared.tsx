@@ -34,6 +34,7 @@ import {
 } from "~/settings/ai/shared";
 import { type ProviderRequirement } from "~/settings/ai/shared/eligibility";
 import { sortProviders } from "~/settings/ai/shared/sort-providers";
+import { HOSTED_MODELS_ENABLED } from "~/shared/features";
 import { localSttQueries } from "~/stt/useLocalSttModel";
 
 export { localSttQueries as sttModelQueries };
@@ -1439,5 +1440,12 @@ const PROVIDER_ORDER = [
   "aquavoice",
 ] as const;
 
-export const PROVIDERS = sortProviders(_PROVIDERS, PROVIDER_ORDER);
+// The "anarlog" entry is the upstream product's own cloud transcription. It needs
+// an account and a paid plan, so it is not offered unless hosted models are on.
+export const PROVIDERS = sortProviders(
+  _PROVIDERS.filter(
+    (provider) => HOSTED_MODELS_ENABLED || provider.id !== "anarlog",
+  ),
+  PROVIDER_ORDER,
+);
 export type ProviderId = (typeof _PROVIDERS)[number]["id"];

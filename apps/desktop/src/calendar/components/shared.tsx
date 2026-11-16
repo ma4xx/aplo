@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 
 import { OutlookIcon } from "@anlg/ui/components/icons/outlook";
 
+import { ACCOUNTS_ENABLED } from "~/shared/features";
+
 export type CalendarProvider = {
   disabled: boolean;
   id: string;
@@ -53,7 +55,11 @@ const _PROVIDERS = [
   },
 ] as const satisfies readonly CalendarProvider[];
 
-export const PROVIDERS = [..._PROVIDERS];
+// Google and Outlook sign in through the upstream product's servers, so they are
+// only offered when accounts are on. Apple Calendar works on the Mac itself.
+export const PROVIDERS = _PROVIDERS.filter(
+  (provider) => ACCOUNTS_ENABLED || !provider.nangoIntegrationId,
+);
 
 const CALENDAR_NANGO_INTEGRATION_IDS = new Set<string>(
   PROVIDERS.flatMap((provider) =>

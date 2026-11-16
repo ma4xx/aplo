@@ -9,6 +9,7 @@ import {
 import { ActionButton, MessageBubble, MessageContainer } from "./shared";
 
 import { env } from "~/env";
+import { UPSTREAM_COMMUNITY_ENABLED } from "~/shared/features";
 
 const WEB_APP_BASE_URL = env.VITE_APP_URL ?? "http://localhost:3000";
 
@@ -39,7 +40,9 @@ export function ErrorMessage({
 }) {
   const { t } = useLingui();
   const message = getChatErrorText(error);
-  const showContextLengthHelp = isContextLengthError(message);
+  // The help page lives on the upstream product's website.
+  const showContextLengthHelp =
+    UPSTREAM_COMMUNITY_ENABLED && isContextLengthError(message);
 
   const handleOpenFaq = () => {
     void openerCommands.openUrl(

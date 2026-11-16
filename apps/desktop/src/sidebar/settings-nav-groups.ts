@@ -30,6 +30,7 @@ import {
 
 import { privacyMessages } from "~/settings/general/app-settings";
 import { useMyWorkspacesWithMirror } from "~/settings/team/mirror";
+import { ACCOUNTS_ENABLED, DEVELOPER_TOOLS_ENABLED } from "~/shared/features";
 import { type SettingsTab, type TabInput } from "~/store/zustand/tabs";
 
 type SettingsNavItem =
@@ -50,12 +51,14 @@ type SettingsNavItem =
 export type SettingsNavGroup = { label: string; items: SettingsNavItem[] };
 
 // Entries kept in the code but not shown in the sidebar. Each one needs a
-// hosted Anarlog account or backend that Auri does not have, or is a feature
-// Auri does not use yet. The pages and their code are unchanged, so showing an
+// hosted Anarlog account or backend that Aplo does not have, or is a feature
+// Aplo does not use yet. The pages and their code are unchanged, so showing an
 // entry again is a one-line removal here (for example when accounts and billing
 // come back with a commercial release).
 // Other code can still open these pages by name; this only hides the menu entry.
 export const HIDDEN_SETTINGS_NAV_IDS: ReadonlySet<string> = new Set([
+  ...(ACCOUNTS_ENABLED ? [] : ["account"]),
+  ...(DEVELOPER_TOOLS_ENABLED ? [] : ["developers"]),
   "billing",
   "referrals",
   "team",

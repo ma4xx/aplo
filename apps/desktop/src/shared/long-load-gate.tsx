@@ -136,22 +136,18 @@ function StartupErrorView({ error }: { error: Error }) {
           )}
         </h1>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          {needsUpdate
-            ? (
-                <Trans>
-                  Your data was updated by a newer version of Aplo, such as
-                  Anarlog Nightly, and this version cannot open it yet. Your
-                  existing data was left unchanged. Install the latest version
-                  of Aplo, or keep using the newer app until this version
-                  catches up.
-                </Trans>
-              )
-            : (
-                <Trans>
-                  Your existing data was left unchanged. Please restart the app.
-                  If the problem continues, contact support.
-                </Trans>
-              )}
+          {needsUpdate ? (
+            <Trans>
+              Your data was updated by a newer version of Aplo, and this version
+              cannot open it yet. Your existing data was left unchanged. Install
+              the latest version of Aplo.
+            </Trans>
+          ) : (
+            <Trans>
+              Your existing data was left unchanged. Please restart the app. If
+              the problem continues, contact support.
+            </Trans>
+          )}
         </p>
         {needsUpdate ? null : (
           <Button size="sm" onClick={() => void handleRestart()}>

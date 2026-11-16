@@ -149,7 +149,7 @@ export function SettingsNav() {
                         </span>
                         {requiresPro ? (
                           <Lock
-                            aria-label={t`Requires Anarlog Pro`}
+                            aria-label={t`Not available in this version`}
                             className="size-3.5 shrink-0"
                           />
                         ) : null}

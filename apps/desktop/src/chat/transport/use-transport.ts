@@ -15,6 +15,7 @@ import { hydrateSessionContext } from "~/chat/context/session-context-hydrator";
 import { loadHuman, loadOrganization } from "~/contacts/queries";
 import { useToolRegistry } from "~/contexts/tool";
 import { useConfigValue } from "~/shared/config";
+import { HOSTED_MODELS_ENABLED } from "~/shared/features";
 
 const MEETING_CONTEXT_TOOL_GUIDANCE = `
 Context and local meeting tool guidance:
@@ -35,7 +36,9 @@ Context and local meeting tool guidance:
 - Do not ask the user to open or share a meeting until list_meetings, search_meetings, search_meeting_content, and get_meeting cannot find enough local context.
 - Use typed meeting tools instead of constructing shell commands, crawling files, or accessing SQLite directly.
 - Do not assume meeting contents from chat history when a typed tool can read the current source of truth.
+`.trim();
 
+const WEB_SEARCH_GUIDANCE = `
 Web search guidance:
 - Use web_search for public websites, URLs, companies, products, people, news, or current facts that may be outside local notes.
 - Include source URLs in the final answer when web_search results are used.
@@ -51,6 +54,9 @@ function appendMeetingContextToolGuidance(
   }
 
   const parts = [prompt.trim(), MEETING_CONTEXT_TOOL_GUIDANCE];
+  if (HOSTED_MODELS_ENABLED) {
+    parts.push(WEB_SEARCH_GUIDANCE);
+  }
   if (advisorPrompt) {
     parts.push(advisorPrompt);
   }

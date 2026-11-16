@@ -142,18 +142,23 @@ pub fn build_app_menu(app: &AppHandle<tauri::Wry>) -> Result<Menu<tauri::Wry>> {
         ],
     )?;
 
-    Menu::with_items(
-        app,
-        &[
-            &app_submenu,
-            &file_submenu,
-            &edit_submenu,
-            &view_submenu,
-            &window_submenu,
-            &help_submenu,
-        ],
-    )
+    // "Report a bug" and "Suggest a feature" open the upstream product's Discord.
+    let mut submenus: Vec<&dyn tauri::menu::IsMenuItem<tauri::Wry>> = vec![
+        &app_submenu,
+        &file_submenu,
+        &edit_submenu,
+        &view_submenu,
+        &window_submenu,
+    ];
+    if UPSTREAM_SUPPORT_MENU_ENABLED {
+        submenus.push(&help_submenu);
+    }
+
+    Menu::with_items(app, &submenus)
 }
+
+/// Whether the Help menu (links to the upstream product's community) is shown.
+const UPSTREAM_SUPPORT_MENU_ENABLED: bool = false;
 
 pub struct Tray<'a, R: tauri::Runtime, M: tauri::Manager<R>> {
     manager: &'a M,

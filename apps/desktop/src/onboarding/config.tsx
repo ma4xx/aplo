@@ -2,6 +2,8 @@ import { platform } from "@tauri-apps/plugin-os";
 
 import type { SectionStatus } from "./shared";
 
+import { ACCOUNTS_ENABLED, IMPORTS_ENABLED } from "~/shared/features";
+
 export type OnboardingStep =
   | "permissions"
   | "login"
@@ -9,14 +11,23 @@ export type OnboardingStep =
   | "imports"
   | "final";
 
+// "login" needs accounts and "imports" needs the upstream backend; both are off.
+const optional = (step: OnboardingStep, enabled: boolean): OnboardingStep[] =>
+  enabled ? [step] : [];
+
 const STEPS_MACOS: OnboardingStep[] = [
   "permissions",
-  "login",
+  ...optional("login", ACCOUNTS_ENABLED),
   "calendar",
-  "imports",
+  ...optional("imports", IMPORTS_ENABLED),
   "final",
 ];
-const STEPS_OTHER: OnboardingStep[] = ["login", "calendar", "imports", "final"];
+const STEPS_OTHER: OnboardingStep[] = [
+  ...optional("login", ACCOUNTS_ENABLED),
+  "calendar",
+  ...optional("imports", IMPORTS_ENABLED),
+  "final",
+];
 
 function getOnboardingSteps(): OnboardingStep[] {
   return platform() === "macos" ? STEPS_MACOS : STEPS_OTHER;

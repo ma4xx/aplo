@@ -9,6 +9,11 @@ import {
 import type { ReactNode } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+vi.mock("~/shared/features", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("~/shared/features")>()),
+  PAID_FEATURES_ENABLED: true,
+}));
+
 const mocks = vi.hoisted(() => ({
   getTemplateSource: vi.fn(),
   renderTemplate: vi.fn(),

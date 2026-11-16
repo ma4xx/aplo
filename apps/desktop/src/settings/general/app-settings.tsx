@@ -7,6 +7,7 @@ import { platform } from "@tauri-apps/plugin-os";
 import { Button } from "@anlg/ui/components/ui/button";
 
 import { SettingSwitchRow } from "~/settings/setting-row";
+import { APP_UPDATES_ENABLED } from "~/shared/features";
 import { useTabs } from "~/store/zustand/tabs";
 
 export const privacyMessages = {
@@ -53,40 +54,42 @@ export function AppSettingsView({
             <>
               <SettingSwitchRow
                 title={<Trans>Start Aplo at login</Trans>}
-                description={
-                  <Trans>Have Aplo ready when you sign in.</Trans>
-                }
+                description={<Trans>Have Aplo ready when you sign in.</Trans>}
                 checked={autostart.value}
                 onChange={autostart.onChange}
               />
-              <SettingSwitchRow
-                title={<Trans>Automatically install updates</Trans>}
-                description={
-                  <Trans>
-                    Stay current with updates installed the next time Aplo
-                    opens.
-                  </Trans>
-                }
-                checked={automaticUpdates.value}
-                onChange={automaticUpdates.onChange}
-              />
+              {APP_UPDATES_ENABLED ? (
+                <SettingSwitchRow
+                  title={<Trans>Automatically install updates</Trans>}
+                  description={
+                    <Trans>
+                      Stay current with updates installed the next time Aplo
+                      opens.
+                    </Trans>
+                  }
+                  checked={automaticUpdates.value}
+                  onChange={automaticUpdates.onChange}
+                />
+              ) : null}
             </>
           )}
-          <Button
-            variant="outline"
-            className="self-start"
-            disabled={!version.data}
-            onClick={() => {
-              if (version.data) {
-                openNew({
-                  type: "changelog",
-                  state: { current: version.data, previous: version.data },
-                });
-              }
-            }}
-          >
-            <Trans>Show release notes</Trans>
-          </Button>
+          {APP_UPDATES_ENABLED ? (
+            <Button
+              variant="outline"
+              className="self-start"
+              disabled={!version.data}
+              onClick={() => {
+                if (version.data) {
+                  openNew({
+                    type: "changelog",
+                    state: { current: version.data, previous: version.data },
+                  });
+                }
+              }}
+            >
+              <Trans>Show release notes</Trans>
+            </Button>
+          ) : null}
           {isMacos && (
             <SettingSwitchRow
               title={<Trans>Show app in Dock</Trans>}
@@ -100,9 +103,7 @@ export function AppSettingsView({
           <SettingSwitchRow
             title={<Trans>Show tray icon</Trans>}
             description={
-              isMacos ? (
-                <Trans>Open Aplo from the menu bar.</Trans>
-              ) : undefined
+              isMacos ? <Trans>Open Aplo from the menu bar.</Trans> : undefined
             }
             checked={showTrayIcon.value}
             onChange={showTrayIcon.onChange}

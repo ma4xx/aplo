@@ -1,4 +1,12 @@
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+const features = vi.hoisted(() => ({ accounts: false }));
+
+vi.mock("~/shared/features", () => ({
+  get ACCOUNTS_ENABLED() {
+    return features.accounts;
+  },
+}));
 
 import { getBadgeProgress, parseCollectedBadges } from "./badges";
 import type { ActivityRecord } from "./queries";
@@ -21,6 +29,10 @@ const progress = (records: ActivityRecord[], timezone = "UTC") =>
   });
 
 describe("personal badges", () => {
+  beforeEach(() => {
+    features.accounts = false;
+  });
+
   it("awards only deliberate conversation milestones and deduplicates resumed recordings", () => {
     const records = Array.from({ length: 50 }, (_, i) =>
       record(String(i), "2026-09-01T12:00:00Z"),
@@ -59,7 +71,24 @@ describe("personal badges", () => {
     ).toBe(4);
   });
 
+  it("has no sign-up badge while Aplo has no accounts", () => {
+    const badges = getBadgeProgress({
+      records: [],
+      now,
+      weekStartsOn: 0,
+      signedUp: true,
+      onboardingComplete: true,
+    });
+    expect(badges.map((badge) => badge.id)).not.toContain("hello");
+    expect(
+      badges
+        .filter((badge) => badge.value === badge.target)
+        .map((badge) => badge.id),
+    ).toEqual(["all-set"]);
+  });
+
   it("only awards the getting-started badges from confirmed account and onboarding state", () => {
+    features.accounts = true;
     const badges = getBadgeProgress({
       records: [],
       now,

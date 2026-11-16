@@ -50,6 +50,7 @@ import {
   previewCompletionSound,
 } from "~/shared/completion-sound";
 import { useConfigValues } from "~/shared/config";
+import { ACCOUNTS_ENABLED } from "~/shared/features";
 
 export function NotificationSettingsView() {
   const { t } = useLingui();
@@ -224,19 +225,21 @@ export function NotificationSettingsView() {
               )}
             </form.Field>
 
-            <form.Field name="notification_cloudsync_complete">
-              {(field) => (
-                <SettingSwitchRow
-                  title={<Trans>Cloud sync complete</Trans>}
-                  description={
-                    <Trans>Show when initial cloud sync finishes.</Trans>
-                  }
-                  checked={field.state.value}
-                  onChange={field.handleChange}
-                  disabled={notificationsDisabled}
-                />
-              )}
-            </form.Field>
+            {ACCOUNTS_ENABLED ? (
+              <form.Field name="notification_cloudsync_complete">
+                {(field) => (
+                  <SettingSwitchRow
+                    title={<Trans>Cloud sync complete</Trans>}
+                    description={
+                      <Trans>Show when initial cloud sync finishes.</Trans>
+                    }
+                    checked={field.state.value}
+                    onChange={field.handleChange}
+                    disabled={notificationsDisabled}
+                  />
+                )}
+              </form.Field>
+            ) : null}
 
             <form.Field name="notification_event">
               {(field) => (
@@ -276,8 +279,7 @@ export function NotificationSettingsView() {
                     title={<Trans>Completion sound</Trans>}
                     description={
                       <Trans>
-                        Play a sound when transcription, summaries, or cloud
-                        sync finish.
+                        Play a sound when transcription or summaries finish.
                       </Trans>
                     }
                     checked={field.state.value}

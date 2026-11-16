@@ -1,6 +1,11 @@
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
+vi.mock("~/shared/features", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("~/shared/features")>()),
+  ACCOUNTS_ENABLED: true,
+}));
+
 import { getCalendarConnectionKey } from "./components/shared";
 import { useSyncWhenCalendarConnectionsChange } from "./hooks";
 

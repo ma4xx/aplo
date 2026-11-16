@@ -13,6 +13,7 @@ import {
 } from "~/settings/queries";
 import { SettingSwitchRow } from "~/settings/setting-row";
 import { resolveConfigValue } from "~/shared/config";
+import { TELEMETRY_SETTINGS_ENABLED } from "~/shared/features";
 
 export function SettingsPrivacy() {
   const { i18n, t } = useLingui();
@@ -74,24 +75,28 @@ export function SettingsPrivacy() {
             })();
           }}
         />
-        <SettingSwitchRow
-          title={i18n._(privacyMessages.posthogTitle)}
-          description={i18n._(privacyMessages.posthogDescription)}
-          checked={posthogEnabled}
-          onChange={(telemetryConsent) => {
-            setSettingValues({ telemetry_consent: telemetryConsent });
-          }}
-        />
-        <SettingSwitchRow
-          title={t`Error`}
-          description={t`Send sanitized crash and error reports to help improve Aplo.`}
-          checked={sentryEnabled}
-          onChange={(crashReportingConsent) => {
-            setSettingValues({
-              crash_reporting_consent: crashReportingConsent,
-            });
-          }}
-        />
+        {TELEMETRY_SETTINGS_ENABLED ? (
+          <>
+            <SettingSwitchRow
+              title={i18n._(privacyMessages.posthogTitle)}
+              description={i18n._(privacyMessages.posthogDescription)}
+              checked={posthogEnabled}
+              onChange={(telemetryConsent) => {
+                setSettingValues({ telemetry_consent: telemetryConsent });
+              }}
+            />
+            <SettingSwitchRow
+              title={t`Error`}
+              description={t`Send sanitized crash and error reports to help improve Aplo.`}
+              checked={sentryEnabled}
+              onChange={(crashReportingConsent) => {
+                setSettingValues({
+                  crash_reporting_consent: crashReportingConsent,
+                });
+              }}
+            />
+          </>
+        ) : null}
       </section>
     </div>
   );

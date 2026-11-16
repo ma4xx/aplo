@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 vi.mock("~/auth", () => ({ useAuth: vi.fn() }));
 vi.mock("~/db", () => ({ useLiveQuery: vi.fn() }));
 
-import { ACTIVITY_SQL } from "./queries";
+import { ACTIVITY_SQL, activityOwnerId } from "./queries";
 
 const { DatabaseSync } = createRequire(import.meta.url)(
   "node:sqlite",
@@ -64,5 +64,21 @@ describe("personal activity query", () => {
     } finally {
       db.close();
     }
+  });
+});
+
+describe("activityOwnerId", () => {
+  it("uses the account when there is one", () => {
+    expect(activityOwnerId("account-user", "local-owner")).toBe("account-user");
+  });
+
+  it("uses the local owner stored in the database when there is no account", () => {
+    expect(activityOwnerId(undefined, "local-owner")).toBe("local-owner");
+  });
+
+  it("falls back to the default id only while the local owner is unknown", () => {
+    expect(activityOwnerId(undefined, null)).toBe(
+      "00000000-0000-0000-0000-000000000000",
+    );
   });
 });

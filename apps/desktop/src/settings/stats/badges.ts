@@ -4,6 +4,8 @@ import { TZDate } from "@anlg/utils";
 
 import type { ActivityRecord } from "./queries";
 
+import { ACCOUNTS_ENABLED } from "~/shared/features";
+
 // These IDs are persisted; keep them stable when badge names or artwork change.
 export const BADGES = [
   { id: "hello", metric: "signup", target: 1 },
@@ -55,7 +57,10 @@ export function getBadgeProgress({
     conversations: sessions.size,
     weeks: weeks.size,
   };
-  return BADGES.map((badge) => ({
+  // The sign-up badge can only be earned with an account system.
+  return BADGES.filter(
+    (badge) => ACCOUNTS_ENABLED || badge.metric !== "signup",
+  ).map((badge) => ({
     ...badge,
     value: Math.min(metrics[badge.metric], badge.target),
   }));

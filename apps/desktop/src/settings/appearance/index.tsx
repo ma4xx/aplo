@@ -6,6 +6,7 @@ import { ThemeSelector } from "./theme";
 import { TimeFormatSettings } from "./time-format";
 
 import { SettingsPageTitle } from "~/settings/page-title";
+import { PAID_FEATURES_ENABLED } from "~/shared/features";
 
 export function SettingsAppearance() {
   return (
@@ -13,7 +14,7 @@ export function SettingsAppearance() {
       <SettingsPageTitle title={<Trans>Appearance</Trans>} />
       <ThemeSelector />
       <TimeFormatSettings />
-      <AppIconSelector />
+      {PAID_FEATURES_ENABLED ? <AppIconSelector /> : null}
       <SidebarItemFieldsSettings />
     </div>
   );

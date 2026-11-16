@@ -19,6 +19,7 @@ import {
 } from "./welcome-note";
 
 import { createSession } from "~/session/queries";
+import { UPSTREAM_COMMUNITY_ENABLED } from "~/shared/features";
 import { flushAutomaticRelaunch } from "~/shared/relaunch";
 import { commands } from "~/types/tauri.gen";
 
@@ -44,6 +45,9 @@ const SOCIALS = [
 const SOCIAL_ICON_SIZE = 18;
 
 export function FinalDescription() {
+  // The links lead to the upstream product's Discord, GitHub and X.
+  if (!UPSTREAM_COMMUNITY_ENABLED) return null;
+
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
       <span>
@@ -130,12 +134,16 @@ export async function finishOnboarding(
   welcomeSessionRef?: { current: string | null },
 ) {
   await sfxCommands.stop("BGM").catch(console.error);
+  // The welcome note walks through a demo meeting hosted by the upstream
+  // product, so without it the user starts on a blank note.
   const welcomeSessionId =
     welcomeSessionRef?.current ??
-    (await getOrCreateWelcomeSession().catch((error) => {
-      console.error("Failed to create welcome note", error);
-      return createSession();
-    }));
+    (UPSTREAM_COMMUNITY_ENABLED
+      ? await getOrCreateWelcomeSession().catch((error) => {
+          console.error("Failed to create welcome note", error);
+          return createSession();
+        })
+      : await createSession());
   if (welcomeSessionRef) {
     welcomeSessionRef.current = welcomeSessionId;
   }

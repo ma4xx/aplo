@@ -29,6 +29,7 @@ import { useBillingAccess } from "~/auth/billing-context";
 import { PlanGate, useNotifyPlanRequired } from "~/settings/plan-gate";
 import { setSettingValue } from "~/settings/queries";
 import { useConfigValue } from "~/shared/config";
+import { PAID_FEATURES_ENABLED } from "~/shared/features";
 
 const AUTO_FORMAT_TOKENS = [] as const;
 const LEGACY_CUSTOM_INSTRUCTIONS_PREAMBLE =
@@ -60,12 +61,41 @@ export function AutoTemplateDetails() {
     );
   }
 
+  // Editing the Auto format is a paid feature in the upstream product. It stays
+  // off, and the format is shown read-only.
+  if (!PAID_FEATURES_ENABLED) {
+    return <AutoFormatReadOnly format={sourceQuery.data} />;
+  }
+
   return (
     <AutoFormatForm
       key={`${formatOverride}:${sourceQuery.data}`}
       defaultFormat={sourceQuery.data}
       formatOverride={formatOverride}
     />
+  );
+}
+
+function AutoFormatReadOnly({ format }: { format: string }) {
+  return (
+    <div className="scroll-fade-y min-h-0 flex-1 overflow-y-auto px-6 pt-6 pb-6">
+      <div className="flex max-w-4xl flex-col gap-4">
+        <div>
+          <h1 className="text-lg font-semibold">
+            <Trans>Summary format</Trans>
+          </h1>
+          <p className="text-muted-foreground mt-1 text-sm">
+            <Trans>
+              Auto picks a structure that fits each meeting. Choose a template
+              if you want a specific one.
+            </Trans>
+          </p>
+        </div>
+        <pre className="border-border bg-card overflow-auto rounded-2xl border px-4 py-3 font-mono text-sm leading-5 whitespace-pre-wrap">
+          {format}
+        </pre>
+      </div>
+    </div>
   );
 }
 

@@ -7,6 +7,11 @@ import {
 } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+vi.mock("~/shared/features", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("~/shared/features")>()),
+  TELEMETRY_SETTINGS_ENABLED: true,
+}));
+
 const mocks = vi.hoisted(() => ({
   setSettingValues: vi.fn(),
   authenticate: vi.fn(),

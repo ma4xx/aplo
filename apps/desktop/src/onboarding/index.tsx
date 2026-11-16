@@ -24,6 +24,7 @@ import { OnboardingSection } from "./shared";
 
 import { trackAnalyticsEvent } from "~/analytics";
 import { useAuth } from "~/auth";
+import { ACCOUNTS_ENABLED, IMPORTS_ENABLED } from "~/shared/features";
 import { StandaloneWindowShell } from "~/shared/window-shell";
 import { type Tab, useTabs } from "~/store/zustand/tabs";
 
@@ -246,33 +247,35 @@ function OnboardingScreenContent({
             <PermissionsSection onContinue={goNext} />
           </OnboardingSection>
 
-          <OnboardingSection
-            title={<Trans>Create account</Trans>}
-            completedTitle={
-              auth.session ? (
-                <Trans>Signed in</Trans>
-              ) : didSkipLogin ? (
-                <Trans>Skipped</Trans>
-              ) : (
-                <Trans>Account</Trans>
-              )
-            }
-            status={getStepStatus("login", currentStep)}
-            onBack={goBack}
-            onNext={goNext}
-            onSkip={() => {
-              setDidSkipLogin(true);
-              trackAnalyticsEvent("onboarding_login_skipped");
-              trackAnalyticsEvent("onboarding_step_skipped", {
-                step: "login",
-                platform: currentPlatform,
-              });
-              const next = getNextStep("login");
-              if (next) setCurrentStep(next);
-            }}
-          >
-            <LoginSection onContinue={goNext} />
-          </OnboardingSection>
+          {ACCOUNTS_ENABLED ? (
+            <OnboardingSection
+              title={<Trans>Create account</Trans>}
+              completedTitle={
+                auth.session ? (
+                  <Trans>Signed in</Trans>
+                ) : didSkipLogin ? (
+                  <Trans>Skipped</Trans>
+                ) : (
+                  <Trans>Account</Trans>
+                )
+              }
+              status={getStepStatus("login", currentStep)}
+              onBack={goBack}
+              onNext={goNext}
+              onSkip={() => {
+                setDidSkipLogin(true);
+                trackAnalyticsEvent("onboarding_login_skipped");
+                trackAnalyticsEvent("onboarding_step_skipped", {
+                  step: "login",
+                  platform: currentPlatform,
+                });
+                const next = getNextStep("login");
+                if (next) setCurrentStep(next);
+              }}
+            >
+              <LoginSection onContinue={goNext} />
+            </OnboardingSection>
+          ) : null}
 
           <OnboardingSection
             title={<Trans>Connect calendar</Trans>}
@@ -293,22 +296,24 @@ function OnboardingScreenContent({
             />
           </OnboardingSection>
 
-          <OnboardingSection
-            title={<Trans>Bring your meeting history</Trans>}
-            description={
-              <Trans>
-                Import notes and transcripts from the meeting apps you already
-                use.
-              </Trans>
-            }
-            completedTitle={<Trans>Meeting history imported</Trans>}
-            status={getStepStatus("imports", currentStep)}
-            onBack={goBack}
-            onNext={goNext}
-            onSkip={skipCurrentStep}
-          >
-            <ImportSection onContinue={goNext} onSkip={skipCurrentStep} />
-          </OnboardingSection>
+          {IMPORTS_ENABLED ? (
+            <OnboardingSection
+              title={<Trans>Bring your meeting history</Trans>}
+              description={
+                <Trans>
+                  Import notes and transcripts from the meeting apps you already
+                  use.
+                </Trans>
+              }
+              completedTitle={<Trans>Meeting history imported</Trans>}
+              status={getStepStatus("imports", currentStep)}
+              onBack={goBack}
+              onNext={goNext}
+              onSkip={skipCurrentStep}
+            >
+              <ImportSection onContinue={goNext} onSkip={skipCurrentStep} />
+            </OnboardingSection>
+          ) : null}
 
           <OnboardingSection
             title={<Trans>Ready to go</Trans>}

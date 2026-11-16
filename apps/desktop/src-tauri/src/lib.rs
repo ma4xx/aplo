@@ -348,7 +348,8 @@ pub fn main() {
     }
 
     builder = builder
-        .plugin(tauri_plugin_tray::init(!cfg!(feature = "app-store")))
+        // Aplo has no update server, so "Check for updates" is not offered.
+        .plugin(tauri_plugin_tray::init(false))
         .plugin(tauri_plugin_settings::init())
         .plugin(tauri_plugin_sfx::init())
         .plugin(tauri_plugin_shortcut::init())

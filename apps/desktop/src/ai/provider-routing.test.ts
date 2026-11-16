@@ -1,5 +1,10 @@
 import { afterEach, expect, it, vi } from "vitest";
 
+vi.mock("~/shared/features", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("~/shared/features")>()),
+  HOSTED_MODELS_ENABLED: true,
+}));
+
 vi.mock("@lobehub/icons", () =>
   Object.fromEntries(
     [

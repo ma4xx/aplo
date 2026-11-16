@@ -3,6 +3,11 @@ import { cleanup, renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { afterEach, expect, test, vi } from "vitest";
 
+vi.mock("~/shared/features", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("~/shared/features")>()),
+  HOSTED_MODELS_ENABLED: true,
+}));
+
 const { useProviderAvailabilityMock } = vi.hoisted(() => ({
   useProviderAvailabilityMock: vi.fn(),
 }));

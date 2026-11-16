@@ -58,6 +58,20 @@ fn should_check_via_sidecar(permission: Permission) -> bool {
     )
 }
 
+/// Authorized wins: the in-process answer can be stale and the helper can be
+/// wrong for an unusual signature, but neither reports "authorized" unless the
+/// system said so.
+#[cfg(any(all(target_os = "macos", feature = "private-tcc"), test))]
+fn combine_system_audio(
+    in_process: PermissionStatus,
+    helper: Option<PermissionStatus>,
+) -> PermissionStatus {
+    match helper {
+        Some(PermissionStatus::Authorized) => PermissionStatus::Authorized,
+        _ => in_process,
+    }
+}
+
 #[cfg(target_os = "macos")]
 #[link(name = "IOKit", kind = "framework")]
 unsafe extern "C" {
@@ -136,7 +150,21 @@ impl<'a, R: tauri::Runtime, M: tauri::Manager<R>> Permissions<'a, R, M> {
             Permission::Reminders => self.check_reminders().await,
             Permission::Contacts => self.check_contacts().await,
             Permission::Microphone => self.check_microphone().await,
-            Permission::SystemAudio => self.check_system_audio().await,
+            Permission::SystemAudio => {
+                let in_process = self.check_system_audio().await?;
+                #[cfg(all(target_os = "macos", feature = "private-tcc"))]
+                {
+                    // The in-process answer comes from a per-process cache that macOS
+                    // does not refresh after the user grants access, so it can say
+                    // "not authorized" until the app restarts. The helper is a new
+                    // process on every call, so it always reads the live grant.
+                    if !matches!(in_process, PermissionStatus::Authorized) {
+                        let helper = self.check_sidecar(Permission::SystemAudio).await;
+                        return Ok(combine_system_audio(in_process, helper));
+                    }
+                }
+                Ok(in_process)
+            }
             Permission::ScreenRecording => self.check_screen_recording().await,
             Permission::Accessibility => self.check_accessibility().await,
             Permission::InputMonitoring => self.check_input_monitoring().await,
@@ -732,8 +760,50 @@ mod tests {
     use super::*;
 
     #[test]
-    fn accessibility_check_bypasses_sidecar() {
-        assert!(!should_check_via_sidecar(Permission::Accessibility));
+    fn checks_that_must_run_in_the_app_process_bypass_sidecar() {
+        // Accessibility is process-scoped. Microphone and system audio are
+        // read in-process because ad-hoc signed builds get a wrong answer from
+        // the helper even after the user granted them.
+        for permission in [
+            Permission::Accessibility,
+            Permission::Microphone,
+            Permission::SystemAudio,
+        ] {
+            assert!(!should_check_via_sidecar(permission), "{permission:?}");
+        }
+    }
+
+    #[test]
+    fn a_fresh_helper_grant_overrides_a_stale_in_process_answer() {
+        for stale in [
+            PermissionStatus::Denied,
+            PermissionStatus::NeverRequested,
+            PermissionStatus::Authorized,
+        ] {
+            assert!(matches!(
+                combine_system_audio(stale, Some(PermissionStatus::Authorized)),
+                PermissionStatus::Authorized
+            ));
+        }
+    }
+
+    #[test]
+    fn without_a_helper_grant_the_in_process_answer_stands() {
+        assert!(matches!(
+            combine_system_audio(PermissionStatus::Denied, Some(PermissionStatus::Denied)),
+            PermissionStatus::Denied
+        ));
+        assert!(matches!(
+            combine_system_audio(PermissionStatus::NeverRequested, None),
+            PermissionStatus::NeverRequested
+        ));
+        assert!(matches!(
+            combine_system_audio(
+                PermissionStatus::Denied,
+                Some(PermissionStatus::NeverRequested)
+            ),
+            PermissionStatus::Denied
+        ));
     }
 
     #[test]
@@ -742,12 +812,10 @@ mod tests {
             Permission::Calendar,
             Permission::Reminders,
             Permission::Contacts,
-            Permission::Microphone,
-            Permission::SystemAudio,
             Permission::ScreenRecording,
             Permission::InputMonitoring,
         ] {
-            assert!(should_check_via_sidecar(permission));
+            assert!(should_check_via_sidecar(permission), "{permission:?}");
         }
     }
 }

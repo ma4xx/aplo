@@ -8,6 +8,11 @@ import {
 } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
+vi.mock("~/shared/features", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("~/shared/features")>()),
+  APP_UPDATES_ENABLED: true,
+}));
+
 const mocks = vi.hoisted(() => ({
   platform: vi.fn(() => "macos"),
 }));

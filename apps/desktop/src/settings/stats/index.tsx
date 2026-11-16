@@ -12,6 +12,7 @@ import { ConversationPatterns } from "./insights";
 import { useActivity } from "./queries";
 import { Tracker } from "./tremor/tracker";
 
+import { INSIGHT_BADGES_ENABLED } from "~/shared/features";
 import { useNow, useTimezone, useWeekStartsOn } from "~/calendar/hooks";
 import { SettingsPageTitle } from "~/settings/page-title";
 
@@ -182,12 +183,14 @@ export function SettingsInsights() {
             </div>
           </section>
 
-          <BadgeCollection
-            records={activity.data ?? []}
-            now={now}
-            timezone={timezone}
-            weekStartsOn={weekStartsOn}
-          />
+          {INSIGHT_BADGES_ENABLED ? (
+            <BadgeCollection
+              records={activity.data ?? []}
+              now={now}
+              timezone={timezone}
+              weekStartsOn={weekStartsOn}
+            />
+          ) : null}
           <p className="text-muted-foreground text-xs">
             <Trans>
               Includes imported transcripts. Deleted conversations are excluded.

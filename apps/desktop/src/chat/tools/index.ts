@@ -42,6 +42,7 @@ import type {
 import { buildWebSearchTool } from "./web-search";
 
 import type { SearchFilters } from "~/search/contexts/engine/types";
+import { HOSTED_MODELS_ENABLED } from "~/shared/features";
 
 export type { ToolDependencies };
 
@@ -117,7 +118,10 @@ export const buildChatTools = (deps: ToolDependencies) => ({
     "search_calendar_events",
     buildSearchCalendarEventsTool(deps),
   ),
-  web_search: withToolLogging("web_search", buildWebSearchTool(deps)),
+  // Web search goes through the upstream product's servers and needs an account.
+  ...(HOSTED_MODELS_ENABLED
+    ? { web_search: withToolLogging("web_search", buildWebSearchTool(deps)) }
+    : {}),
   edit_memo: withToolLogging("edit_memo", buildEditMemoTool(deps)),
   edit_summary: withToolLogging("edit_summary", buildEditSummaryTool(deps)),
   apply_session_correction: withToolLogging(

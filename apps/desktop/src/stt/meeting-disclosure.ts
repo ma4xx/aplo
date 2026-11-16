@@ -1,4 +1,5 @@
 import { t } from "@lingui/core/macro";
+
 import { commands as detectCommands } from "@anlg/plugin-detect";
 import { toast } from "@anlg/ui/components/ui/toast";
 
@@ -10,7 +11,7 @@ import {
 import { persistDisclosureAttempt } from "./meeting-consent-store";
 
 export const MEETING_DISCLOSURE_MESSAGE =
-  "I'm using Anarlog to record and transcribe this meeting. https://anarlog.so";
+  "我正在使用 Aplo 记录并转写本次会议。";
 
 const MEETING_DISCLOSURE_MAX_ATTEMPTS = 30;
 const MEETING_DISCLOSURE_RETRY_INTERVAL_MS = 1_000;

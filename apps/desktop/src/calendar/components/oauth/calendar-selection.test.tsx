@@ -1,6 +1,11 @@
 import { cleanup, render } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
+vi.mock("~/shared/features", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("~/shared/features")>()),
+  ACCOUNTS_ENABLED: true,
+}));
+
 const mocks = vi.hoisted(() => ({
   scheduleSync: vi.fn(),
   calendars: [] as Array<{
