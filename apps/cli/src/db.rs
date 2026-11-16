@@ -1,4 +1,3 @@
-use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
 
 use crate::{Args, Error, Result};
@@ -39,45 +38,10 @@ pub(crate) fn resolve_path(args: &Args) -> Result<PathBuf> {
     Ok(resolve_default_path(&data_dir))
 }
 
+// Aplo keeps its data in one place. The command never falls back to another
+// product's folder: an older copy there would be stale data.
 fn resolve_default_path(data_dir: &Path) -> PathBuf {
-    let command_name = std::env::args_os()
-        .next()
-        .and_then(|path| Path::new(&path).file_name().map(|name| name.to_owned()));
-    resolve_default_path_for_command(data_dir, command_name.as_deref())
-}
-
-fn resolve_default_path_for_command(data_dir: &Path, command_name: Option<&OsStr>) -> PathBuf {
-    let command_name = command_name
-        .and_then(OsStr::to_str)
-        .and_then(|name| Path::new(name).file_stem())
-        .and_then(OsStr::to_str);
-    // `anarlog-nightly` falls through: the Nightly desktop app opens the same
-    // database as stable.
-    let channel_identifier = match command_name {
-        Some("anarlog-dev") => Some("com.hyprnote.dev"),
-        Some("anarlog-staging") => Some("com.hyprnote.staging"),
-        _ => None,
-    };
-    if let Some(identifier) = channel_identifier {
-        return data_dir.join(identifier).join("app.db");
-    }
-
-    let current = data_dir.join("anarlog").join("app.db");
-    if current.is_file() {
-        return current;
-    }
-
-    let legacy = data_dir.join("hyprnote").join("app.db");
-    if legacy.is_file() {
-        return legacy;
-    }
-
-    let identifier = data_dir.join("com.hyprnote.stable").join("app.db");
-    if identifier.is_file() {
-        return identifier;
-    }
-
-    current
+    data_dir.join("aplo").join("app.db")
 }
 
 #[cfg(test)]
@@ -85,67 +49,26 @@ mod tests {
     use super::*;
 
     #[test]
-    fn default_path_prefers_current_then_legacy_then_identifier() {
+    fn default_path_is_the_aplo_folder() {
         let dir = tempfile::tempdir().unwrap();
-        let current = dir.path().join("anarlog/app.db");
-        let legacy = dir.path().join("hyprnote/app.db");
-        let identifier = dir.path().join("com.hyprnote.stable/app.db");
-
         assert_eq!(
-            resolve_default_path_for_command(dir.path(), Some(OsStr::new("anarlog"))),
-            dir.path().join("anarlog/app.db")
-        );
-
-        std::fs::create_dir_all(identifier.parent().unwrap()).unwrap();
-        std::fs::write(&identifier, "").unwrap();
-        assert_eq!(
-            resolve_default_path_for_command(dir.path(), Some(OsStr::new("anarlog"))),
-            identifier
-        );
-
-        std::fs::create_dir_all(legacy.parent().unwrap()).unwrap();
-        std::fs::write(&legacy, "").unwrap();
-        assert_eq!(
-            resolve_default_path_for_command(dir.path(), Some(OsStr::new("anarlog"))),
-            legacy
-        );
-
-        std::fs::create_dir_all(current.parent().unwrap()).unwrap();
-        std::fs::write(&current, "").unwrap();
-        assert_eq!(
-            resolve_default_path_for_command(dir.path(), Some(OsStr::new("anarlog"))),
-            current
+            resolve_default_path(dir.path()),
+            dir.path().join("aplo/app.db")
         );
     }
 
     #[test]
-    fn channel_commands_target_their_channel_database() {
+    fn default_path_ignores_other_products_folders() {
         let dir = tempfile::tempdir().unwrap();
-        let stable = dir.path().join("anarlog/app.db");
-        std::fs::create_dir_all(stable.parent().unwrap()).unwrap();
-        std::fs::write(&stable, "").unwrap();
+        for folder in ["anarlog", "hyprnote", "com.hyprnote.stable"] {
+            let stale = dir.path().join(folder).join("app.db");
+            std::fs::create_dir_all(stale.parent().unwrap()).unwrap();
+            std::fs::write(&stale, "").unwrap();
+        }
 
         assert_eq!(
-            resolve_default_path_for_command(dir.path(), Some(OsStr::new("anarlog-dev"))),
-            dir.path().join("com.hyprnote.dev/app.db")
+            resolve_default_path(dir.path()),
+            dir.path().join("aplo/app.db")
         );
-        assert_eq!(
-            resolve_default_path_for_command(dir.path(), Some(OsStr::new("anarlog-staging"))),
-            dir.path().join("com.hyprnote.staging/app.db")
-        );
-        assert_eq!(
-            resolve_default_path_for_command(dir.path(), Some(OsStr::new("anarlog-dev.exe"))),
-            dir.path().join("com.hyprnote.dev/app.db")
-        );
-        assert_eq!(
-            resolve_default_path_for_command(dir.path(), Some(OsStr::new("anarlog-staging.exe"))),
-            dir.path().join("com.hyprnote.staging/app.db")
-        );
-        for command in ["anarlog-nightly", "anarlog-nightly.exe"] {
-            assert_eq!(
-                resolve_default_path_for_command(dir.path(), Some(OsStr::new(command))),
-                stable
-            );
-        }
     }
 }

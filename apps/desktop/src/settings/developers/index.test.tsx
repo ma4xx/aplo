@@ -10,6 +10,7 @@ import {
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
+  cloudApi: true,
   checkEmbeddedCli: vi.fn(),
   installEmbeddedCli: vi.fn(),
   listSkillAgents: vi.fn(),
@@ -27,6 +28,12 @@ const mocks = vi.hoisted(() => ({
     isReady: true,
     isUpgradingToPro: false,
     upgradeToPro: vi.fn(),
+  },
+}));
+
+vi.mock("~/shared/features", () => ({
+  get CLOUD_API_ENABLED() {
+    return mocks.cloudApi;
   },
 }));
 
@@ -99,8 +106,32 @@ vi.mock("@anlg/ui/components/ui/toast", () => ({
 import {
   SettingsDevelopers,
   buildMcpConfiguration,
+  buildMcpSetupMessage,
   getCliInstallNotification,
 } from "./index";
+
+describe("buildMcpSetupMessage", () => {
+  const message = buildMcpSetupMessage("/Users/test/.local/bin/aplo");
+
+  it("tells the agent exactly what to add and how to confirm it works", () => {
+    expect(message).toContain("名称：aplo");
+    expect(message).toContain("启动命令：/Users/test/.local/bin/aplo");
+    expect(message).toContain("参数：mcp");
+    expect(message).toContain("list_meetings");
+    expect(message).toContain("不要改动、删除我已有的其他服务");
+    expect(message).toContain("不需要任何账号");
+  });
+
+  it("carries the same configuration as the plain JSON builder", () => {
+    expect(message).toContain(
+      buildMcpConfiguration("/Users/test/.local/bin/aplo"),
+    );
+  });
+
+  it("never points the agent at the upstream product or a website", () => {
+    expect(message).not.toMatch(/anarlog|https?:\/\//i);
+  });
+});
 
 describe("buildMcpConfiguration", () => {
   it("uses the exact installed CLI path", () => {
@@ -110,7 +141,7 @@ describe("buildMcpConfiguration", () => {
 
     expect(configuration).toEqual({
       mcpServers: {
-        anarlog: {
+        aplo: {
           command: "/Users/test/.local/bin/anarlog",
           args: ["mcp"],
         },
@@ -174,10 +205,43 @@ describe("SettingsDevelopers", () => {
     mocks.billing.isReady = true;
     mocks.billing.isUpgradingToPro = false;
     mocks.billing.upgradeToPro.mockReset();
+    mocks.cloudApi = true;
   });
 
   afterEach(() => {
     cleanup();
+  });
+
+  it("shows only the local connector, with no cloud API or upstream guide, while the cloud switch is off", async () => {
+    mocks.cloudApi = false;
+    mocks.checkEmbeddedCli.mockResolvedValue({
+      status: "ok",
+      data: {
+        supported: true,
+        commandName: "aplo",
+        installPath: "/Users/test/.local/bin/aplo",
+        state: "installed",
+        details: null,
+      },
+    });
+    const client = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
+
+    render(
+      <QueryClientProvider client={client}>
+        <SettingsDevelopers />
+      </QueryClientProvider>,
+    );
+
+    expect(
+      await screen.findByRole("heading", { name: "Connect AI agents" }),
+    ).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Copy setup message" })).toBeTruthy();
+    expect(screen.queryByText("REST API")).toBeNull();
+    expect(screen.queryByText("Remote MCP")).toBeNull();
+    expect(screen.queryByRole("button", { name: /Guide/ })).toBeNull();
+    expect(mocks.openUrl).not.toHaveBeenCalled();
   });
 
   it("uses the installed CLI path when copying the MCP configuration", async () => {
@@ -216,17 +280,23 @@ describe("SettingsDevelopers", () => {
     expect(screen.queryByText("anarlog --json meetings list")).toBeNull();
     expect(screen.queryByText("anarlog mcp")).toBeNull();
 
-    fireEvent.click(screen.getByRole("button", { name: "Copy config" }));
+    fireEvent.click(screen.getByRole("button", { name: "Copy setup message" }));
 
     await waitFor(() => expect(writeText).toHaveBeenCalledOnce());
-    expect(JSON.parse(writeText.mock.calls[0][0])).toEqual({
+    const copied = writeText.mock.calls[0][0] as string;
+    const json = copied.split("```json\n")[1].split("\n```")[0];
+    expect(JSON.parse(json)).toEqual({
       mcpServers: {
-        anarlog: {
+        aplo: {
           command: "/Users/test/.local/bin/anarlog",
           args: ["mcp"],
         },
       },
     });
+    expect(copied.startsWith("请帮我把 Aplo")).toBe(true);
+    expect(mocks.toastSuccess).toHaveBeenCalledWith(
+      "Copied. Paste it to your AI agent.",
+    );
   });
 
   it("does not expose a nonexistent MCP path when the CLI is unsupported", async () => {
@@ -251,7 +321,7 @@ describe("SettingsDevelopers", () => {
     );
 
     const copyButton = await screen.findByRole("button", {
-      name: "Copy config",
+      name: "Copy setup message",
     });
     expect(copyButton.hasAttribute("disabled")).toBe(true);
     expect(
@@ -558,7 +628,7 @@ describe("SettingsDevelopers", () => {
     expect(mocks.installAgentSkill).not.toHaveBeenCalledWith("cursor");
     await waitFor(() =>
       expect(mocks.toastSuccess).toHaveBeenCalledWith(
-        "Anarlog skill added to 3 agents",
+        "Aplo skill added to 3 agents",
       ),
     );
   });
@@ -613,7 +683,7 @@ describe("SettingsDevelopers", () => {
     );
     await waitFor(() =>
       expect(mocks.toastSuccess).toHaveBeenCalledWith(
-        "Anarlog skill added to Codex",
+        "Aplo skill added to Codex",
       ),
     );
   });

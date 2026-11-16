@@ -22,8 +22,11 @@ export const HOSTED_MODELS_ENABLED = false;
 /** Features the upstream product sells in its Pro plan (app icons, template auto-format). */
 export const PAID_FEATURES_ENABLED = false;
 
-/** The Developers page: CLI, MCP, agent skills, cloud API, webhooks. */
-export const DEVELOPER_TOOLS_ENABLED = false;
+/** The "Connect AI agents" page: the MCP connector and the agent skill. */
+export const DEVELOPER_TOOLS_ENABLED = true;
+
+/** Cloud API, remote MCP and webhooks on that page. They need accounts and a hosted service. */
+export const CLOUD_API_ENABLED = false;
 
 /** Importing meeting history from other apps; most sources sign in through the upstream backend. */
 export const IMPORTS_ENABLED = false;

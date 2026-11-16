@@ -684,8 +684,8 @@ msgid "Analyzing structure..."
 msgstr "正在分析结构..."
 
 #: src/settings/developers/cli.tsx
-msgid "Anarlog CLI"
-msgstr "Anarlog CLI"
+#~ msgid "Anarlog CLI"
+#~ msgstr "Anarlog CLI"
 
 #: src/session-sharing/access-management.tsx
 msgid "Anarlog member"
@@ -695,15 +695,13 @@ msgstr "Aplo 成员"
 msgid "Anarlog Pro coordinates recording across your devices."
 msgstr "Anarlog Pro 可在你的多台设备间协调录音。"
 
-#. placeholder {0}: statuses[0].displayName
 #: src/settings/developers/skills.tsx
-msgid "Anarlog skill added to {0}"
-msgstr "已将 Aplo 技能添加到 {0}"
+#~ msgid "Anarlog skill added to {0}"
+#~ msgstr "已将 Aplo 技能添加到 {0}"
 
-#. placeholder {0}: statuses.length
 #: src/settings/developers/skills.tsx
-msgid "Anarlog skill added to {0} agents"
-msgstr "已将 Aplo 技能添加到 {0} 个智能体"
+#~ msgid "Anarlog skill added to {0} agents"
+#~ msgstr "已将 Aplo 技能添加到 {0} 个智能体"
 
 #: src/session-sharing/access-management.tsx
 msgid "Anarlog user"
@@ -861,6 +859,16 @@ msgstr "Aplo 需要麦克风和系统音频来转写会议，还需要辅助功�
 #: src/stt/saved-capture-audio.tsx
 msgid "Aplo saved this meeting's audio"
 msgstr "Aplo 已保存这场会议的音频"
+
+#. placeholder {0}: statuses[0].displayName
+#: src/settings/developers/skills.tsx
+msgid "Aplo skill added to {0}"
+msgstr "已将 Aplo 技能添加到 {0}"
+
+#. placeholder {0}: statuses.length
+#: src/settings/developers/skills.tsx
+msgid "Aplo skill added to {0} agents"
+msgstr "已将 Aplo 技能添加到 {0} 个智能体"
 
 #: src/settings/sync/index.tsx
 msgid "Aplo will keep retrying."
@@ -1620,6 +1628,10 @@ msgstr "选择谁可以访问新会议的笔记。"
 msgid "Claim email domain"
 msgstr "认领邮箱域名"
 
+#: src/settings/developers/cli.tsx
+msgid "Claude, Cursor and other AI agents can look up your meeting notes and transcripts themselves, so you don't have to copy and paste them. Everything stays on this Mac."
+msgstr "Claude、Cursor 等 AI 助手可以自己查阅你的会议纪要和逐字稿，不用你再复制粘贴。所有内容都只留在这台 Mac 上。"
+
 #: src/settings/general/storage/legacy-cleanup.tsx
 msgid "Clean Up"
 msgstr "清理"
@@ -1652,8 +1664,8 @@ msgid "Clear selection"
 msgstr "清除选择"
 
 #: src/settings/developers/cli.tsx
-msgid "CLI & MCP"
-msgstr "CLI 与 MCP"
+#~ msgid "CLI & MCP"
+#~ msgstr "CLI 与 MCP"
 
 #: src/onboarding/welcome-note.ts
 msgid "Click **Join & record** in the top-right corner. It will open a private, prerecorded demo meeting, so you don't have to worry about your camera or microphone. Aplo will save the audio. To create a transcript and notes, choose a provider in **Settings → Transcription**; if one is not ready, Aplo will show you a setup shortcut."
@@ -1911,6 +1923,11 @@ msgstr "在「设置 › CRM」中连接 CRM，以丰富联系人信息。"
 msgid "Connect a CRM to look up your contacts from Aplo. Connections are managed through your Anarlog account."
 msgstr "连接 CRM，即可在 Aplo 中查找你的联系人。连接通过你的 Aplo 账户管理。"
 
+#: src/settings/developers/index.tsx
+#: src/sidebar/settings-nav-groups.ts
+msgid "Connect AI agents"
+msgstr "连接 AI 助手"
+
 #: src/session/components/note-input/enhanced/config-error.tsx
 msgid "Connect an AI provider"
 msgstr "连接 AI 服务商"
@@ -1966,6 +1983,10 @@ msgstr "连接 Slack"
 msgid "Connect Slack to choose a channel for this recap."
 msgstr "连接 Slack，为这份回顾选择频道。"
 
+#: src/settings/developers/cli.tsx
+msgid "Connect your AI agent"
+msgstr "连接你的 AI 助手"
+
 #: src/instruction/index.tsx
 msgid "Connect your integration"
 msgstr "连接你的集成"
@@ -2013,6 +2034,7 @@ msgstr "正在连接此设备"
 msgid "Connecting..."
 msgstr "正在连接..."
 
+#: src/settings/developers/cli.tsx
 #: src/settings/developers/cloud-api.tsx
 msgid "Connector"
 msgstr "连接器"
@@ -2079,6 +2101,10 @@ msgstr "对话数：{total}"
 msgid "Copied"
 msgstr "已复制"
 
+#: src/settings/developers/cli.tsx
+msgid "Copied. Paste it to your AI agent."
+msgstr "已复制，粘贴发给你的 AI 助手即可"
+
 #: src/main/windows-title-bar.tsx
 #: src/session/components/note-input/header-enhanced.tsx
 #: src/session/components/note-input/header-raw.tsx
@@ -2095,8 +2121,8 @@ msgid "Copy {label} URL"
 msgstr "复制 {label} URL"
 
 #: src/settings/developers/cli.tsx
-msgid "Copy config"
-msgstr "复制配置"
+#~ msgid "Copy config"
+#~ msgstr "复制配置"
 
 #: src/settings/dictation.tsx
 msgid "Copy last dictation"
@@ -2115,6 +2141,18 @@ msgstr "复制消息"
 #: src/settings/general/e2ee-setup.tsx
 msgid "Copy recovery key"
 msgstr "复制恢复密钥"
+
+#: src/settings/developers/cli.tsx
+msgid "Copy setup message"
+msgstr "复制配置说明"
+
+#: src/settings/developers/cli.tsx
+#~ msgid "Copy this and paste it into your AI agent's MCP settings."
+#~ msgstr "复制这段配置，粘贴到你的 AI 助手的 MCP 设置里。"
+
+#: src/settings/developers/cli.tsx
+msgid "Copy this and send it to your AI agent (Claude Code, Codex and so on). It sets everything up for you."
+msgstr "点一下复制，把内容发给你的 AI 助手（Claude Code、Codex 等），它会自己帮你配置好。"
 
 #: src/settings/developers/cloud-api.tsx
 msgid "Copy this key now — it is only shown once."
@@ -2158,8 +2196,12 @@ msgid "Could not connect to the local speech-to-text model."
 msgstr "无法连接本地语音转文字模型。"
 
 #: src/settings/developers/cli.tsx
-msgid "Could not copy the MCP configuration"
-msgstr "无法复制 MCP 配置"
+#~ msgid "Could not copy the MCP configuration"
+#~ msgstr "无法复制 MCP 配置"
+
+#: src/settings/developers/cli.tsx
+msgid "Could not copy the setup message"
+msgstr "无法复制配置说明"
 
 #: src/session-sharing/index.tsx
 #: src/session-sharing/management-panel.tsx
@@ -2717,8 +2759,8 @@ msgstr "检测延迟"
 
 #: src/settings/developers/index.tsx
 #: src/sidebar/settings-nav-groups.ts
-msgid "Developers"
-msgstr "开发者"
+#~ msgid "Developers"
+#~ msgstr "开发者"
 
 #: src/settings/privacy/index.tsx
 msgid "Device authentication is not available on this computer."
@@ -3517,8 +3559,8 @@ msgid "guest@company.com"
 msgstr "guest@company.com"
 
 #: src/settings/developers/index.tsx
-msgid "Guide"
-msgstr "指南"
+#~ msgid "Guide"
+#~ msgstr "指南"
 
 #: src/settings/dictation.tsx
 msgid "Hands-free dictation"
@@ -4023,6 +4065,10 @@ msgstr "退出后，你将无法再访问这里的共享笔记。"
 msgid "Less"
 msgstr "少"
 
+#: src/settings/developers/cli.tsx
+msgid "Let AI agents read your meetings"
+msgstr "让 AI 助手读取你的会议"
+
 #: src/session-sharing/attachment-controls.tsx
 msgid "Let people with access play the recording."
 msgstr "允许有访问权限的人播放录音。"
@@ -4298,12 +4344,16 @@ msgid "Maybe later"
 msgstr "以后再说"
 
 #: src/settings/developers/cli.tsx
-msgid "MCP configuration copied"
-msgstr "已复制 MCP 配置"
+#~ msgid "MCP configuration"
+#~ msgstr "MCP 连接配置"
 
 #: src/settings/developers/cli.tsx
-msgid "MCP server"
-msgstr "MCP 服务器"
+#~ msgid "MCP configuration copied"
+#~ msgstr "已复制 MCP 配置"
+
+#: src/settings/developers/cli.tsx
+#~ msgid "MCP server"
+#~ msgstr "MCP 服务器"
 
 #. placeholder {0}: number.format(stats.timedConversations)
 #: src/settings/stats/insights.tsx
@@ -5565,6 +5615,10 @@ msgstr "可以开始听写"
 #: src/onboarding/index.tsx
 msgid "Ready to go"
 msgstr "准备就绪"
+
+#: src/settings/developers/cli.tsx
+msgid "Ready. AI agents on this Mac can use it."
+msgstr "已就绪，这台 Mac 上的 AI 助手可以使用。"
 
 #: src/settings/ai/llm/select.tsx
 msgid "Reasoning effort"
@@ -7009,6 +7063,22 @@ msgstr "正在启动…"
 msgid "Stay current with updates installed the next time Aplo opens."
 msgstr "保持最新，更新会在下次打开 Aplo 时安装。"
 
+#: src/settings/developers/cli.tsx
+msgid "Step 1 · Done automatically"
+msgstr "第 1 步 · 自动完成"
+
+#: src/settings/developers/cli.tsx
+msgid "Step 1 · Install the connector first"
+msgstr "第 1 步 · 请先安装连接器"
+
+#: src/settings/developers/cli.tsx
+msgid "Step 2 · Required"
+msgstr "第 2 步 · 必做"
+
+#: src/settings/developers/skills.tsx
+msgid "Step 3 · Optional"
+msgstr "第 3 步 · 可选"
+
 #: src/settings/automations/index.tsx
 msgid "Steps run from top to bottom."
 msgstr "步骤按从上到下的顺序执行。"
@@ -7250,8 +7320,12 @@ msgid "Talk to sales"
 msgstr "联系销售"
 
 #: src/settings/developers/skills.tsx
-msgid "Teach coding agents when and how to use the Anarlog CLI and MCP"
-msgstr "教编程智能体何时以及如何使用 Anarlog CLI 和 MCP"
+#~ msgid "Teach coding agents when and how to use the Anarlog CLI and MCP"
+#~ msgstr "教编程智能体何时以及如何使用 Anarlog CLI 和 MCP"
+
+#: src/settings/developers/skills.tsx
+msgid "Teach your AI agents when and how to look up your meetings in Aplo"
+msgstr "告诉你的 AI 助手什么时候、怎样去查阅 Aplo 里的会议"
 
 #: src/resource-sharing/share-dialog.tsx
 msgid "Team"
@@ -7451,8 +7525,8 @@ msgid "This edit is no longer pending."
 msgstr "此编辑已不再待处理。"
 
 #: src/settings/plan-gate.tsx
-msgid "This feature is not available in this version"
-msgstr "该功能在当前版本暂不可用"
+#~ msgid "This feature is not available in this version"
+#~ msgstr "该功能在当前版本暂不可用"
 
 #: src/resource-sharing/share-dialog.tsx
 msgid "This guest needs Team access"
@@ -7503,12 +7577,12 @@ msgid "This recording is using batch transcription, so the transcript isn't avai
 msgstr "此录音使用批量转写，因此聊天暂时无法使用逐字稿。请在转写完成后再提问，或切换到 Pro 模型进行实时转写。"
 
 #: src/settings/plan-gate.tsx
-#~ msgid "This requires Anarlog Enterprise"
-#~ msgstr "此功能需要 Aplo 企业版"
+msgid "This requires Anarlog Enterprise"
+msgstr "此功能需要 Aplo 企业版"
 
 #: src/settings/plan-gate.tsx
-#~ msgid "This requires Anarlog Pro"
-#~ msgstr "此功能需要 Anarlog Pro"
+msgid "This requires Anarlog Pro"
+msgstr "此功能需要 Anarlog Pro"
 
 #: src/resource-sharing/payloads.ts
 msgid "This shared automation is invalid"
@@ -7860,6 +7934,7 @@ msgstr "正在更新音频共享"
 msgid "Updating prompt draft"
 msgstr "正在更新提示词草稿"
 
+#: src/settings/plan-gate.tsx
 #: src/sidebar/toast/registry.tsx
 msgid "Upgrade"
 msgstr "升级"

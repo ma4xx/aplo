@@ -99,8 +99,8 @@ export function SkillsRow() {
       void queryClient.invalidateQueries({ queryKey: SKILL_AGENTS_QUERY_KEY });
       toast.success(
         statuses.length === 1
-          ? t`Anarlog skill added to ${statuses[0].displayName}`
-          : t`Anarlog skill added to ${statuses.length} agents`,
+          ? t`Aplo skill added to ${statuses[0].displayName}`
+          : t`Aplo skill added to ${statuses.length} agents`,
       );
     },
     onError: (error) => {
@@ -115,12 +115,15 @@ export function SkillsRow() {
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div className="min-w-0">
+        <p className="text-muted-foreground mb-0.5 text-xs">
+          <Trans>Step 3 · Optional</Trans>
+        </p>
         <h3 className="text-sm font-medium">
           <Trans>Agent skills</Trans>
         </h3>
         <p className="text-muted-foreground mt-1 text-xs">
           <Trans>
-            Teach coding agents when and how to use the Anarlog CLI and MCP
+            Teach your AI agents when and how to look up your meetings in Aplo
           </Trans>
         </p>
       </div>

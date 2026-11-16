@@ -2,30 +2,19 @@ use std::path::{Path, PathBuf};
 
 use serde::{Deserialize, Serialize};
 
-const SKILL_DIR_NAME: &str = "anarlog";
+const SKILL_DIR_NAME: &str = "aplo";
 
-// The published skill package from `skills/anarlog`, embedded at build time so
-// installs work offline and always match the running app version.
+// The skill package from `skills/aplo`, embedded at build time so installs work
+// offline and always match the running app version.
 const SKILL_FILES: &[(&str, &str)] = &[
-    (
-        "SKILL.md",
-        include_str!("../../../../skills/anarlog/SKILL.md"),
-    ),
-    (
-        "references/cli.md",
-        include_str!("../../../../skills/anarlog/references/cli.md"),
-    ),
+    ("SKILL.md", include_str!("../../../../skills/aplo/SKILL.md")),
     (
         "references/errors.md",
-        include_str!("../../../../skills/anarlog/references/errors.md"),
+        include_str!("../../../../skills/aplo/references/errors.md"),
     ),
     (
         "references/mcp.md",
-        include_str!("../../../../skills/anarlog/references/mcp.md"),
-    ),
-    (
-        "references/setup.md",
-        include_str!("../../../../skills/anarlog/references/setup.md"),
+        include_str!("../../../../skills/aplo/references/mcp.md"),
     ),
 ];
 

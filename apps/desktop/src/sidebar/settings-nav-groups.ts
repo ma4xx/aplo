@@ -186,7 +186,7 @@ export function useSettingsNavGroups(): SettingsNavGroup[] {
           icon: ShieldCheck,
         },
         { id: "permissions", label: t`Permissions`, icon: Lock },
-        { id: "developers", label: t`Developers`, icon: Code },
+        { id: "developers", label: t`Connect AI agents`, icon: Code },
       ],
     },
   ]);
