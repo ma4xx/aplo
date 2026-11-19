@@ -727,7 +727,7 @@ mod tests {
                 "propose_summary_edit",
             ]
         );
-        let mcp_docs = include_str!("../../../docs/reference/mcp.mdx");
+        let mcp_docs = include_str!("../../../docs/upstream/site/reference/mcp.mdx");
         let mcp_skill = include_str!("../../../skills/aplo/references/mcp.md");
         for tool_name in &tool_names {
             assert!(

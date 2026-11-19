@@ -486,7 +486,7 @@ mod tests {
 
     #[test]
     fn public_docs_and_skill_cover_the_command_contract() {
-        let docs = include_str!("../../../docs/reference/cli.mdx");
+        let docs = include_str!("../../../docs/upstream/site/reference/cli.mdx");
         let skill = concat!(
             include_str!("../../../skills/anarlog/references/cli.md"),
             include_str!("../../../skills/anarlog/references/setup.md"),

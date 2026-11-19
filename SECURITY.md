@@ -1,36 +1,7 @@
-# Security Policy
+# 安全问题
 
-## Supported Versions
+如果你发现了 Aplo 的安全漏洞，请**不要**在公开的 Issue 里描述细节。
 
-Anarlog moves fast and we only ship fixes forward. Security updates are applied to the latest release only.
+请通过 GitHub 私下报告：打开本仓库的 **Security** 页面，点 **Report a vulnerability**，写明问题、复现步骤和影响范围。我们会尽快回复。
 
-| Version        | Supported          |
-| -------------- | ------------------ |
-| Latest release | :white_check_mark: |
-| Older versions | :x:                |
-
-If you're on an older version, please update to the latest release before reporting an issue you can no longer reproduce.
-
-## Reporting a Vulnerability
-
-Please do not open a public issue for security vulnerabilities.
-
-Instead, use one of these private channels:
-
-- **GitHub**: [Report a vulnerability](https://github.com/fastrepl/anarlog/security/advisories/new) via private vulnerability reporting (preferred)
-- **Email**: team@fastrepl.com
-
-When reporting, please include:
-
-- A description of the vulnerability and its potential impact
-- Steps to reproduce, a proof of concept, or affected code paths
-- The Anarlog version and platform you tested against
-
-## What to Expect
-
-- We'll acknowledge your report within 3 business days.
-- We'll keep you updated as we investigate, and let you know whether the report is accepted or declined.
-- If accepted, we'll work on a fix and credit you in the release notes unless you prefer to stay anonymous.
-- Please give us a reasonable window to ship a fix before any public disclosure.
-
-Thanks for helping keep Anarlog and its users safe.
+目前只维护最新发布的版本。

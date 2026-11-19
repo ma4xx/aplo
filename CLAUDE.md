@@ -1,8 +1,10 @@
 # Aplo
 
-Aplo is a Chinese-first meeting notepad. See `README.md` for what it does. Its code started from the open-source Anarlog project (MIT); that is credited in the README's thanks section and nowhere else in user-facing text: do not describe Aplo as a fork or as "based on" another product in the README, the repository description, release notes or the app. `docs/upstream/` holds the original project's README, AGENTS.md, and CI workflows, kept for reference only.
+Aplo is a Chinese-first meeting notepad. See `README.md` for what it does. Its code started from the open-source Anarlog project (MIT); that is credited in the README's thanks section and nowhere else in user-facing text: do not describe Aplo as a fork or as "based on" another product in the README, the repository description, release notes or the app. `docs/upstream/` holds the original project's top-level docs (README, AGENTS, CONTRIBUTING, SECURITY and others, suffixed `.anarlog.md`), its documentation site (`site/`), and its CI workflows, kept for reference only. Do not move them back to the top level: the repository is public, and they describe someone else's product. The CLI tests read `docs/upstream/site/reference/{cli,mcp}.mdx`.
 
-This file is the working agreement. `AGENTS.md` and `.agents/` are upstream's and describe upstream's own workflow (GitButler, PR skills, release tooling). Ignore them where they conflict with this file.
+This file is the working agreement. The root `AGENTS.md` only points here. `.agents/` is upstream's and describes upstream's own workflow (GitButler, PR skills, release tooling). Ignore it where it conflicts with this file.
+
+Commits use the GitHub no-reply address configured in this repository (`git config user.email`), never a personal email: the repository is public and every commit's author email is visible.
 
 ## Who and how
 
