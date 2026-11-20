@@ -8,7 +8,7 @@ use anlg_agent_access::{DEFAULT_TRANSCRIPT_LIMIT, MAX_TRANSCRIPT_LIMIT};
 #[command(
     name = "anarlog",
     version = crate::VERSION,
-    about = "Access Anarlog from the command line"
+    about = "Access Aplo from the command line"
 )]
 pub struct Args {
     #[arg(

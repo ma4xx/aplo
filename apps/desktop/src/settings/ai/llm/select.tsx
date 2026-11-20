@@ -425,7 +425,13 @@ export function SelectProviderAndModel() {
                     <div className="flex flex-col gap-0.5">
                       <div className="flex items-center gap-2">
                         <ProviderIconSlot>{provider.icon}</ProviderIconSlot>
-                        <span>{provider.displayName}</span>
+                        <span>
+                          {provider.id === "openai"
+                            ? t`OpenAI API (pay as you go)`
+                            : provider.id === "chatgpt"
+                              ? t`ChatGPT subscription`
+                              : provider.displayName}
+                        </span>
                       </div>
                       {locked ? (
                         <span className="text-muted-foreground text-[11px]">

@@ -20,7 +20,7 @@ vi.mock("~/env", () => ({
   env: { VITE_APP_URL: "http://localhost:3000" },
 }));
 
-import { ErrorMessage, getChatErrorText } from "./error";
+import { classifyChatError, ErrorMessage, getChatErrorText } from "./error";
 
 describe("ErrorMessage", () => {
   beforeEach(() => {
@@ -33,6 +33,41 @@ describe("ErrorMessage", () => {
     render(<ErrorMessage error="cloudsync_activity_drain_timeout" />);
 
     expect(screen.getByText("cloudsync_activity_drain_timeout")).toBeTruthy();
+  });
+});
+
+const OPENAI_QUOTA_ERROR =
+  '{"type":"error","sequence_number":2,"error":{"type":"insufficient_quota","code":"credit_balance_exhausted","message":"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.","param":null}}';
+
+describe("classifyChatError", () => {
+  it("recognizes an exhausted OpenAI API balance", () => {
+    expect(classifyChatError(OPENAI_QUOTA_ERROR)).toBe("openai_api_quota");
+  });
+
+  it("recognizes other providers' quota errors without pointing at ChatGPT", () => {
+    expect(
+      classifyChatError("You exceeded your current quota, please check your plan"),
+    ).toBe("api_quota");
+    expect(
+      classifyChatError("Your credit balance is too low to access the API"),
+    ).toBe("api_quota");
+  });
+
+  it("leaves unrelated errors alone", () => {
+    expect(classifyChatError("Request timeout")).toBe("other");
+  });
+});
+
+describe("ErrorMessage quota hint", () => {
+  beforeEach(() => {
+    cleanup();
+  });
+
+  it("explains an OpenAI quota error and keeps the raw text available", () => {
+    render(<ErrorMessage error={new Error(OPENAI_QUOTA_ERROR)} />);
+
+    expect(screen.getByText(/OpenAI API balance has run out/)).toBeTruthy();
+    expect(screen.getByText(OPENAI_QUOTA_ERROR)).toBeTruthy();
   });
 });
 

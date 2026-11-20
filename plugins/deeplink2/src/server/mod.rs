@@ -131,8 +131,8 @@ pub(crate) fn subscription_auth_deeplink(
 fn default_ui_content() -> (bool, &'static str, &'static str) {
     (
         false,
-        "Something went wrong",
-        "Please close this window and try again.",
+        "出了点问题",
+        "请关闭这个窗口后重试。",
     )
 }
 
@@ -148,39 +148,39 @@ fn ui_content(deep_link: &DeepLink) -> (bool, &'static str, &'static str) {
         {
             (
                 true,
-                "Connected successfully",
-                "Returning to Anarlog to finish connecting.",
+                "连接成功",
+                "正在回到 Aplo 完成连接。",
             )
         }
         DeepLink::AuthCallback(_) => (
             true,
-            "Signed in successfully",
-            "Click the button below to return to the app.",
+            "登录成功",
+            "点下面的按钮回到 Aplo。",
         ),
         DeepLink::BillingRefresh(_) => (
             true,
-            "Subscription updated",
-            "Click the button below to return to the app.",
+            "订阅已更新",
+            "点下面的按钮回到 Aplo。",
         ),
         DeepLink::IntegrationCallback(s) if s.status == "success" => (
             true,
-            "Connected successfully",
-            "Click the button below to return to the app.",
+            "连接成功",
+            "点下面的按钮回到 Aplo。",
         ),
         DeepLink::IntegrationCallback(s) if s.status == "upgrade_required" => (
             false,
-            "Upgrade required",
-            "You can close this window and upgrade your plan to connect this integration.",
+            "需要升级",
+            "可以关闭这个窗口，升级套餐后再连接。",
         ),
         DeepLink::IntegrationCallback(_) => (
             false,
-            "Connection failed",
-            "Something went wrong. Please close this window and try again.",
+            "连接失败",
+            "出了点问题，请关闭这个窗口后重试。",
         ),
         DeepLink::OnboardingDemoComplete(_) => (
             true,
-            "Demo complete",
-            "Anarlog is finishing your transcript and creating your summary.",
+            "演示完成",
+            "Aplo 正在整理逐字稿并生成纪要。",
         ),
     }
 }

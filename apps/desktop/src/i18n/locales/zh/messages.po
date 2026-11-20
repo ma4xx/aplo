@@ -1418,6 +1418,10 @@ msgstr "聊天模型尚未就绪"
 msgid "ChatGPT plans"
 msgstr "ChatGPT 套餐"
 
+#: src/settings/ai/llm/select.tsx
+msgid "ChatGPT subscription"
+msgstr "ChatGPT 订阅"
+
 #: src/chat/components/input/use-dictation.ts
 msgid "Check microphone permission and the selected input device, then try again."
 msgstr "请检查麦克风权限和所选输入设备，然后重试。"
@@ -5185,6 +5189,10 @@ msgstr "预定会议开始时打开会议链接。"
 msgid "Open web copy"
 msgstr "打开网页副本"
 
+#: src/settings/ai/llm/select.tsx
+msgid "OpenAI API (pay as you go)"
+msgstr "OpenAI API（按量付费）"
+
 #: src/settings/ai/llm/subscriptions/connect.tsx
 msgid "Opening sign-in…"
 msgstr "正在打开登录页…"
@@ -5228,6 +5236,10 @@ msgstr "组织"
 #: src/contacts/organization-details.tsx
 msgid "Organization name"
 msgstr "组织名称"
+
+#: src/chat/components/message/error.tsx
+msgid "Original error"
+msgstr "原始错误"
 
 #: src/settings/referrals.tsx
 msgid "Original offer: {amount} off your subscription after your friend's first payment."
@@ -7423,6 +7435,10 @@ msgstr "在提交修正之前，笔记已发生变化。请重新读取笔记后
 msgid "The note may have been unshared or moved out of a workspace you can access."
 msgstr "该笔记可能已取消共享，或已被移出你可访问的工作区。"
 
+#: src/chat/components/message/error.tsx
+msgid "The OpenAI API balance has run out. To use your ChatGPT plan instead, choose ChatGPT under Settings → Intelligence."
+msgstr "OpenAI API 余额已用完。想用 ChatGPT 订阅，请到「设置 → 智能」选择「ChatGPT 订阅」。"
+
 #: src/shared/control.tsx
 msgid "The page you're looking for doesn't exist."
 msgstr "你要找的页面不存在。"
@@ -7502,6 +7518,10 @@ msgstr "此账号已在使用另一个恢复密钥。请使用你第一台设备
 #: src/resource-sharing/library.tsx
 msgid "This adds a copy you can edit without changing the shared item."
 msgstr "这会添加一份副本，你可以编辑它，而不会改动原共享项目。"
+
+#: src/chat/components/message/error.tsx
+msgid "This AI service has no balance left. Top up with the provider, or choose another service under Settings → Intelligence."
+msgstr "这个 AI 服务的余额已用完。请到服务商那里充值，或者到「设置 → 智能」换一个服务。"
 
 #: src/imports/parser.ts
 msgid "This CSV export does not contain any meeting rows"

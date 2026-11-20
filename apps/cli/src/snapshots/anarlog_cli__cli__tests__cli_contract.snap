@@ -3,7 +3,7 @@ source: apps/cli/src/cli.rs
 expression: canonicalize_json(contract)
 ---
 {
-  "about": "Access Anarlog from the command line",
+  "about": "Access Aplo from the command line",
   "global_options": [
     {
       "flags": "--base",

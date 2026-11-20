@@ -21,6 +21,24 @@ export function getChatErrorText(error: unknown): string {
   return typeof error === "string" ? error : String(error);
 }
 
+export type ChatErrorKind = "openai_api_quota" | "api_quota" | "other";
+
+// The provider's raw error (often JSON) is unreadable for most users; the
+// common billing case gets a plain explanation, with the raw text kept below.
+export function classifyChatError(message: string): ChatErrorKind {
+  const lower = message.toLowerCase();
+  const isQuota =
+    lower.includes("insufficient_quota") ||
+    lower.includes("credit_balance_exhausted") ||
+    lower.includes("no credits remaining") ||
+    lower.includes("exceeded your current quota") ||
+    lower.includes("credit balance is too low");
+  if (!isQuota) {
+    return "other";
+  }
+  return lower.includes("platform.openai.com") ? "openai_api_quota" : "api_quota";
+}
+
 function isContextLengthError(message: string): boolean {
   const lowerMessage = message.toLowerCase();
   return (
@@ -40,6 +58,7 @@ export function ErrorMessage({
 }) {
   const { t } = useLingui();
   const message = getChatErrorText(error);
+  const kind = classifyChatError(message);
   // The help page lives on the upstream product's website.
   const showContextLengthHelp =
     UPSTREAM_COMMUNITY_ENABLED && isContextLengthError(message);
@@ -54,7 +73,32 @@ export function ErrorMessage({
   return (
     <MessageContainer align="start">
       <MessageBubble variant="error" withActionButton={!!onRetry}>
-        <p className="text-sm">{message}</p>
+        {kind === "other" ? (
+          <p className="text-sm">{message}</p>
+        ) : (
+          <div className="flex flex-col gap-1">
+            <p className="text-sm">
+              {kind === "openai_api_quota" ? (
+                <Trans>
+                  The OpenAI API balance has run out. To use your ChatGPT plan
+                  instead, choose ChatGPT under Settings → Intelligence.
+                </Trans>
+              ) : (
+                <Trans>
+                  This AI service has no balance left. Top up with the
+                  provider, or choose another service under Settings →
+                  Intelligence.
+                </Trans>
+              )}
+            </p>
+            <details className="text-xs opacity-70">
+              <summary className="cursor-pointer">
+                <Trans>Original error</Trans>
+              </summary>
+              <p className="mt-1 break-all">{message}</p>
+            </details>
+          </div>
+        )}
         {showContextLengthHelp && (
           <button
             onClick={handleOpenFaq}
