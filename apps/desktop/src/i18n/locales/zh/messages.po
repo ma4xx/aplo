@@ -5741,6 +5741,10 @@ msgstr "未找到录音，可能已被删除。"
 msgid "Recording started, but Aplo could not post the meeting chat disclosure."
 msgstr "录音已开始，但 Aplo 未能在会议聊天中发布录音告知。"
 
+#: src/session/components/note-input/start-recording-prompt.tsx
+msgid "Recording starts right away. Press ⌘⇧N anytime to start a new meeting."
+msgstr "点一下就开始录音。任何时候按 ⌘⇧N 可以新开一场会议。"
+
 #: src/settings/general/notification.tsx
 msgid "Recording status prompts"
 msgstr "录制状态提示"
@@ -7011,6 +7015,7 @@ msgid "Start Pro"
 msgstr "开通 Pro"
 
 #: src/services/event-notification/index.ts
+#: src/session/components/note-input/start-recording-prompt.tsx
 msgid "Start recording"
 msgstr "开始录制"
 

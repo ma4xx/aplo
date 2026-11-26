@@ -91,7 +91,7 @@ function ProviderContext({ providerId }: { providerId: ProviderId }) {
                             : providerId === "openrouter"
                               ? `Use [OpenRouter](https://openrouter.ai) to transcribe with supported speech-to-text models through one API key. OpenRouter transcription runs after recording.`
                               : providerId === "dashscope"
-                                ? `Use Alibaba Cloud Model Studio's Qwen ASR for **live transcription**. The default endpoint is the Singapore region; change it under Advanced when your API key belongs to another region.`
+                                ? `Use Alibaba Cloud Model Studio's Qwen ASR for **live transcription**. The default endpoint is the China (Beijing) region; for an international API key, set the Base URL under Advanced to \`https://dashscope-intl.aliyuncs.com\`.`
                                 : providerId === "zai"
                                   ? `Use [Z.AI GLM ASR](https://docs.z.ai/guides/audio/glm-asr-2512) for batch transcription. Aplo automatically splits recordings to fit Z.AI's 30-second upload limit.`
                                   : providerId === "siliconflow"

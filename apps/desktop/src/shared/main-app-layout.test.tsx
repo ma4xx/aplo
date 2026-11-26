@@ -66,11 +66,12 @@ vi.mock("~/sidebar/toast/undo-delete-toast", () => ({
 }));
 
 vi.mock("~/store/zustand/tabs", () => ({
-  isTabInputSupported: vi.fn(),
+  isTabInputSupported: vi.fn(() => true),
   useTabs: () => vi.fn(),
 }));
 
-import MainAppLayout from "./main-app-layout";
+import MainAppLayout, { handleOpenTabRequest } from "./main-app-layout";
+import { openNewNoteAndListen } from "./useNewNote";
 
 describe("MainAppLayout", () => {
   beforeEach(() => {
@@ -102,5 +103,53 @@ describe("MainAppLayout", () => {
     expect(screen.queryByTestId("meeting-import-sync")).toBeNull();
     expect(screen.queryByTestId("enterprise-capture-sync")).toBeNull();
     expect(screen.queryByTestId("workspace-invitation-toasts")).toBeNull();
+  });
+});
+
+describe("handleOpenTabRequest", () => {
+  afterEach(() => {
+    vi.mocked(openNewNoteAndListen).mockClear();
+  });
+
+  it("starts recording when the tray asks for a new meeting", () => {
+    const openNewNote = vi.fn();
+    const openNew = vi.fn();
+
+    handleOpenTabRequest(
+      { type: "sessions", id: "new", state: { view: null, autoStart: true } },
+      { openNewNote, openNew },
+    );
+
+    expect(openNewNoteAndListen).toHaveBeenCalledWith({ behavior: "new" });
+    expect(openNewNote).not.toHaveBeenCalled();
+    expect(openNew).not.toHaveBeenCalled();
+  });
+
+  it("opens a blank note when autoStart is not set", () => {
+    const openNewNote = vi.fn();
+    const openNew = vi.fn();
+
+    handleOpenTabRequest(
+      { type: "sessions", id: "new", state: { view: null, autoStart: null } },
+      { openNewNote, openNew },
+    );
+    handleOpenTabRequest({ type: "sessions", id: "new" }, {
+      openNewNote,
+      openNew,
+    });
+
+    expect(openNewNote).toHaveBeenCalledTimes(2);
+    expect(openNewNoteAndListen).not.toHaveBeenCalled();
+  });
+
+  it("opens other tabs as before", () => {
+    const openNewNote = vi.fn();
+    const openNew = vi.fn();
+    const tab = { type: "sessions" as const, id: "abc" };
+
+    handleOpenTabRequest(tab, { openNewNote, openNew });
+
+    expect(openNew).toHaveBeenCalledWith(tab);
+    expect(openNewNote).not.toHaveBeenCalled();
   });
 });

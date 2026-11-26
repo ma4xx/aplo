@@ -565,7 +565,7 @@ const _PROVIDERS = [
     displayName: "Alibaba Cloud Model Studio",
     badge: null,
     icon: <ProviderLobeIcon icon={AlibabaCloud} />,
-    baseUrl: "https://dashscope-intl.aliyuncs.com",
+    baseUrl: "https://dashscope.aliyuncs.com",
     models: [
       "qwen-audio-3.1-asr-flash-streaming",
       "qwen3-asr-flash-realtime",

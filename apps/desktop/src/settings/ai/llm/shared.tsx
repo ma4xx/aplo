@@ -386,7 +386,7 @@ const _PROVIDERS = [
     displayName: "Alibaba Cloud Model Studio",
     badge: null,
     icon: <ProviderLobeIcon icon={AlibabaCloud} />,
-    baseUrl: "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+    baseUrl: "https://dashscope.aliyuncs.com/compatible-mode/v1",
     requirements: [{ kind: "requires_config", fields: ["api_key"] }],
     links: {
       models: {

@@ -18,6 +18,7 @@ import { CreateBriefSuggestion } from "./create-brief-suggestion";
 import { useNoteFileHandlerConfig } from "./file-handler";
 import { MeetingChatHighlights } from "./meeting-chat-highlights";
 import { MeetingScreenGallery } from "./meeting-screen-gallery";
+import { StartRecordingPrompt } from "./start-recording-prompt";
 
 import { trackAnalyticsEvent } from "~/analytics";
 import { useAudioPlayer } from "~/audio-player";
@@ -342,6 +343,9 @@ export const RawEditor = forwardRef<
               <div className="pointer-events-none absolute inset-x-0 top-8 z-10 flex flex-col">
                 {briefVisible && audioExistsResolved && !canShowTranscript ? (
                   <CreateBriefSuggestion onCreate={createBrief} />
+                ) : null}
+                {audioExistsResolved && !canShowTranscript ? (
+                  <StartRecordingPrompt sessionId={sessionId} />
                 ) : null}
                 {audioExistsResolved && !canShowTranscript ? (
                   <TemplateEmptyState

@@ -131,7 +131,7 @@ function ProviderContext({ providerId }: { providerId: ProviderId }) {
                                   : providerId === "zai"
                                     ? "Uses Z.AI's **OpenAI-compatible GLM API**. The default endpoint is the international service and can be changed under Advanced."
                                     : providerId === "alibaba_cloud"
-                                      ? "Uses Alibaba Cloud Model Studio's **OpenAI-compatible API**. The default endpoint is the Singapore region; change the Base URL under Advanced when your API key belongs to another region."
+                                      ? "Uses Alibaba Cloud Model Studio's **OpenAI-compatible API**. The default endpoint is the China (Beijing) region; for an international API key, set the Base URL under Advanced to `https://dashscope-intl.aliyuncs.com/compatible-mode/v1`."
                                       : providerId === "siliconflow"
                                         ? "Uses SiliconFlow's **OpenAI-compatible API**. The default endpoint is the international service; use `https://api.siliconflow.cn/v1` under Advanced for a China-region API key."
                                         : providerId === "azure_openai"

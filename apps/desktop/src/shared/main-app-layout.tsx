@@ -28,6 +28,7 @@ import { UndoDeleteToast } from "~/sidebar/toast/undo-delete-toast";
 import {
   isTabInputSupported,
   RETURN_ORIGIN_TAB_TYPES,
+  type TabInput,
   useTabs,
 } from "~/store/zustand/tabs";
 
@@ -154,13 +155,7 @@ const useNavigationEvents = () => {
     void windowsEvents
       .openTab(webview)
       .listen(({ payload }) => {
-        if (payload.tab.type === "sessions" && payload.tab.id === "new") {
-          openNewNote();
-        } else if (!isTabInputSupported(payload.tab)) {
-          return;
-        } else {
-          openNew(payload.tab);
-        }
+        handleOpenTabRequest(payload.tab, { openNewNote, openNew });
       })
       .then((fn) => {
         if (cancelled) {
@@ -186,4 +181,30 @@ const useNavigationEvents = () => {
 function SharedWorkspaceMirror() {
   useMyWorkspacesWithMirror();
   return null;
+}
+
+export function handleOpenTabRequest(
+  tab: Parameters<typeof isTabInputSupported>[0],
+  {
+    openNewNote,
+    openNew,
+  }: {
+    openNewNote: () => void;
+    openNew: (tab: TabInput) => void;
+  },
+) {
+  if (tab.type === "sessions" && tab.id === "new") {
+    // The tray's "Start new meeting" sends autoStart: true and expects
+    // recording to begin without a second click.
+    if (tab.state?.autoStart) {
+      openNewNoteAndListen({ behavior: "new" });
+    } else {
+      openNewNote();
+    }
+    return;
+  }
+
+  if (isTabInputSupported(tab)) {
+    openNew(tab);
+  }
 }

@@ -89,7 +89,7 @@ describe("getLlmProviderStatus", () => {
     ["moonshot", "https://api.moonshot.ai/v1"],
     ["zai", "https://api.z.ai/api/paas/v4"],
     ["deepseek", "https://api.deepseek.com"],
-    ["alibaba_cloud", "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"],
+    ["alibaba_cloud", "https://dashscope.aliyuncs.com/compatible-mode/v1"],
     ["siliconflow", "https://api.siliconflow.com/v1"],
     ["cohere", "https://api.cohere.ai/compatibility/v1"],
     ["groq", "https://api.groq.com/openai/v1"],

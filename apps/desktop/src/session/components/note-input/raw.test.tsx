@@ -157,6 +157,10 @@ vi.mock("~/templates", () => ({
   useUserTemplates: () => hoisted.userTemplates,
 }));
 
+vi.mock("./start-recording-prompt", () => ({
+  StartRecordingPrompt: () => null,
+}));
+
 vi.mock("~/stt/contexts", () => ({
   useListener: () => "inactive",
 }));
