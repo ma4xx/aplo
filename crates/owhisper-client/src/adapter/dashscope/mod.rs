@@ -52,7 +52,7 @@ mod tests {
         let cases = [
             (
                 "",
-                "wss://dashscope-intl.aliyuncs.com/api-ws/v1/realtime",
+                "wss://dashscope.aliyuncs.com/api-ws/v1/realtime",
                 vec![],
             ),
             (

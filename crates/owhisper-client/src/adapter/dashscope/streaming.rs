@@ -390,8 +390,11 @@ mod tests {
         let url = adapter.build_ws_url("", &params, 1);
         assert_eq!(
             url.as_str(),
-            "wss://dashscope-intl.aliyuncs.com/api-ws/v1/inference?model=qwen-audio-3.1-asr-flash-streaming"
+            "wss://dashscope.aliyuncs.com/api-ws/v1/inference?model=qwen-audio-3.1-asr-flash-streaming"
         );
+
+        let url = adapter.build_ws_url("wss://dashscope-intl.aliyuncs.com", &params, 1);
+        assert_eq!(url.host_str(), Some("dashscope-intl.aliyuncs.com"));
 
         let url = adapter.build_ws_url("wss://dashscope.aliyuncs.com", &params, 1);
         assert_eq!(url.path(), "/api-ws/v1/inference");
