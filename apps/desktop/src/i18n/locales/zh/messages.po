@@ -13,6 +13,32 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/settings/ai/llm/configure.tsx
+msgid ""
+"- Ensure LM Studio server is **running.** (Default port is 1234)\n"
+"- Enable **CORS** in LM Studio config."
+msgstr "- 确认 LM Studio 服务器已**运行**。（默认端口 1234）\n- 在 LM Studio 设置里打开 **CORS**。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid ""
+"- Ensure Ollama is **running** (`ollama serve`)\n"
+"- Pull a model first (`ollama pull llama3.2`)"
+msgstr "- 确认 Ollama 已**运行**（`ollama serve`）\n- 先下载一个模型（`ollama pull llama3.2`）"
+
+#: src/settings/ai/llm/configure.tsx
+msgid ""
+"- Ensure the Unsloth server is **running.** (Default port is 8888)\n"
+"- Paste the API key from Unsloth. It starts with `sk-unsloth-`.\n"
+"- Only models **loaded** in Unsloth show up in the list."
+msgstr "- 确认 Unsloth 服务器已**运行**。（默认端口 8888）\n- 粘贴 Unsloth 提供的 API 密钥，以 `sk-unsloth-` 开头。\n- 只有在 Unsloth 里已**加载**的模型才会出现在列表中。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid ""
+"- Uses Apple's on-device **System Language Model**.\n"
+"- Requires macOS 26 or later, a Mac that supports Apple Intelligence, and Apple Intelligence turned on.\n"
+"- This experiment is text-only and works best with shorter transcripts."
+msgstr "- 使用苹果的本机**系统语言模型**。\n- 需要 macOS 26 或更新版本、支持 Apple 智能的 Mac，并已打开 Apple 智能。\n- 这是实验功能，只处理文字，逐字稿较短时效果最好。"
+
 #: src/services/enhancer/summary-notification.ts
 msgid "\"{title}\" is ready to read."
 msgstr "「{title}」已可阅读。"
@@ -193,6 +219,10 @@ msgstr "{value} / {target} 场对话"
 #: src/sidebar/timeline/utils/index.ts
 msgid "{weeks} weeks ago"
 msgstr "{weeks} 周前"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "**Anarlog Cloud** routes request to the **best available model** for highest accuracy and performance."
+msgstr "**Anarlog Cloud** 会把请求转给当前**最合适的模型**，以获得最高的准确度和性能。"
 
 #: src/calendar/components/day-cell.tsx
 msgid "+{overflow} more"
@@ -594,6 +624,7 @@ msgstr "高级"
 msgid "Advisor instructions"
 msgstr "参谋指令"
 
+#: src/settings/ai/shared/index.tsx
 #: src/settings/ai/stt/local-file-model.tsx
 #: src/settings/ai/stt/select.tsx
 msgid "After recording"
@@ -662,6 +693,10 @@ msgstr "已被占用"
 #: src/session/components/outer-header/overflow/always-on-top.tsx
 msgid "Always on Top"
 msgstr "窗口置顶"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Amazon Transcribe's native file API requires SigV4 plus an S3 object. Enter an OpenAI-compatible gateway URL that performs that AWS authentication and upload, then paste the gateway token as the API key."
+msgstr "Amazon Transcribe 的原生文件接口需要 SigV4 签名和一个 S3 对象。请填入一个兼容 OpenAI 的网关地址，由它完成 AWS 认证和上传，再把网关的令牌粘贴到 API 密钥处。"
 
 #: src/session-sharing/invitation-management.ts
 msgid "An Anarlog user"
@@ -1987,6 +2022,10 @@ msgstr "连接 Slack"
 msgid "Connect Slack to choose a channel for this recap."
 msgstr "连接 Slack，为这份回顾选择频道。"
 
+#: src/settings/ai/stt/configure.tsx
+msgid "Connect to your [NVIDIA Speech NIM](https://docs.nvidia.com/nim/speech/latest/get-started/tutorials/asr.html) WebSocket server, for example `http://localhost:9000`. Choose the model served by your deployment. The API key is optional for servers without authentication. This requires a deployed NIM server; NVIDIA's hosted gRPC endpoint is not supported here."
+msgstr "连接你自己部署的 [NVIDIA Speech NIM](https://docs.nvidia.com/nim/speech/latest/get-started/tutorials/asr.html) WebSocket 服务器，例如 `http://localhost:9000`。选择你部署的那个模型。服务器没有开启认证时，API 密钥可以不填。需要你自己部署 NIM 服务器，这里不支持 NVIDIA 托管的 gRPC 地址。"
+
 #: src/settings/developers/cli.tsx
 msgid "Connect your AI agent"
 msgstr "连接你的 AI 助手"
@@ -3092,9 +3131,29 @@ msgstr "请输入有效的日期和时间"
 msgid "Enter a valid folder name."
 msgstr "请输入有效的文件夹名称。"
 
+#: src/settings/ai/stt/configure.tsx
+msgid "Enter an OpenAI-compatible transcription gateway URL and its token. The gateway must expose `/audio/transcriptions` and translate file audio into Nova Sonic's AWS bidirectional stream. Native Bedrock endpoints and Bedrock API keys do not work here."
+msgstr "填入兼容 OpenAI 的转写网关地址和它的令牌。网关需要提供 `/audio/transcriptions` 接口，并把音频文件转成 Nova Sonic 的 AWS 双向流。这里不能直接使用 Bedrock 原生地址和 Bedrock API 密钥。"
+
 #: src/templates/template-form.tsx
 msgid "Enter template title"
 msgstr "输入模板标题"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Enter the regional **Bedrock Mantle OpenAI-compatible URL** (for example, `https://bedrock-mantle.us-east-1.api.aws/v1`) and a Bedrock long-term API key."
+msgstr "填入所在区域的 **Bedrock Mantle 兼容 OpenAI 地址**（例如 `https://bedrock-mantle.us-east-1.api.aws/v1`）和一个 Bedrock 长期 API 密钥。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Enter the Workers AI **OpenAI-compatible base URL** as `https://api.cloudflare.com/client/v4/accounts/{accountId}/ai/v1` and use a Cloudflare API token with Workers AI access."
+msgstr "把 Workers AI 的 **兼容 OpenAI 的 Base URL** 填成 `https://api.cloudflare.com/client/v4/accounts/{accountId}/ai/v1`，并使用有 Workers AI 权限的 Cloudflare API 令牌。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Enter your **Azure AI Foundry endpoint** as the Base URL and your **API key**. Supports Claude and other models deployed via Azure AI Foundry."
+msgstr "把你的 **Azure AI Foundry 终结点**填到 Base URL，再填上你的 **API 密钥**。支持通过 Azure AI Foundry 部署的 Claude 和其他模型。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Enter your **Azure OpenAI endpoint** (e.g. `https://your-resource.openai.azure.com`) as the Base URL and your **API key**."
+msgstr "把你的 **Azure OpenAI 终结点**（例如 `https://your-resource.openai.azure.com`）填到 Base URL，再填上你的 **API 密钥**。"
 
 #: src/settings/ai/shared/index.tsx
 msgid "Enter your API key"
@@ -3103,6 +3162,10 @@ msgstr "输入你的 API 密钥"
 #: src/settings/ai/shared/index.tsx
 msgid "Enter your API key (optional)"
 msgstr "输入你的 API 密钥（可选）"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Enter your project and location's **Vertex AI OpenAI-compatible endpoint** and a bearer access token. Vertex access tokens expire, so replace the saved token when Google Cloud refreshes it."
+msgstr "填入你的项目和区域对应的 **Vertex AI 兼容 OpenAI 终结点**，以及一个 Bearer 访问令牌。Vertex 访问令牌会过期，Google Cloud 刷新后请替换已保存的令牌。"
 
 #: src/settings/general/e2ee-setup.tsx
 msgid "Enter your saved recovery key when another approved device is unavailable."
@@ -3439,6 +3502,10 @@ msgstr "全屏"
 #: src/calendar/components/event-chip.tsx
 msgid "Future meetings"
 msgstr "未来的会议"
+
+#: src/settings/ai/shared/index.tsx
+msgid "Gateway"
+msgstr "网关"
 
 #: src/settings/general/index.tsx
 #: src/sidebar/settings-nav-groups.ts
@@ -5059,6 +5126,10 @@ msgstr "与当前数据不同的旧文件已保留为恢复副本，无需任何
 msgid "Oldest"
 msgstr "最早"
 
+#: src/settings/ai/shared/index.tsx
+msgid "On device"
+msgstr "本机"
+
 #: src/settings/dictation.tsx
 msgid "On Wayland, approve the shortcuts in your desktop's prompt. Use Control + Alt + Escape to cancel. On X11, press Escape to cancel. The target app must expose an editable accessibility field."
 msgstr "在 Wayland 上，请在桌面环境的提示中批准快捷键，按 Control + Alt + Escape 取消。在 X11 上，按 Escape 取消。目标应用必须提供可编辑的辅助功能输入框。"
@@ -5290,9 +5361,25 @@ msgstr "参会人"
 msgid "Paste"
 msgstr "粘贴"
 
+#: src/settings/ai/llm/configure.tsx
+msgid "Paste a Moonshot **API key**, or connect your **Kimi Code** membership. The default endpoint is the international service and can be changed under Advanced."
+msgstr "粘贴 Moonshot 的 **API 密钥**，或连接你的 **Kimi Code** 会员。默认地址是国际站，可以在“高级”里修改。"
+
 #: src/templates/auto-format-examples-dialog.tsx
 msgid "Paste a past summary you like..."
 msgstr "粘贴一份你喜欢的过往纪要..."
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Paste an **API key**, or connect your **ChatGPT Plus or Pro** plan."
+msgstr "粘贴 **API 密钥**，或连接你的 **ChatGPT Plus 或 Pro** 订阅。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Paste an **API key**, or connect your **Claude Pro or Max** plan."
+msgstr "粘贴 **API 密钥**，或连接你的 **Claude Pro 或 Max** 订阅。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Paste an **API key**, or connect your **SuperGrok or X Premium+** plan."
+msgstr "粘贴 **API 密钥**，或连接你的 **SuperGrok 或 X Premium+** 订阅。"
 
 #: src/settings/ai/llm/subscriptions/connect.tsx
 msgid "Paste an API key from your Kimi Code membership."
@@ -5443,6 +5530,10 @@ msgstr "转写或纪要完成时播放提示音。"
 #: src/session/components/note-input/transcript/renderer/selection-menu.tsx
 msgid "Play from here"
 msgstr "从这里播放"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Point this at any **Deepgram-compatible** endpoint, including a server on this computer or your local network."
+msgstr "可以指向任何**兼容 Deepgram** 的地址，包括这台电脑或局域网里的服务器。"
 
 #: src/settings/team/index.tsx
 msgid "Policies"
@@ -5668,6 +5759,10 @@ msgstr "应用日志中最近的 CloudSync 记录。"
 #: src/settings/team/index.tsx
 msgid "Recipient email"
 msgstr "收件人邮箱"
+
+#: src/settings/ai/shared/index.tsx
+msgid "Recommended"
+msgstr "推荐"
 
 #: src/calendar/components/oauth/provider-content.tsx
 #: src/calendar/components/sidebar.tsx
@@ -6397,6 +6492,10 @@ msgstr "所选模型已不可用。"
 #: src/settings/ai/stt/health.tsx
 msgid "Selected model is not downloaded."
 msgstr "所选模型尚未下载。"
+
+#: src/settings/ai/shared/index.tsx
+msgid "Self-hosted"
+msgstr "自行部署"
 
 #: src/session-sharing/delivery-panel.tsx
 msgid "Send"
@@ -7161,6 +7260,10 @@ msgstr "故事收集者"
 #: src/instruction/index.tsx
 msgid "Submit callback URL"
 msgstr "提交回调 URL"
+
+#: src/settings/ai/shared/index.tsx
+msgid "Subscription"
+msgstr "订阅"
 
 #: src/settings/general/notification.tsx
 msgid "Success"
@@ -8022,6 +8125,86 @@ msgstr "上传会议内容，以便在 Aplo 关闭时远程访问。"
 msgid "Usage"
 msgstr "用量"
 
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Alebex STT](https://www.alebex.ai/models-speech-to-text) with the speech-to-text token from your developer account."
+msgstr "使用 [Alebex STT](https://www.alebex.ai/models-speech-to-text)，填入你开发者账号里的语音转文字令牌。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [AssemblyAI](https://www.assemblyai.com) for transcriptions."
+msgstr "使用 [AssemblyAI](https://www.assemblyai.com) 进行转写。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Azure AI Speech](https://learn.microsoft.com/azure/ai-services/speech-service/rest-speech-to-text) fast transcription. Enter the regional Speech resource endpoint as the Base URL and its subscription key as the API key."
+msgstr "使用 [Azure AI Speech](https://learn.microsoft.com/azure/ai-services/speech-service/rest-speech-to-text) 的快速转写。把所在区域的 Speech 资源终结点填到 Base URL，订阅密钥填到 API 密钥。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Cohere Transcribe](https://docs.cohere.com/docs/transcribe) for batch transcription. Files must be 25 MB or smaller and use one selected language. Cohere does not return timestamps or speaker labels, so Aplo estimates word timing."
+msgstr "使用 [Cohere Transcribe](https://docs.cohere.com/docs/transcribe) 在录音结束后转写。文件不能超过 25 MB，并且只能选一种语言。Cohere 不返回时间戳和说话人标签，所以 Aplo 会估算每个词的时间。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid ""
+"Use [Deepgram](https://deepgram.com) for transcriptions.     If you want to use a [Dedicated](https://developers.deepgram.com/reference/custom-endpoints#deepgram-dedicated-endpoints)\n"
+"    or [EU](https://developers.deepgram.com/reference/custom-endpoints#eu-endpoints) endpoint,\n"
+"    or a Deepgram-compatible server on this computer or your local network,\n"
+"    you can do that in the **advanced** section."
+msgstr "使用 [Deepgram](https://deepgram.com) 进行转写。如果想用[专用](https://developers.deepgram.com/reference/custom-endpoints#deepgram-dedicated-endpoints)或 [EU](https://developers.deepgram.com/reference/custom-endpoints#eu-endpoints) 地址，或者这台电脑、局域网里兼容 Deepgram 的服务器，可以在**高级**里设置。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Gemini 3.5 Transcribe](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe/) with a Google AI Studio API key. **3.5 Transcribe Live** captions during recording (preview sessions last up to 10 minutes). **3.5 Transcribe** runs after recording with speaker labels and word timestamps; Aplo splits files past 15 minutes."
+msgstr "使用 [Gemini 3.5 Transcribe](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe/)，需要 Google AI Studio 的 API 密钥。**3.5 Transcribe Live** 在录音时实时出字（预览版单次最长 10 分钟）。**3.5 Transcribe** 在录音结束后转写，带说话人标签和词级时间戳；超过 15 分钟的文件 Aplo 会自动切分。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Gladia](https://www.gladia.io) for transcriptions."
+msgstr "使用 [Gladia](https://www.gladia.io) 进行转写。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Google Cloud Speech-to-Text](https://cloud.google.com/speech-to-text) to transcribe after recording. Long recordings are split automatically and combined into one transcript. Paste an OAuth access token in the API key field; refresh it when it expires."
+msgstr "使用 [Google Cloud Speech-to-Text](https://cloud.google.com/speech-to-text) 在录音结束后转写。长录音会自动切分，再合成一份逐字稿。把 OAuth 访问令牌粘贴到 API 密钥栏，过期后需要刷新。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Gradium STT](https://docs.gradium.ai/guides/speech-to-text) for live transcription in English, French, Spanish, Portuguese, or German."
+msgstr "使用 [Gradium STT](https://docs.gradium.ai/guides/speech-to-text) 进行实时转写，支持英语、法语、西班牙语、葡萄牙语和德语。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Inworld Realtime STT](https://docs.inworld.ai/stt/overview) for live transcription. Paste the Base64 API credentials from Inworld Portal as-is; do not encode them again."
+msgstr "使用 [Inworld Realtime STT](https://docs.inworld.ai/stt/overview) 进行实时转写。把 Inworld 后台里的 Base64 API 凭据原样粘贴即可，不要再编码一次。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Mistral](https://mistral.ai) for transcriptions. Keep the Base URL as `https://api.mistral.ai/v1` (Reset under Advanced if you pasted a transcriptions endpoint). **Voxtral Mini Transcribe 2** transcribes after recording; the realtime model is for live captions."
+msgstr "使用 [Mistral](https://mistral.ai) 进行转写。Base URL 保持为 `https://api.mistral.ai/v1`（如果你粘贴了转写接口地址，请在“高级”里重置）。**Voxtral Mini Transcribe 2** 在录音结束后转写，实时模型用于实时字幕。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Modulate](https://docs.modulate.ai/get-started/stt) for live transcription. The multilingual model supports 25 European languages; the English model supports English only. Speaker labels identify up to four speakers with the multilingual model."
+msgstr "使用 [Modulate](https://docs.modulate.ai/get-started/stt) 进行实时转写。多语言模型支持 25 种欧洲语言，英语模型只支持英语。多语言模型最多能区分四位说话人。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [OpenAI](https://openai.com) for transcriptions."
+msgstr "使用 [OpenAI](https://openai.com) 进行转写。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [OpenRouter](https://openrouter.ai) to transcribe with supported speech-to-text models through one API key. OpenRouter transcription runs after recording."
+msgstr "通过 [OpenRouter](https://openrouter.ai)，用一个 API 密钥调用它支持的语音转文字模型。OpenRouter 的转写在录音结束后进行。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Rev AI](https://docs.rev.ai/api/asynchronous/get-started) asynchronous transcription. Aplo uploads the recording, waits for the job, and retrieves word timestamps and speaker labels."
+msgstr "使用 [Rev AI](https://docs.rev.ai/api/asynchronous/get-started) 的异步转写。Aplo 会上传录音、等任务完成，再取回词级时间戳和说话人标签。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [SiliconFlow](https://docs.siliconflow.com/en/api-reference/audio/create-audio-transcriptions) for batch transcription. The default endpoint is the international service; use `https://api.siliconflow.cn/v1` under Advanced for a China-region API key."
+msgstr "使用[硅基流动 SiliconFlow](https://docs.siliconflow.com/en/api-reference/audio/create-audio-transcriptions) 在录音结束后转写。默认地址是国际站；如果你的 API 密钥是国内站的，请在“高级”里改成 `https://api.siliconflow.cn/v1`。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Soniox](https://soniox.com) for transcriptions."
+msgstr "使用 [Soniox](https://soniox.com) 进行转写。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Speechmatics](https://docs.speechmatics.com/speech-to-text/batch/quickstart) enhanced batch transcription. The default endpoint uses the EU region and can be changed under Advanced."
+msgstr "使用 [Speechmatics](https://docs.speechmatics.com/speech-to-text/batch/quickstart) 的增强版批量转写。默认地址在欧洲区，可以在“高级”里修改。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use [Z.AI GLM ASR](https://docs.z.ai/guides/audio/glm-asr-2512) for batch transcription. Aplo automatically splits recordings to fit Z.AI's 30-second upload limit."
+msgstr "使用 [Z.AI GLM ASR](https://docs.z.ai/guides/audio/glm-asr-2512) 在录音结束后转写。Z.AI 单次上传最长 30 秒，Aplo 会自动把录音切成合适的片段。"
+
 #: src/settings/appearance/time-format.tsx
 msgid "Use 24-hour time"
 msgstr "使用 24 小时制"
@@ -8030,6 +8213,10 @@ msgstr "使用 24 小时制"
 msgid "Use 3–63 lowercase letters, numbers, or hyphens."
 msgstr "使用 3–63 个小写字母、数字或连字符。"
 
+#: src/settings/ai/stt/configure.tsx
+msgid "Use a [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/) endpoint that exposes Deepgram-compatible Nova-3 transcription."
+msgstr "使用提供兼容 Deepgram 的 Nova-3 转写的 [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/) 地址。"
+
 #: src/automations/starters.tsx
 msgid "Use a stable filename in the configured export directory."
 msgstr "在已配置的导出目录中使用固定的文件名。"
@@ -8037,6 +8224,10 @@ msgstr "在已配置的导出目录中使用固定的文件名。"
 #: src/settings/team/email-auto-join.tsx
 msgid "Use a verified work email to enable automatic joining. Personal email providers such as Gmail are excluded."
 msgstr "使用已验证的工作邮箱以启用自动加入。Gmail 等个人邮箱服务不适用。"
+
+#: src/settings/ai/stt/configure.tsx
+msgid "Use Alibaba Cloud Model Studio's Qwen ASR for **live transcription**. The default endpoint is the China (Beijing) region; for an international API key, set the Base URL under Advanced to `https://dashscope-intl.aliyuncs.com`."
+msgstr "使用阿里云百炼的 Qwen ASR 进行**实时转写**。默认地址是国内站（北京）；如果你的 API 密钥是国际站的，请在“高级”里把 Base URL 改成 `https://dashscope-intl.aliyuncs.com`。"
 
 #: src/settings/general/e2ee-setup.tsx
 msgid "Use an existing key"
@@ -8094,6 +8285,38 @@ msgstr "使用麦克风捕获你的声音"
 msgid "Used for transcription and automatic summary language detection."
 msgstr "用于转写和纪要语言的自动检测。"
 
+#: src/settings/ai/llm/configure.tsx
+msgid "Uses Alibaba Cloud Model Studio's **OpenAI-compatible API**. The default endpoint is the China (Beijing) region; for an international API key, set the Base URL under Advanced to `https://dashscope-intl.aliyuncs.com/compatible-mode/v1`."
+msgstr "使用阿里云百炼的**兼容 OpenAI 的接口**。默认地址是国内站（北京）；如果你的 API 密钥是国际站的，请在“高级”里把 Base URL 改成 `https://dashscope-intl.aliyuncs.com/compatible-mode/v1`。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Uses SiliconFlow's **OpenAI-compatible API**. The default endpoint is the international service; use `https://api.siliconflow.cn/v1` under Advanced for a China-region API key."
+msgstr "使用硅基流动 SiliconFlow 的**兼容 OpenAI 的接口**。默认地址是国际站；如果你的 API 密钥是国内站的，请在“高级”里改成 `https://api.siliconflow.cn/v1`。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Uses your **ChatGPT Plus or Pro** plan. Sign in through Connect — we'll finish the handshake automatically."
+msgstr "使用你的 **ChatGPT Plus 或 Pro** 订阅。点“连接”登录，剩下的握手步骤会自动完成。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Uses your **Claude Pro or Max** plan. Sign in through Connect — no Anthropic API key needed."
+msgstr "使用你的 **Claude Pro 或 Max** 订阅。点“连接”登录，不需要 Anthropic 的 API 密钥。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Uses your **GitHub Copilot** plan. Approve the device code in the browser to connect."
+msgstr "使用你的 **GitHub Copilot** 订阅。在浏览器里批准设备码即可连接。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Uses your **Kimi Code** membership. Paste the coding API key from the Kimi Code console."
+msgstr "使用你的 **Kimi Code** 会员。把 Kimi Code 控制台里的编程 API 密钥粘贴进来。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Uses your **SuperGrok or X Premium+** plan through xAI's subscription login."
+msgstr "通过 xAI 的订阅登录，使用你的 **SuperGrok 或 X Premium+** 订阅。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "Uses Z.AI's **OpenAI-compatible GLM API**. The default endpoint is the international service and can be changed under Advanced."
+msgstr "使用 Z.AI 的**兼容 OpenAI 的 GLM 接口**。默认地址是国际站，可以在“高级”里修改。"
+
 #: src/stt/useRunBatch.ts
 msgid "Using a batch transcription provider"
 msgstr "正在使用批量转写服务商"
@@ -8148,6 +8371,10 @@ msgstr "查看笔记"
 msgid "View sync log"
 msgstr "查看同步日志"
 
+#: src/settings/ai/llm/configure.tsx
+msgid "Visit [AI Studio](https://aistudio.google.com/api-keys) to create an API key."
+msgstr "到 [AI Studio](https://aistudio.google.com/api-keys) 创建 API 密钥。"
+
 #: src/chat/components/input/use-dictation.ts
 msgid "Voice input is unavailable while Aplo is recording a meeting."
 msgstr "Aplo 录制会议期间无法使用语音输入。"
@@ -8187,6 +8414,14 @@ msgstr "胡桃木"
 #: src/settings/referrals.tsx
 msgid "We couldn't load your invites. Please try again."
 msgstr "无法加载你的邀请。请重试。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "We filter out models from the combobox based on heuristics like **input modalities** and **tool support**."
+msgstr "下拉列表会根据**输入类型**和**工具支持**等条件过滤掉不合适的模型。"
+
+#: src/settings/ai/llm/configure.tsx
+msgid "We only support **OpenAI-compatible** endpoints for now."
+msgstr "目前只支持**兼容 OpenAI** 的地址。"
 
 #: src/settings/developers/webhooks.tsx
 msgid "Webhooks"

@@ -745,7 +745,17 @@ export function NonAnarlogProviderCard({
 }
 
 function ProviderBadge({ badge }: { badge: string }) {
+  const { t } = useLingui();
   const isAfterRecording = badge === "After recording";
+  // The badge text is stored in English and doubles as a key, so translate it only for display.
+  const badgeLabels: Record<string, string> = {
+    "After recording": t`After recording`,
+    Gateway: t`Gateway`,
+    "On device": t`On device`,
+    Recommended: t`Recommended`,
+    "Self-hosted": t`Self-hosted`,
+    Subscription: t`Subscription`,
+  };
   const badgeNode = (
     <span
       className={cn([
@@ -755,7 +765,7 @@ function ProviderBadge({ badge }: { badge: string }) {
           : "border-border rounded-full border px-2 text-xs font-light",
       ])}
     >
-      {badge}
+      {badgeLabels[badge] ?? badge}
     </span>
   );
 
